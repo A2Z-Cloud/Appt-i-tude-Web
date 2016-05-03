@@ -32,21 +32,21 @@ body {
 	-webkit-box-align: center;
 
 	align-items: center;
-
-    -webkit-animation: 10s infinite cross-colour;
-       -moz-animation: 10s infinite cross-colour;
-            animation: 10s infinite cross-colour;
 }
 
 .loader-logo {
     display: block;
     width: 100px;
     margin: auto;
+
+    -webkit-animation: 1s ease-in infinite wiggle;
+       -moz-animation: 1s ease-in infinite wiggle;
+            animation: 1s ease-in infinite wiggle;
 }
 
-@keyframes cross-colour
+@keyframes wiggle
 {
-  0%   { background: #FFF; }
-  50%  { background: #000; }
-  100% { background: #FFF; }
+  0%   { transform: rotate( -10deg ); }
+  50%  { transform: rotate(  10deg ); }
+  100% { transform: rotate( -10deg ); }
 }
