@@ -1,0 +1,52 @@
+
+/* ---- Loader Base ---- */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+[v-cloak] {
+    display: none;
+}
+.loader {
+    display: none;
+}
+
+/* ---- Main Loader Styles ---- */
+
+[v-cloak].loader {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+}
+
+.loader-logo {
+    display: block;
+    width: 100px;
+    margin: auto;
+
+    -webkit-animation: 1s ease-in infinite wiggle;
+       -moz-animation: 1s ease-in infinite wiggle;
+            animation: 1s ease-in infinite wiggle;
+}
+
+@keyframes wiggle
+{
+  0%   { transform: rotate( -10deg ); }
+  50%  { transform: rotate(  10deg ); }
+  100% { transform: rotate( -10deg ); }
+}
