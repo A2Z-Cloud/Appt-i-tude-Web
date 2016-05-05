@@ -14,12 +14,13 @@
     <link rel="icon" type="image/png" href="favicon.ico" />
 
     <!-- Normalize -->
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css"></link>
 
     <!-- font imports -->
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
 
     <!-- linearicons -->
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
     <!-- loader -->
     <link rel='stylesheet' type='text/css' href="loader.css" />
@@ -34,7 +35,14 @@
 
         <!-- Main Content -->
         <div id="Main" v-cloak>
-            <router-view></router-view>
+            <div class="content">
+                <div class="content-nav">
+                    <nav-panel></nav-panel>
+                </div>
+                <div class="content-body">
+                    <router-view></router-view>
+                </div>
+            </div>
         </div>
     </div>
 

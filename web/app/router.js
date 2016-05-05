@@ -1,11 +1,13 @@
 // JS Imports
+// –– Vue
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// –– Constants
 import {debug} from './consts'
 
 // -- Route Panels
-import HomePanel from "./components/home_panel/home"
+import DashboardPanel from "./components/dashboard_panel/dashboard"
 
 
 Vue.use(VueRouter)
@@ -17,8 +19,8 @@ const router = new VueRouter({
 
 router.map({
     '/': {
-        name: 'HomePanel',
-        component: HomePanel,
+        name: 'DashboardPanel',
+        component: DashboardPanel,
     },
 })
 

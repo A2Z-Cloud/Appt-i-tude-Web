@@ -1,0 +1,61 @@
+.DashboardPanel {
+    position: absolute;
+    top:  0; bottom: 0;
+    left: 0; right:  0;
+
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.DashboardPanel
+.title {
+    width: 100%;
+    margin: 20px 0;
+
+    text-align: center;
+    font-size: 1.5em;
+    color: #BBB
+}
+
+.DashboardPanel
+.summary {
+    width: 100%;
+    text-align: center;
+    font-size: 0px;
+}
+
+.DashboardPanel
+.dashboard-card {
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+
+    margin: 20px 0;
+    padding: 0 20px;
+    border-right: 1px solid #BBB;
+
+    font-size: 15px;
+}
+.DashboardPanel
+.dashboard-card:last-child { border: none; }
+
+.DashboardPanel
+.dashboard-card .card-title {
+    font-size: 2em;
+    text-align: center;
+}
+
+.DashboardPanel
+.date-card {
+    /**/
+}
+.DashboardPanel .date-card .day   { font-size: 40px; }
+.DashboardPanel .date-card .month { font-size: 20px; }
+
+.DashboardPanel
+.value-card .value {
+    font-size: 70px;
+}
+.DashboardPanel .value.negative { color: #DC6F6F; }
+.DashboardPanel .value.positive { color: #94C120; }
