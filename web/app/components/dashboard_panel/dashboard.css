@@ -5,6 +5,8 @@
 
     box-sizing: border-box;
     padding: 10px;
+
+    overflow: auto;
 }
 
 .DashboardPanel
@@ -17,6 +19,9 @@
     color: #BBB
 }
 
+
+/* ––– Summary Info ––– */
+
 .DashboardPanel
 .summary {
     width: 100%;
@@ -28,7 +33,7 @@
 .dashboard-card {
     display: inline-block;
     vertical-align: middle;
-    width: 120px;
+    min-width: 120px;
     height: 120px;
 
     margin: 20px 0;
@@ -59,3 +64,12 @@
 }
 .DashboardPanel .value.negative { color: #DC6F6F; }
 .DashboardPanel .value.positive { color: #94C120; }
+
+
+/* ––– Historical Info ––– */
+
+.DashboardPanel
+.previous {
+    margin-top: 30px;
+    border-top: 1px solid #BBB;
+}

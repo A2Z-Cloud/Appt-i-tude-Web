@@ -8,6 +8,8 @@ import {debug} from './consts'
 
 // -- Route Panels
 import DashboardPanel from "./components/dashboard_panel/dashboard"
+import CalculatorPanel from "./components/calculator_panel/calculator"
+import PaymentsPanel from "./components/payments_panel/payments"
 
 
 Vue.use(VueRouter)
@@ -21,6 +23,14 @@ router.map({
     '/': {
         name: 'DashboardPanel',
         component: DashboardPanel,
+    },
+    '/calculator': {
+        name: 'CalculatorPanel',
+        component: CalculatorPanel,
+    },
+    '/payments': {
+        name: 'PaymentsPanel',
+        component: PaymentsPanel,
     },
 })
 

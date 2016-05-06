@@ -1,6 +1,6 @@
 // Panel Imports
-import './dashboard.css!'
-import template from './dashboard.html!text'
+import './payments.css!'
+import template from './payments.html!text'
 
 // JS Imports
 // –– Vue
@@ -20,8 +20,5 @@ export default Vue.extend({
     },
     methods: {
 
-    },
-    computed: {
-        
     },
 })
