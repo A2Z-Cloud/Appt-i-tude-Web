@@ -1,11 +1,11 @@
 {
-  "name": "A2Z Users",
+  "name": "A2Z Apptitude",
   "version": "1.0.0",
-  "description": "A2Z Users Auth Portal.",
+  "description": "A2Z Apptitude Portal",
   "main": "app/main.js",
-  "author": "Oliver Dashiell Bunyan",
+  "author": "A2Z Cloud",
   "devDependencies": {
-    "jspm": "^0.16.15"
+    "jspm": "^0.16.36"
   },
   "jspm": {
     "dependencies": {

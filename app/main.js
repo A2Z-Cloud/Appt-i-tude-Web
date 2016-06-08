@@ -18,15 +18,17 @@ Vue.config.debug = true
 
 
 // Init App
-router.start({
-    components: {
-        'nav-panel': NavPanel,
-    },
-    data: () => ({
-        status: null,
-        error: null,
-    }),
-    ready() {
-
-    },
-}, '#App')
+System.import(control_url).then(({Control}) => {  // eslint-disable-line no-undef
+    router.start({
+        components: {
+            'nav-panel': NavPanel,
+        },
+        data: () => ({
+            status: null,
+            error: null,
+        }),
+        ready() {
+            
+        },
+    }, '#App')
+})
