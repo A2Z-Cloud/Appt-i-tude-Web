@@ -25,6 +25,7 @@ System.config({
     "vue": "npm:vue@1.0.20",
     "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.13",
+    "vuex": "npm:vuex@0.6.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
