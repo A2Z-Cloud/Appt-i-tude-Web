@@ -5,12 +5,13 @@ import VueRouter from 'vue-router'
 import store from 'app/vuex/store'
 
 // –– Constants
-import {debug} from './consts'
+import {debug, hash_routing} from './consts'
 
 // -- Route Panels
 import DashboardPanel from "./components/dashboard_panel/dashboard"
 import CalculatorPanel from "./components/calculator_panel/calculator"
 import PaymentsPanel from "./components/payments_panel/payments"
+import RatecardCreator from "./components/ratecard_creator/ratecard_creator"
 
 import { authenticate } from 'app/vuex/actions'
 
@@ -19,8 +20,8 @@ Vue.use(VueRouter)
 Vue.config.debug = debug
 
 const router = new VueRouter({
-    history: !debug,
-    hashbang: debug,
+    history: !hash_routing,
+    hashbang: hash_routing,
 })
 
 router.map({
@@ -37,6 +38,11 @@ router.map({
     '/payments': {
         name: 'PaymentsPanel',
         component: PaymentsPanel,
+        authenticated: true,
+    },
+    '/ratecard': {
+        name: 'Ratecard',
+        component: RatecardCreator,
         authenticated: true,
     },
 })

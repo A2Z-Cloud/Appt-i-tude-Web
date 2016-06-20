@@ -14,4 +14,4 @@ build:
 	mv app/consts.js app/consts_dist.js && mv app/consts_debug.js app/consts.js
 deploy:
 	aws s3 sync --profile a2zcloud dist/ s3://com-a2zcloud-apptitude
-	aws cloudfront create-invalidation --profile a2zcloud --distribution-id E3F4M5LFOJTS3H --invalidation-batch "{\"Paths\": {\"Quantity\": 1,\"Items\": [\"/*\"]},\"CallerReference\": \"make deploy\"}"
+	aws cloudfront create-invalidation --profile a2zcloud --distribution-id E3F4M5LFOJTS3H --invalidation-batch "{\"Paths\": {\"Quantity\": 1,\"Items\": [\"/*\"]},\"CallerReference\": \"make deploy "`date +%Y-%m-%d:%H:%M:%S`"\"}"

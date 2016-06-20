@@ -15,7 +15,7 @@ export default {
                 src: 'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.29/system.js',
             }),
             script({
-                src: 'core.min.js',
+                src: '/core.min.js',
             }),
             script({
                 contents: 'System.import("app/main")',
