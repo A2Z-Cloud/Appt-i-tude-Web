@@ -1,11 +1,17 @@
 <div class="NavPanel">
     <div class="site-title">
-        <a class="nav-link" href="#!/"><img class="logo" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/a2z-appt-i-tude/logo.jpg"/></a>
+        <a class="nav-link" v-link="{ path: '/', exact: true }"><img class="logo" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/a2z-appt-i-tude/logo.jpg"/></a>
     </div>
     <div class="nav-item">
-        <a class="nav-link" href="#!/payments"><i class="fa fa-ticket" aria-hidden="true"></i></a>
+        <a class="nav-link" v-link="{ path: '/payments', exact: false }"><i class="fa fa-ticket" aria-hidden="true"></i></a>
     </div>
     <div class="nav-item">
-        <a class="nav-link" href="#!/calculator"><i class="fa fa-calculator" aria-hidden="true"></i></a>
+        <a class="nav-link" v-link="{ path: '/calculator', exact: false }"><i class="fa fa-calculator" aria-hidden="true"></i></a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" v-link="{ path: '/admin', exact: false }"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+    </div>
+    <div class="nav-item nav-bottom">
+        <a class="nav-link" :href="sign_out_url"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
     </div>
 </div>

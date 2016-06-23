@@ -11,7 +11,7 @@ import {debug, hash_routing} from './consts'
 import DashboardPanel from "./components/dashboard_panel/dashboard"
 import CalculatorPanel from "./components/calculator_panel/calculator"
 import PaymentsPanel from "./components/payments_panel/payments"
-import RatecardCreator from "./components/ratecard_creator/ratecard_creator"
+import AdminPanel from "./components/admin_panel/admin"
 
 import { authenticate } from 'app/vuex/actions'
 
@@ -40,9 +40,9 @@ router.map({
         component: PaymentsPanel,
         authenticated: true,
     },
-    '/ratecard': {
-        name: 'Ratecard',
-        component: RatecardCreator,
+    '/admin': {
+        name: 'AdminPanel',
+        component: AdminPanel,
         authenticated: true,
     },
 })

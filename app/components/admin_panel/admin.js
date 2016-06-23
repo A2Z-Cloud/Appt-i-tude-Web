@@ -1,6 +1,6 @@
 // Panel Imports
-import './ratecard_creator.css!'
-import template from './ratecard_creator.html!text'
+import './admin.css!'
+import template from './admin.html!text'
 
 // JS Imports
 // –– Vue

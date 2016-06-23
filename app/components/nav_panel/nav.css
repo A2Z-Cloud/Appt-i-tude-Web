@@ -55,7 +55,29 @@
     color: #4E4E4E;
 }
 
+.NavPanel
+.nav-item.nav-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.NavPanel
 .nav-link {
     text-decoration: none;
-    color: inherit;
+    color: #8C3B8C;
+
+    -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+
+    -webkit-transition: 0.5s;
+       -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+         -o-transition: 0.5s;
+            transition: 0.5s;
+}
+
+.NavPanel
+.nav-link.v-link-active {
+    -webkit-filter: none;
+    filter: none;
 }

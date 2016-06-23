@@ -1,0 +1,52 @@
+.AdminPanel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.AdminPanel
+.title {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.5em;
+    color: #BBB;
+}
+
+.AdminPanel
+table {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.AdminPanel
+table tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    /*height: 150px; Height applied dynamically in js*/
+}
+
+.AdminPanel
+table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.AdminPanel
+.subscriptions-table
+thead tr th {
+    text-align: left;
+}
+
+.AdminPanel
+table tr td {
+    overflow: auto;
+}
+
+.AdminPanel
+.add-button {
+    position: absolute;
+    bottom: 10px; right: 10px;
+}
