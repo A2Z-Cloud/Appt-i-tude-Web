@@ -12,7 +12,7 @@ import store from 'app/vuex/store'
 import {control_url} from './consts'
 
 // -- Panels
-import NavPanel from 'app/components/nav_panel/nav'
+import NavPanel from 'app/components/navigation/nav'
 
 // Vue global settings
 Vue.config.debug = true

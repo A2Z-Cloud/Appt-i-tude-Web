@@ -8,10 +8,10 @@ import store from 'app/vuex/store'
 import {debug, hash_routing} from './consts'
 
 // -- Route Panels
-import DashboardPanel from "./components/dashboard_panel/dashboard"
-import CalculatorPanel from "./components/calculator_panel/calculator"
-import PaymentsPanel from "./components/payments_panel/payments"
-import AdminPanel from "./components/admin_panel/admin"
+import DashboardPanel from "./panels/dashboard_panel/dashboard"
+import CalculatorPanel from "./panels/calculator_panel/calculator"
+import PaymentsPanel from "./panels/payments_panel/payments"
+import AdminPanel from "./panels/admin_panel/admin"
 
 import { authenticate } from 'app/vuex/actions'
 
