@@ -23,6 +23,7 @@ System.config({
     "superagent": "npm:superagent@1.8.3",
     "text": "github:systemjs/plugin-text@0.0.7",
     "vue": "npm:vue@1.0.20",
+    "vue-date-picker": "npm:vue-date-picker@1.0.2",
     "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.13",
     "vuex": "npm:vuex@0.6.3",

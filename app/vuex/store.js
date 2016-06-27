@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { merge } from 'app/utils/merge'
 import { debug } from 'app/consts'
 
 Vue.use(Vuex)
@@ -15,6 +16,8 @@ const state = {
     error: null,
     auth_client_url: null,
     user: null,
+    groups: [],
+    ratecards: [],
 }
 
 
@@ -33,6 +36,18 @@ const mutations = {
     },
     CURRENT_USER_SET(state, user) {
         state.user = user
+    },
+    RATECARD_UPDATE({ratecards}, ratecard) {
+        const index        = ratecards.findIndex(rc => rc.id === ratecard.id)
+        const new_ratecard = merge(ratecards[index], ratecard)
+        if (index !== -1) ratecards.$set(index, new_ratecard)
+        else ratecards.push(ratecard)
+    },
+    GROUP_UPDATE({groups}, group) {
+        const index     = groups.findIndex(g => g.id === group.id)
+        const new_group = merge(groups[index], group)
+        if (index !== -1) groups.$set(index, new_group)
+        else groups.push(group)
     },
 }
 

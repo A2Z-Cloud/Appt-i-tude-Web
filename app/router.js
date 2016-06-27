@@ -12,6 +12,7 @@ import DashboardPanel from "./panels/dashboard_panel/dashboard"
 import CalculatorPanel from "./panels/calculator_panel/calculator"
 import PaymentsPanel from "./panels/payments_panel/payments"
 import AdminPanel from "./panels/admin_panel/admin"
+import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
 
@@ -44,6 +45,10 @@ router.map({
         name: 'AdminPanel',
         component: AdminPanel,
         authenticated: true,
+    },
+    '/test': {
+        name: 'Test',
+        component: SubscriptionCreator,
     },
 })
 

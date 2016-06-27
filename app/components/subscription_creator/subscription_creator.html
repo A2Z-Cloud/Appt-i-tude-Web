@@ -1,0 +1,21 @@
+<div class="SubscriptionCreator">
+    <div>Group</div>
+    <select v-model="selected_group_id">
+        <option v-for="g in groups" :value='g.id'>
+            {{ g.name }}
+        </option>
+    </select>
+    <div>From Date</div>
+    <input type='date'/>
+    <div>To Date</div>
+    <input type='date'/>
+    <div>Rate</div>
+    <select v-model="selected_ratecard_id">
+        <option v-for="rc in ratecards" :value='rc.id'>
+            {{ rc.name }} {{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%
+        </option>
+        <!-- <option value="">
+            Custom Discount
+        </option> -->
+    </select>
+</div>
