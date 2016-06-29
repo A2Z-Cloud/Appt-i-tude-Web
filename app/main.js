@@ -8,6 +8,9 @@ import Vue from 'vue'
 import router from './router'
 import store from 'app/vuex/store'
 
+import 'app/filters/multiply'
+import 'app/filters/currency'
+
 // –– Constants
 import {control_url} from './consts'
 

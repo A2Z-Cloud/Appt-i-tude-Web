@@ -49,6 +49,7 @@ router.map({
     '/test': {
         name: 'Test',
         component: SubscriptionCreator,
+        authenticated: true,
     },
 })
 

@@ -13,7 +13,8 @@ export default Vue.extend({
     template,
     data: () => ({
         selected_group_id: null,
-        selected_ratecard_id: null,
+        selected_dicount: null,
+        cost: 0,
     }),
     route: {
         data() {
@@ -22,15 +23,15 @@ export default Vue.extend({
                 this.filter_ratecards(),
             ]
             return Promise.all(promises)
-                          .then(([groups, ratecards]) => {
-                              this.selected_group_id = groups[0].id
-                              this.selected_ratecard_id = ratecards[0].id})
+                          .then(([groups]) => {
+                              this.selected_group_id = groups[0].id})
         },
     },
     vuex: {
         getters: {
             groups: state => state.groups,
             ratecards: state => state.ratecards,
+            user: state => state.user,
         },
         actions: {
             filter_ratecards,
@@ -38,7 +39,10 @@ export default Vue.extend({
         },
     },
     computed: {
-
+        selected_group() {
+            const index = this.groups.findIndex(g => g.id === this.selected_group_id)
+            return (index !== -1) ? this.groups[index] : null
+        },
     },
     ready() {
 

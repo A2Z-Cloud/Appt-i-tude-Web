@@ -5,17 +5,26 @@
             {{ g.name }}
         </option>
     </select>
+    <div>A2Z Cloud's Contract Signee Email</div>
+    <input type='email' :value="user.email"/>
+    <div v-if="selected_group">{{ selected_group.name }}'s Contract Signee Email</div>
+    <input type='email'/>
     <div>From Date</div>
     <input type='date'/>
     <div>To Date</div>
     <input type='date'/>
-    <div>Rate</div>
-    <select v-model="selected_ratecard_id">
+    <div>Base Monthly Cost</div>
+    <input v-model="cost | currency" number>
+    <div>Base Anual Cost</div>
+    <input v-model="cost | multiply 12 | currency" number>
+    <div>Discount</div>
+    <select v-model="selected_dicount">
+        <option selected value="">
+            None
+        </option>
         <option v-for="rc in ratecards" :value='rc.id'>
             {{ rc.name }} {{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%
         </option>
-        <!-- <option value="">
-            Custom Discount
-        </option> -->
     </select>
+    <button>Send Subscription Contract</button>
 </div>
