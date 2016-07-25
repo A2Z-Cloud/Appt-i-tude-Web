@@ -46,7 +46,7 @@ router.map({
         component: AdminPanel,
         authenticated: true,
     },
-    '/test': {
+    '/subscriptions/new': {
         name: 'Test',
         component: SubscriptionCreator,
         authenticated: true,

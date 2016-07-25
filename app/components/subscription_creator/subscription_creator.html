@@ -1,30 +1,30 @@
 <div class="SubscriptionCreator">
     <div>Group</div>
-    <select v-model="selected_group_id">
+    <select v-model="subscription.group_id">
         <option v-for="g in groups" :value='g.id'>
             {{ g.name }}
         </option>
     </select>
     <div>A2Z Cloud's Contract Signee Email</div>
-    <input type='email' :value="user.email"/>
+    <input v-model="subscription.a2z_signee_email" type='email' :value="user.email"/>
     <div v-if="selected_group">{{ selected_group.name }}'s Contract Signee Email</div>
-    <input type='email'/>
+    <input v-model="subscription.group_signee_email" type='email'/>
     <div>From Date</div>
-    <input type='date'/>
+    <input v-model="subscription.from_date | date-unix" type='date'/>
     <div>To Date</div>
-    <input type='date'/>
+    <input v-model="subscription.to_date | date-unix" type='date'/>
     <div>Base Monthly Cost</div>
-    <input v-model="cost | currency" number>
+    <input v-model="subscription.monthly_cost | currency" number>
     <div>Base Anual Cost</div>
-    <input v-model="cost | multiply 12 | currency" number>
+    <input v-model="subscription.monthly_cost | multiply 12 | currency" number>
     <div>Discount</div>
-    <select v-model="selected_dicount">
-        <option selected value="">
+    <select v-model="subscription.discount_id | nullify ''">
+        <option value="" selected>
             None
         </option>
         <option v-for="rc in ratecards" :value='rc.id'>
             {{ rc.name }} {{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%
         </option>
     </select>
-    <button>Send Subscription Contract</button>
+    <button @click='send'>Send Subscription Contract</button>
 </div>

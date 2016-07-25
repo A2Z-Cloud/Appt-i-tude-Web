@@ -10,6 +10,8 @@ import store from 'app/vuex/store'
 
 import 'app/filters/multiply'
 import 'app/filters/currency'
+import 'app/filters/date_unix'
+import 'app/filters/nullify'
 
 // –– Constants
 import {control_url} from './consts'
