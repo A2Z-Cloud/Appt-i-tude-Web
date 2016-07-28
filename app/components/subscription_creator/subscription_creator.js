@@ -88,9 +88,9 @@ export default Vue.extend({
     },
     methods: {
         no_group() {
-            this.group_warning = "Couldn't find group. " +
-                "Make sure they are a group in A2Z Users " +
-                "and have their CRM id set."
+            this.group_warning = (this.$route.query['group-zcrm-id']) ?
+                "Couldn't find group. Make sure they are a group in " +
+                "A2Z Users and have their CRM id set." : ''
         },
         send() {
             this.insert_subscription(this.payload)

@@ -10,7 +10,7 @@
     <div>A2Z Cloud's Contract Signee Email</div>
     <input v-model="subscription.a2z_signee_email" type='email' :value="user.email"/>
     <div v-if="selected_group">{{ selected_group.name }}'s Contract Signee Email</div>
-    <input v-model="subscription.group_signee_email" type='email'/>
+    <input v-model="subscription.group_signee_email" type='email' :value="$route.query['group-signee-email']"/>
 
     <div>From Date</div>
     <input v-model="subscription.from_date | date-unix" type='date'/>
