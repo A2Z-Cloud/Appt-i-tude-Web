@@ -18,6 +18,7 @@ const state = {
     user: null,
     groups: [],
     ratecards: [],
+    subscriptions: [],
 }
 
 
@@ -48,6 +49,12 @@ const mutations = {
         const new_group = merge(groups[index], group)
         if (index !== -1) groups.$set(index, new_group)
         else groups.push(group)
+    },
+    SUBSCRIPTION_UPDATE({subscriptions}, subscription) {
+        const index   = subscriptions.findIndex(s => s.id === subscription.id)
+        const new_sub = merge(subscriptions[index], subscription)
+        if (index !== -1) subscriptions.$set(index, new_sub)
+        else subscriptions.push(subscription)
     },
 }
 

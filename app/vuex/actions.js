@@ -66,7 +66,7 @@ export const filter_groups = function(store) {
     })
 }
 
-export const insert_subscription = function(store, {group_id, group_name, from_date, to_date, a2z_signee_email, group_signee_name, group_signee_email, monthly_cost, discount_id=null}) {
+export const insert_subscription = function(store, {group_id, group_name, from_date, to_date, a2z_signee_email, group_signee_name, group_signee_email, monthly_cost, opportunity_id, discount_id=null}) {
     return new Promise((resolve, reject) => {
         const handle_success = subscription_id => {
             resolve(subscription_id)
@@ -82,10 +82,28 @@ export const insert_subscription = function(store, {group_id, group_name, from_d
                  from_date,
                  to_date,
                  a2z_signee_email,
+                 group_signee_name,
                  group_signee_email,
                  monthly_cost,
-                 group_signee_name,
+                 opportunity_id,
                  discount_id)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
+
+export const filter_subscriptions = function(store) {
+    return new Promise((resolve, reject) => {
+        const handle_success = subscriptions => {
+            subscriptions.forEach(s => store.dispatch('SUBSCRIPTION_UPDATE', s))
+            resolve(subscriptions)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .filter_subscriptions()
              .then(handle_success)
              .catch(handle_error)
     })

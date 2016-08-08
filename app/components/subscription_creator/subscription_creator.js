@@ -63,21 +63,24 @@ export default Vue.extend({
         },
         selected_dicount() {
             const discount_id = this.subscription.discount_id
-            const index    = this.ratecards.findIndex(r => r.id === discount_id)
+            const index       = this.ratecards.findIndex(r => r.id === discount_id)
             return (index !== -1) ? this.ratecards[index] : null
         },
         monthly_discount_cost() {
             const current = this.subscription.monthly_cost
+            if (!this.selected_dicount) return current
+
             const factor  = (this.selected_dicount) ? this.selected_dicount.percentage / 100 : 1
             const delta   = current * factor
             return (this.selected_dicount.is_increase) ? current + delta : current - delta
         },
         payload() {
             // Append on the selected groups name to the subscription detail
-            return Object.assign(this.subscription, {
+            // Also apply discount rate
+            return Object.assign({}, this.subscription, {
                 group_name: this.selected_group.name,
                 opportunity_id: this.$route.query['oppertunity-zcrm-id'],
-            })
+                monthly_cost: this.monthly_discount_cost})
         },
     },
     ready() {
