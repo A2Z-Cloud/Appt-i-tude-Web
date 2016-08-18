@@ -10,6 +10,8 @@
   "jspm": {
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.20",
+      "lodash": "npm:lodash@^4.15.0",
+      "moment": "npm:moment@^2.14.1",
       "superagent": "npm:superagent@^1.8.3",
       "text": "github:systemjs/plugin-text@^0.0.7",
       "vue": "npm:vue@^1.0.20",

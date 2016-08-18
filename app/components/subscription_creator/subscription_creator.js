@@ -79,8 +79,7 @@ export default Vue.extend({
             // Also apply discount rate
             return Object.assign({}, this.subscription, {
                 group_name: this.selected_group.name,
-                opportunity_id: this.$route.query['oppertunity-zcrm-id'],
-                monthly_cost: this.monthly_discount_cost})
+                opportunity_id: this.$route.query['oppertunity-zcrm-id']})
         },
     },
     ready() {
