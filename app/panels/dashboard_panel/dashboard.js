@@ -44,14 +44,20 @@ export default Vue.extend({
             return this.transactions.filter(t => t.group_id === this.selected_group.id)
         },
         monthly_subscription_transactions() {
+            // Transactions keys by concat(year month)
+            // unless transaction date is past sub renewal date.
             const delimiter   = this.selected_subscription.from_date.date()
-            const month_group = t => (t.executed.date() < delimiter) ? t.executed.format('YYYY MM') : moment(t.executed).add(1, 'months').date(delimiter).format('YYYY MM')
+            const month_group = t => (t.executed.date() < delimiter) ? moment(t.executed).subtract(1, 'months').format('YYYY MM') : t.executed.format('YYYY MM')
             return _.groupBy(this.subscriptions_transactions, month_group)
         },
         ordered_months() {
-            // Takes the transactions keyed by month and returned those keys orded
-            const dates = _.keys(this.monthly_subscription_transactions)
-            return dates.sort((a, b) => moment(a, "YYYY MM", true).isBefore(moment(b, "YYYY MM", true)))
+            // Takes the transactions keyed by month and returned those keys ordered
+            // Dont allow any future months just incase they've been logged prematurly
+            const today         = moment()
+            const all_dates     = _.keys(this.monthly_subscription_transactions)
+            const past_dates    = all_dates.filter(d => !(moment(d, "YYYY MM", true).year() >= today.year() && moment(d, "YYYY MM", true).month() > today.month()))
+            const ordered_dates = past_dates.sort((a, b) => moment(a, "YYYY MM", true).isBefore(moment(b, "YYYY MM", true)))
+            return ordered_dates
         },
     },
     ready() {
