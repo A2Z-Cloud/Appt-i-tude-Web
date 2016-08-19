@@ -5,7 +5,9 @@ Vue.filter('currency', {
     // model -> view
     // formats the value when updating the input element.
     read(val) {
-        return '£'+val.toFixed(2)
+        const prefix = (val >= 0) ? '£' : '-£'
+        val = (val >= 0) ? val : -1*val
+        return prefix+val.toFixed(2)
     },
     // view -> model
     // formats the value when writing to the data.
