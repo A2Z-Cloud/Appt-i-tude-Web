@@ -14,9 +14,17 @@
 }
 
 .AdminPanel
+.panel-content {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.AdminPanel
 table {
     width: 100%;
     padding: 10px 20px;
+    border-collapse: collapse;
 }
 
 .AdminPanel
@@ -38,15 +46,43 @@ table tr {
 .subscriptions-table
 thead tr th {
     text-align: left;
+    border-bottom: 1px solid #CCC;
 }
 
 .AdminPanel
 table tr td {
     overflow: auto;
+    border-top: 1px solid #CCC;
+}
+
+.AdminPanel
+table tr td,
+.AdminPanel
+table tr th {
+    padding: 3px 5px;
+    border-right: 1px solid #CCC;
+}
+
+.AdminPanel
+table tr td:last-child,
+.AdminPanel
+table tr th:last-child {
+    border-right: none;
 }
 
 .AdminPanel
 .add-button {
     position: absolute;
     bottom: 10px; right: 10px;
+
+    border: 1px solid #CCC;
+    padding: 10px;
+    color: #864F86;
+    text-decoration: none;
+}
+
+.AdminPanel
+.add-button:hover {
+    background-color: #864F86;
+    color: #FFF;
 }
