@@ -1,58 +1,65 @@
 <div class="DashboardPanel">
 
     <div v-if="selected_subscription">
-        <!-- subscription selector -->
-
-        <div class="title">Summary of {{ selected_group.name }} subscription...</div>
         <div class="summary">
-            <span class="dashboard-card date-card">
-                <div class="month">{{current_month_summary.period.format("MMMM")}}</div>
-                <div class="year">{{current_month_summary.period.year()}}</div>
-            </span>
-            <span class="dashboard-card value-card">
+            <div class="dashboard-card">
+                <div class="card-title">Period</div>
+                <div class="card-content">
+                    <div class="date-value">
+                        <div class="month">{{current_month_summary.period.format("MMMM")}}</div>
+                        <div class="year">{{current_month_summary.period.year()}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card">
                 <div class="card-title">At Start</div>
-                <!-- class binding for +/- value -->
-                <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
-                    {{current_month_summary.start | currency}}
+                <div class="card-content">
+                    <!-- class binding for +/- value -->
+                    <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                        {{current_month_summary.start | currency}}
+                    </div>
                 </div>
-            </span>
-            <span class="dashboard-card value-card">
+            </div>
+            <div class="dashboard-card">
                 <div class="card-title">Added</div>
-                <div class="value positive">{{current_month_summary.added | currency}}</div>
-            </span>
-            <span class="dashboard-card value-card">
-                <div class="card-title">Spent</div>
-                <div class="value negative">{{current_month_summary.spent | currency}}</div>
-            </span>
-            <span class="dashboard-card value-card">
-                <div class="card-title">Balance</div>
-                <!-- class binding for +/- value -->
-                <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
-                    {{current_month_summary.balance | currency}}
+                <div class="card-content">
+                    <div class="value positive">{{current_month_summary.added | currency}}</div>
                 </div>
-            </span>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">Spent</div>
+                <div class="card-content">
+                    <div class="value negative">{{current_month_summary.spent | currency}}</div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">Balance</div>
+                <div class="card-content">
+                    <!-- class binding for +/- value -->
+                    <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                        {{current_month_summary.balance | currency}}
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="previous">
-            <table class="summary-table">
-                <thead>
-                    <tr>
-                        <th>Month</th>
-                        <th>Start</th>
-                        <th>Added</th>
-                        <th>Spent</th>
-                        <th>Balance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="summary in historic_month_summaries">
-                        <td>{{summary.period.format("YYYY MM")}}</td>
-                        <td>{{summary.start | currency}}</td>
-                        <td>{{summary.added | currency}}</td>
-                        <td>{{summary.spent | currency}}</td>
-                        <td>{{summary.balance | currency}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="previous-content">
+                <table class="summary-table">
+                    <tbody>
+                        <tr v-for="summary in historic_month_summaries">
+                            <td>{{summary.period.format("MMMM YY")}}</td>
+                            <td>{{summary.start | currency}}</td>
+                            <td>{{summary.added | currency}}</td>
+                            <td>{{summary.spent | currency}}</td>
+                            <td>{{summary.balance | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="footer">
+                    <div class="footer-label">Subscription Start</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
