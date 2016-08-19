@@ -6,31 +6,32 @@
         <div class="title">Summary of {{ selected_group.name }} subscription...</div>
         <div class="summary">
             <span class="dashboard-card date-card">
-                <div class="card-title">Month</div>
-                <div class="day">05</div>
-                <div class="month">MAY</div>
+                <div class="month">{{current_month_summary.period.format("MMMM")}}</div>
+                <div class="year">{{current_month_summary.period.year()}}</div>
             </span>
             <span class="dashboard-card value-card">
                 <div class="card-title">At Start</div>
                 <!-- class binding for +/- value -->
-                <div class="value">50</div>
-            </span>
-            <span class="dashboard-card value-card">
-                <div class="card-title">Spent</div>
-                <div class="value negative">20</div>
+                <div class="value">{{current_month_summary.start | currency}}</div>
             </span>
             <span class="dashboard-card value-card">
                 <div class="card-title">Added</div>
-                <div class="value positive">50</div>
+                <div class="value positive">{{current_month_summary.added | currency}}</div>
+            </span>
+            <span class="dashboard-card value-card">
+                <div class="card-title">Spent</div>
+                <div class="value negative">{{current_month_summary.spent | currency}}</div>
             </span>
             <span class="dashboard-card value-card">
                 <div class="card-title">Balance</div>
                 <!-- class binding for +/- value -->
-                <div class="value positive">80</div>
+                <div class="value positive">{{current_month_summary.balance | currency}}</div>
             </span>
         </div>
         <div class="previous">
-
+            <div v-for="summary in historic_month_summaries">
+                <div>month: {{summary.period.format("YYYY MM")}}, start: {{summary.start | currency}}, added: {{summary.added | currency}}, spent: {{summary.spent | currency}}, balance: {{summary.balance | currency}}</div>
+            </div>
         </div>
     </div>
 </div>
