@@ -12,7 +12,9 @@
             <span class="dashboard-card value-card">
                 <div class="card-title">At Start</div>
                 <!-- class binding for +/- value -->
-                <div class="value">{{current_month_summary.start | currency}}</div>
+                <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                    {{current_month_summary.start | currency}}
+                </div>
             </span>
             <span class="dashboard-card value-card">
                 <div class="card-title">Added</div>
@@ -25,7 +27,9 @@
             <span class="dashboard-card value-card">
                 <div class="card-title">Balance</div>
                 <!-- class binding for +/- value -->
-                <div class="value positive">{{current_month_summary.balance | currency}}</div>
+                <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                    {{current_month_summary.balance | currency}}
+                </div>
             </span>
         </div>
         <div class="previous">
