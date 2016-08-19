@@ -7,7 +7,7 @@ import template from './dashboard.html!text'
 import Vue from 'vue'
 import moment from 'moment'
 import _ from 'lodash'
-import { merge } from 'app/utils/merge'
+
 import {
     filter_subscriptions,
     filter_groups,
