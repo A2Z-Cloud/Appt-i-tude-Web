@@ -33,9 +33,26 @@
             </span>
         </div>
         <div class="previous">
-            <div v-for="summary in historic_month_summaries">
-                <div>month: {{summary.period.format("YYYY MM")}}, start: {{summary.start | currency}}, added: {{summary.added | currency}}, spent: {{summary.spent | currency}}, balance: {{summary.balance | currency}}</div>
-            </div>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Start</th>
+                        <th>Added</th>
+                        <th>Spent</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="summary in historic_month_summaries">
+                        <td>{{summary.period.format("YYYY MM")}}</td>
+                        <td>{{summary.start | currency}}</td>
+                        <td>{{summary.added | currency}}</td>
+                        <td>{{summary.spent | currency}}</td>
+                        <td>{{summary.balance | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -73,3 +73,13 @@
     margin-top: 30px;
     border-top: 1px solid #BBB;
 }
+
+.DashboardPanel
+.summary-table {
+    width: 100%;
+}
+
+.DashboardPanel
+.summary-table th {
+    text-align: left;
+}

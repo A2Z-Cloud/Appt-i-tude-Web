@@ -1,23 +1,23 @@
 .SubscriptionCreator {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
+    position: absolute;
+    top: 0;
+    left: 0; right: 0;
 
-.SubscriptionCreator
-.title {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 1.5em;
-    color: #BBB;
+    margin-bottom: 0;
+    overflow: auto;
+
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
 
 .SubscriptionCreator
 .content-panel {
     display: block;
     margin: auto;
+
+    padding: 32px 0;
 }
 
 .SubscriptionCreator
@@ -35,16 +35,15 @@
 
 .SubscriptionCreator
 .form-title {
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding: 5px;
-    padding-bottom: 3px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #CCC;
+    margin-bottom: 16px;
 }
 
 .SubscriptionCreator
 .form-group {
     width: 100%;
+    margin-bottom: 3px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -55,9 +54,7 @@
 }
 
 .SubscriptionCreator
-.label {
-    /*color: #864F86;*/
-}
+.label {}
 
 .SubscriptionCreator
 .value {
@@ -65,16 +62,21 @@
     height: 35px;
     padding: 3px 5px;
     box-sizing: border-box;
+
+    border: none;
+    border-bottom: 1px solid #979797;
 }
 
 .SubscriptionCreator
 .value:focus {
-    outline: 2px solid #864F86;
+    outline: none;
+    border-bottom: 1px solid #E29A3A;
 }
 
 .SubscriptionCreator
 .value.selector {
     background: #FFF;
+    border: 1px solid #979797;
 }
 
 .SubscriptionCreator .left-col,
@@ -89,7 +91,7 @@
 .SubscriptionCreator
 .form-buttons {
     margin: auto;
-    padding: 5px;
+    padding-bottom: 32px;
     box-sizing: border-box;
     text-align: right;
 }
@@ -99,31 +101,35 @@
     display: inline-block;
     margin: 0 10px;
     padding: 10px;
-    border: 1px solid #CCC;
+    border: none;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .SubscriptionCreator
 .form-button.cancel {
     background: #FFF;
-    color: #E42727;
+    color: #E29A3A;
 }
 
 .SubscriptionCreator
 .form-button.cancel:hover {
-    background-color: #E42727;
-    color: #FFF;
+    background-color: #E9E9E9;
 }
 
 .SubscriptionCreator
 .form-button.submit {
-    background: #FFF;
-    color: #864F86;
+    background: #E29A3A;
+    color: #FFF;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
 
 .SubscriptionCreator
 .form-button.submit:hover {
-    background-color: #864F86;
+    background-color: #C47914;
     color: #FFF;
 }
 
@@ -143,6 +149,12 @@
 
 /* Larger than desktop */
 @media (min-width: 1000px) {
+    .SubscriptionCreator {
+        top: 32px;
+        left: 64px; right: 64px;
+        margin-bottom: 64px;
+    }
+
     .SubscriptionCreator .content-panel,
     .SubscriptionCreator .form-buttons { width: 80%; }
 

@@ -1,83 +1,113 @@
 .NavPanel {
-    position: absolute;
-    top:  0; bottom: 0;
-    left: 0; right:  0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border-right: 1px solid #BBB;
-
-    background: #D4E6A5;
-}
-
-.NavPanel
-.site-title {
     width: 100%;
-    height: 50px;
+    height: 100%;
 
-    background: #FFF;
-    text-align: center;
-}
-
-.NavPanel
-.title, .logo {
-    display: inline-block;
-    height: 40px;
-    vertical-align: middle;
-}
-
-.NavPanel
-.logo {
-    padding: 2px 8px 0 8px;
-}
-
-.NavPanel
-.title {
+    background-color: #E29A3A;
     box-sizing: border-box;
-    padding-top: 10px;
-    padding-left: 5px;
+    padding: 0 10px;
 
-    font-size: 25px;
-    line-height: 25px;
-    color: #94C120;
+    color: #FFF;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+
+/* Title section. */
+
+.NavPanel
+.title-content {
+    width: 80%;
 }
 
 .NavPanel
-.nav-item {
-    display: block;
-    width: 100%;
-    height: 50px;
-
-    line-height: 50px;
-    text-align: center;
-
-    font-size: 1.5em;
-    background: #FFF;
-    border-top: 1px solid #BBB;
-    color: #4E4E4E;
+.sub-dates {
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .NavPanel
-.nav-item.nav-bottom {
-    position: absolute;
-    bottom: 0;
+.sub-dates
+.date-group {
+    padding-right: 30px;
 }
 
 .NavPanel
-.nav-link {
+.sub-dates .date-group
+.label {
+    font-size: 0.8em;
+}
+
+.NavPanel
+.sub-dates .date-group
+.value {
+    color: rgba(255,255,255,0.7);
+}
+
+.NavPanel
+.subscription
+.sub-title {
+    font-size: 1.8em;
+}
+
+.NavPanel
+.subscription
+.dropdown-handle {
+    margin-left: 5px;
+}
+
+
+/* Username and Sign Out section. */
+
+.NavPanel
+.user {
+    width: 20%;
+    text-align: right;
+}
+
+.NavPanel
+.user .sign-out {
     text-decoration: none;
-    color: #8C3B8C;
-
-    -webkit-filter: grayscale(1);
-            filter: grayscale(1);
-
-    -webkit-transition: 0.5s;
-       -moz-transition: 0.5s;
-        -ms-transition: 0.5s;
-         -o-transition: 0.5s;
-            transition: 0.5s;
+    color: inherit;
 }
 
 .NavPanel
-.nav-link.v-link-active {
-    -webkit-filter: none;
-    filter: none;
+.user .name {
+    color: rgba(255,255,255,0.7);
 }
+
+
+/* ---- Media Queries ---- */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    .NavPanel {
+        padding: 0 64px;
+        font-size: 16px;
+    }
+
+    .NavPanel
+    .title-content {
+        width: 90%;
+    }
+
+    .NavPanel
+    .user {
+        width: 10%;
+    }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
