@@ -7,7 +7,7 @@ Vue.filter('currency', {
     read(val) {
         const prefix = (val >= 0) ? '£' : '-£'
         val = (val >= 0) ? val : -1*val
-        return prefix+val.toFixed(2)
+        return prefix+val.toFixed(0)
     },
     // view -> model
     // formats the value when writing to the data.
