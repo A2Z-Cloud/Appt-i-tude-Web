@@ -133,6 +133,11 @@
     color: #FFF;
 }
 
+.SubscriptionCreator
+.form-button.submit:disabled {
+    background-color: #D2D2D2;
+}
+
 
 /* ---- Media Queries ---- */
 

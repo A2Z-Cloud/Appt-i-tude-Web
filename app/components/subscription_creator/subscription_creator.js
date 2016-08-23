@@ -66,14 +66,6 @@ export default Vue.extend({
             const index       = this.ratecards.findIndex(r => r.id === discount_id)
             return (index !== -1) ? this.ratecards[index] : null
         },
-        monthly_discount_cost() {
-            const current = this.subscription.monthly_cost
-            if (!this.selected_dicount) return current
-
-            const factor  = (this.selected_dicount) ? this.selected_dicount.percentage / 100 : 1
-            const delta   = current * factor
-            return (this.selected_dicount.is_increase) ? current + delta : current - delta
-        },
         payload() {
             // Append on the selected groups name to the subscription detail
             // Also apply discount rate
@@ -81,6 +73,15 @@ export default Vue.extend({
                 group_name: this.selected_group.name,
                 opportunity_id: this.$route.query['oppertunity-zcrm-id']})
         },
+        form_filled() {
+            return ((this.subscription.group_id != null           && this.subscription.group_id != "") &&
+                    (this.subscription.from_date != null          && this.subscription.from_date != "") &&
+                    (this.subscription.to_date != null            && this.subscription.to_date != "") &&
+                    (this.subscription.a2z_signee_email != null   && this.subscription.a2z_signee_email != "") &&
+                    (this.subscription.group_signee_name != null  && this.subscription.group_signee_name != "") &&
+                    (this.subscription.group_signee_email != null && this.subscription.group_signee_email != "") &&
+                    (this.subscription.monthly_cost != null       && this.subscription.monthly_cost != ""))
+        }
     },
     ready() {
         const today     = new Date()
