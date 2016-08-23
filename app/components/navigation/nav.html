@@ -27,8 +27,8 @@
     <a class="action nav-right" v-link="{ path: '/admin', exact: false }"><i class="fa fa-cogs" aria-hidden="true"></i></a> -->
 
     <!-- User -->
-    <div class="user">
-        <div class="name">Bill Billson</div> <!-- PLACEHOLDER -->
+    <div v-if="user" class="user">
+        <div class="name">{{user.first_name + ' ' + user.last_name}}</div>
         <a class="sign-out" :href="sign_out_url">Sign Out</a>
     </div>
 </div>

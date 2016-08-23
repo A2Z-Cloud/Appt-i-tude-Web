@@ -43,6 +43,7 @@ export default Vue.extend({
             focused_subscription_id: state => state.focused_subscription_id,
             subscriptions: state => state.subscriptions,
             groups: state => state.groups,
+            user: state => state.user,
         },
     },
     ready() {
