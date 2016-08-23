@@ -25,10 +25,24 @@ export default Vue.extend({
 
             return this.auth_client_url + '/sign-out?next=' + encodeURIComponent(sign_in_url_return)
         },
+        selected_subscription() {
+            const selected = s => s.id === this.focused_subscription_id
+            const index    = this.subscriptions.findIndex(selected)
+            return (index !== -1) ? this.subscriptions[index] : null
+        },
+        selected_group() {
+            if (this.selected_subscription === null) return null
+            const selected = g => g.id === this.selected_subscription.group_id
+            const index    = this.groups.findIndex(selected)
+            return (index !== -1) ? this.groups[index] : null
+        },
     },
     vuex: {
         getters:  {
             auth_client_url: state => state.auth_client_url,
+            focused_subscription_id: state => state.focused_subscription_id,
+            subscriptions: state => state.subscriptions,
+            groups: state => state.groups,
         },
     },
     ready() {

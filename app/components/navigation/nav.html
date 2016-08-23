@@ -2,18 +2,18 @@
     <!-- Nav Title -->
     <div class="title-content">
         <div class="sub-dates">
-            <div class="date-group">
+            <div v-if="selected_subscription" class="date-group">
                 <div class="label">Start Date</div>
-                <div class="value">Aug 2016</div>
+                <div class="value">{{selected_subscription.from_date.format("MMM YYYY")}}</div>
             </div>
-            <div class="date-group">
+            <div v-if="selected_subscription" class="date-group">
                 <div class="label">End Date</div>
-                <div class="value">Aug 2017</div>
+                <div class="value">{{selected_subscription.to_date.format("MMM YYYY")}}</div>
             </div>
         </div>
-        <div class="subscription">
+        <div v-if="selected_subscription" class="subscription">
             <div class="selection">
-                <span class="sub-title"><span class="company">A2Z Cloud</span>'s Subscription</span>
+                <span class="sub-title"><span class="company">{{selected_group.name}}</span>'s Subscription</span>
                 <span class="dropdown-handle">
                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </span>
