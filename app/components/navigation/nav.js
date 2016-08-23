@@ -47,7 +47,6 @@ export default Vue.extend({
         },
     },
     ready() {
-
     },
     methods: {
 

@@ -1,6 +1,6 @@
 <div class="NavPanel">
-    <!-- Nav Title -->
-    <div class="title-content">
+    <!-- Nav Title: Subscription -->
+    <div v-if="selected_subscription && !$route.title" class="title-content">
         <div class="sub-dates">
             <div v-if="selected_subscription" class="date-group">
                 <div class="label">Start Date</div>
@@ -21,10 +21,14 @@
         </div>
     </div>
 
-    <!-- Actions -->
-    <!-- <a class="action" v-link="{ path: '/payments', exact: false }"><i class="fa fa-ticket" aria-hidden="true"></i></a>
-    <a class="action" v-link="{ path: '/calculator', exact: false }"><i class="fa fa-calculator" aria-hidden="true"></i></a>
-    <a class="action nav-right" v-link="{ path: '/admin', exact: false }"><i class="fa fa-cogs" aria-hidden="true"></i></a> -->
+    <!-- Nav Title: Component Title -->
+    <div v-if="$route.title" class="title-content">
+        <div class="subscription">
+            <div class="selection">
+                <span class="sub-title">{{$route.title}}</span>
+            </div>
+        </div>
+    </div>
 
     <!-- User -->
     <div v-if="user" class="user">

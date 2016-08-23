@@ -9,9 +9,6 @@ import {debug, hash_routing} from './consts'
 
 // -- Route Panels
 import DashboardPanel from "./panels/dashboard_panel/dashboard"
-import CalculatorPanel from "./panels/calculator_panel/calculator"
-import PaymentsPanel from "./panels/payments_panel/payments"
-import AdminPanel from "./panels/admin_panel/admin"
 import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
@@ -27,27 +24,13 @@ const router = new VueRouter({
 
 router.map({
     '/': {
-        name: 'DashboardPanel',
+        name: 'dashboard',
         component: DashboardPanel,
         authenticated: true,
     },
-    '/calculator': {
-        name: 'CalculatorPanel',
-        component: CalculatorPanel,
-        authenticated: true,
-    },
-    '/payments': {
-        name: 'PaymentsPanel',
-        component: PaymentsPanel,
-        authenticated: true,
-    },
-    '/admin': {
-        name: 'AdminPanel',
-        component: AdminPanel,
-        authenticated: true,
-    },
     '/subscriptions/new': {
-        name: 'Test',
+        name: 'create-subscription',
+        title: 'Create New Subscription',
         component: SubscriptionCreator,
         authenticated: true,
     },
