@@ -96,7 +96,18 @@ export default Vue.extend({
         },
         send() {
             this.insert_subscription(this.payload)
-                .then(console.log)
+                .then(() => {
+                    this.subscription = {
+                        group_id: null,
+                        from_date: null,
+                        to_date: null,
+                        a2z_signee_email: null,
+                        group_signee_name: null,
+                        group_signee_email: null,
+                        monthly_cost: 99,
+                        discount_id: null,
+                    }
+                })
                 .catch(console.log)
         },
     },
