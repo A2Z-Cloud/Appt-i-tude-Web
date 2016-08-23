@@ -1,4 +1,6 @@
 # TODO
 
  - [x] Add router
- - [ ] Summary dashboard
+ - [x] Summary dashboard
+ - [ ] Discount create sub css
+ - [ ] Done state on send contract
