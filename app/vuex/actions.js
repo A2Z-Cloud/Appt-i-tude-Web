@@ -15,6 +15,10 @@ export const authenticate = function(store) {
     })
 }
 
+export const focus_subscription = function(store, id) {
+    store.dispatch('SUBSCRIPTION_FOCUS', id)
+}
+
 export const filter_ratecards = function(store) {
     return new Promise((resolve, reject) => {
         const handle_success = ratecards => {

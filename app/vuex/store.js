@@ -21,6 +21,7 @@ const state = {
     ratecards: [],
     subscriptions: [],
     transactions: [],
+    focused_subscription_id: null,
 }
 
 
@@ -51,6 +52,9 @@ const mutations = {
         const new_group = merge(groups[index], group)
         if (index !== -1) groups.$set(index, new_group)
         else groups.push(new_group)
+    },
+    SUBSCRIPTION_FOCUS(state, id) {
+        state.focused_subscription_id = id
     },
     SUBSCRIPTION_UPDATE({subscriptions}, subscription) {
         const index   = subscriptions.findIndex(s => s.id === subscription.id)

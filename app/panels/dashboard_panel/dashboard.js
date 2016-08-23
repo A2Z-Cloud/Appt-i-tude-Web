@@ -11,7 +11,8 @@ import _ from 'lodash'
 import {
     filter_subscriptions,
     filter_groups,
-    filter_transactions } from 'app/vuex/actions'
+    filter_transactions,
+    focus_subscription } from 'app/vuex/actions'
 
 
 export default Vue.extend({
@@ -25,12 +26,10 @@ export default Vue.extend({
             ])
         },
     },
-    data: () => ({
-        selected_subscription_id: null,
-    }),
+    data: () => ({}),
     computed: {
         selected_subscription() {
-            const selected = s => s.id === this.selected_subscription_id
+            const selected = s => s.id === this.focused_subscription_id
             const index    = this.subscriptions.findIndex(selected)
             return (index !== -1) ? this.subscriptions[index] : null
         },
@@ -110,7 +109,8 @@ export default Vue.extend({
         },
     },
     ready() {
-        this.selected_subscription_id = (this.subscriptions.length) ? this.subscriptions[0].id : null
+        const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
+        this.focus_subscription(id)
     },
     methods: {
 
@@ -120,15 +120,17 @@ export default Vue.extend({
             groups: state => state.groups,
             subscriptions: state => state.subscriptions,
             transactions: state => state.transactions,
+            focused_subscription_id: state => state.focused_subscription_id,
         },
         actions: {
             filter_groups,
             filter_subscriptions,
             filter_transactions,
+            focus_subscription,
         },
     },
     watch: {
-        selected_subscription_id(id) {
+        focused_subscription_id(id) {
             if (!id) return
             this.filter_transactions(id)
         },
