@@ -8,11 +8,10 @@ import Vue from 'vue'
 import moment from 'moment'
 import _ from 'lodash'
 
-import {
-    filter_subscriptions,
-    filter_groups,
-    filter_transactions,
-    focus_subscription } from 'app/vuex/actions'
+import { filter_groups,
+         filter_subscriptions,
+         filter_transactions,
+         focus_subscription } from 'app/vuex/actions'
 
 
 export default Vue.extend({
@@ -23,7 +22,7 @@ export default Vue.extend({
             return Promise.all([
                 this.filter_subscriptions(),
                 this.filter_groups(),
-            ])
+            ]).catch(() => false)
         },
     },
     data: () => ({}),
@@ -109,8 +108,10 @@ export default Vue.extend({
         },
     },
     ready() {
-        const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
-        this.focus_subscription(id)
+        if(!this.focused_subscription_id) {
+            const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
+            this.focus_subscription(id)
+        }
     },
     methods: {
 

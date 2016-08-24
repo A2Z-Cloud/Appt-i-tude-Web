@@ -87,7 +87,7 @@ h1,h2,h3,h4,h5,.title {
     position: absolute;
     top:  120px; bottom: 0; /* account for nav bar */
     left: 0;     right:  0;
-    
+
     overflow: auto;
 }
 
@@ -99,6 +99,28 @@ h1,h2,h3,h4,h5,.title {
 
     -webkit-filter: grayscale(1) opacity(0.5);
             filter: grayscale(50%) opacity(25%);
+}
+
+#Main
+.logo-link {
+    display: inline-block;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+
+    font-size: 16px;
+    line-height: 20px;
+    color: #BBB;
+    text-decoration: none;
+}
+
+#Main
+.logo-link
+.link-icon {
+    display: inline-block;
+    vertical-align: sub;
+    height: 20px;
+    width: 26px;
 }
 
 

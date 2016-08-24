@@ -48,7 +48,7 @@
                 <table class="summary-table">
                     <tbody>
                         <tr v-for="summary in historic_month_summaries">
-                            <td>{{summary.period.format("MMMM YY")}}</td>
+                            <td>{{summary.period.format("MMMM YYYY")}}</td>
                             <td>{{summary.start | currency}}</td>
                             <td>{{summary.added | currency}}</td>
                             <td>{{summary.spent | currency}}</td>
@@ -62,4 +62,17 @@
             </div>
         </div>
     </div>
+    <div id="NoSubs" v-else>
+        <div class="content-panel">
+            <h3 class="title">Oh, Hello...</h3>
+            <div class="notice">
+                Looks like you don't have a subscription yet.<br>
+                If you are interested in this service, please get in touch and we can set things up for you.
+            </div>
+        </div>
+        <div class="form-buttons">
+            <a class="form-button submit" href="http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/">Contact Us</a>
+        </div>
+    </div>
+
 </div>

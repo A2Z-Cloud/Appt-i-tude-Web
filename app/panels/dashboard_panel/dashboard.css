@@ -142,3 +142,106 @@
     padding-top: 24px;
     text-transform: uppercase;
 }
+
+
+/* –––––––––––––––––––––– NO SUBS –––––––––––––––––––––––––– */
+
+#NoSubs {
+    position: absolute;
+    top: 0;
+    left: 0; right: 0;
+
+    margin-bottom: 0;
+    overflow: auto;
+
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+#NoSubs
+.content-panel {
+    display: block;
+    margin: auto;
+
+    padding: 32px 10px;
+    box-sizing: border-box;
+}
+
+#NoSubs
+.title {
+    font-size: 2em;
+}
+
+#NoSubs
+.notice {
+    font-size: 1.2em;
+    margin-top: 32px;
+}
+
+#NoSubs
+.form-buttons {
+    margin: auto;
+    padding: 32px 10px;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+#NoSubs
+.form-button {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#NoSubs
+.form-button:first-child {
+    margin-left: 0;
+}
+
+#NoSubs
+.form-button.submit {
+    background: #E29A3A;
+    color: #FFF;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+#NoSubs
+.form-button.submit:hover {
+    background-color: #C47914;
+    color: #FFF;
+}
+
+
+/* ---- Media Queries ---- */
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    #NoSubs .content-panel,
+    #NoSubs .form-buttons { width: 100%; }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+    #NoSubs {
+        top: 32px;
+        left: 64px; right: 64px;
+        margin-bottom: 64px;
+    }
+
+    #NoSubs .content-panel,
+    #NoSubs .form-buttons { width: 80%; }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+    #NoSubs .content-panel,
+    #NoSubs .form-buttons { width: 60%; }
+}

@@ -21,6 +21,15 @@
         </div>
     </div>
 
+    <!-- Nav Title: No Subscription -->
+    <div v-if="selected_subscription == null && !$route.title" class="title-content">
+        <div class="subscription">
+            <div class="selection">
+                <span class="sub-title">Appt-i-tude</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Nav Title: Component Title -->
     <div v-if="$route.title" class="title-content">
         <div class="subscription">
