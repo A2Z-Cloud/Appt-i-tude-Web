@@ -96,7 +96,7 @@ export const insert_subscription = function(store, {group_id, group_name, from_d
     })
 }
 
-export const filter_subscriptions = function(store) {
+export const filter_subscriptions = function(store, {all_users=false}={}) {
     return new Promise((resolve, reject) => {
         const handle_success = subscriptions => {
             subscriptions.forEach(s => store.dispatch('SUBSCRIPTION_UPDATE', s))
@@ -107,7 +107,7 @@ export const filter_subscriptions = function(store) {
             reject(error)
         }
         store.control
-             .filter_subscriptions()
+             .filter_subscriptions(all_users)
              .then(handle_success)
              .catch(handle_error)
     })

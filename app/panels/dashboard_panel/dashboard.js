@@ -19,8 +19,9 @@ export default Vue.extend({
     route: {
         waitForData: true,
         data() {
+            const all_users = this.current_user.type === 'admin'
             return Promise.all([
-                this.filter_subscriptions(),
+                this.filter_subscriptions({all_users}),
                 this.filter_groups(),
             ]).catch(() => false)
         },
@@ -118,6 +119,7 @@ export default Vue.extend({
     },
     vuex: {
         getters: {
+            current_user: state => state.user,
             groups: state => state.groups,
             subscriptions: state => state.subscriptions,
             transactions: state => state.transactions,
