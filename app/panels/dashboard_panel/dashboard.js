@@ -19,10 +19,11 @@ export default Vue.extend({
     route: {
         waitForData: true,
         data() {
-            const all_users = this.current_user.type === 'admin'
+            const all_users  = (this.current_user.type === 'admin')
+            const all_groups = (this.current_user.type === 'admin')
             return Promise.all([
                 this.filter_subscriptions({all_users}),
-                this.filter_groups(),
+                this.filter_groups({all_groups}),
             ]).catch(() => false)
         },
     },

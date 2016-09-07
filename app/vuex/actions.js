@@ -53,7 +53,7 @@ export const get_group = function(store, {id, name, zcrm_id}) {
     })
 }
 
-export const filter_groups = function(store) {
+export const filter_groups = function(store, {all_groups=false}={}) {
     return new Promise((resolve, reject) => {
         const handle_success = groups => {
             groups.forEach(u => store.dispatch('GROUP_UPDATE', u))
@@ -64,7 +64,7 @@ export const filter_groups = function(store) {
             reject(error)
         }
         store.control
-             .filter_groups()
+             .filter_groups(all_groups)
              .then(handle_success)
              .catch(handle_error)
     })
