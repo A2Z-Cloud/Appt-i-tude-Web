@@ -10,7 +10,7 @@ import Vue from 'vue'
 export default Vue.extend({
     template,
     data: () => ({
-
+        dropped_down: false,
     }),
     computed: {
         sign_out_url() {
@@ -49,6 +49,9 @@ export default Vue.extend({
     ready() {
     },
     methods: {
-
+        toggle_dropdown() {
+            // TODO: on select switch out nav panel for sub selector
+            // on retoggle window.history.back();
+        },
     },
 })

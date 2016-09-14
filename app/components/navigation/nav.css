@@ -48,6 +48,16 @@
 }
 
 .NavPanel
+.subscription.dropdown {
+    cursor: pointer;
+}
+
+.NavPanel
+.subscription.dropdown:hover {
+    color: #9A5b06;
+}
+
+.NavPanel
 .subscription
 .sub-title {
     font-size: 1.8em;
@@ -56,7 +66,8 @@
 .NavPanel
 .subscription
 .dropdown-handle {
-    margin-left: 5px;
+    margin-left: 8px;
+    font-size: 26px;
 }
 
 
@@ -72,6 +83,11 @@
 .user .sign-out {
     text-decoration: none;
     color: inherit;
+}
+
+.NavPanel
+.user .sign-out:hover {
+    color: #9A5b06;
 }
 
 .NavPanel

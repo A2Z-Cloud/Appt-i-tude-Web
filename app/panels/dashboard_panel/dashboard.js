@@ -42,10 +42,10 @@ export default Vue.extend({
         },
         subscriptions_transactions() {
             if (this.selected_group === null) return []
-            return this.transactions.filter(t => t.group_id === this.selected_group.id)
+            return this.transactions.filter(t => t.subscription_id === this.selected_subscription.id)
         },
         monthly_subscription_transactions() {
-            // Transactions keys by concat(year month)
+            // Transactions keyed by concat(year month)
             // unless transaction date is past sub renewal date.
             const delimiter    = this.selected_subscription.from_date.date()
             const month_group  = t => (t.executed.date() < delimiter) ? moment(t.executed).subtract(1, 'months').format('YYYY MM') : t.executed.format('YYYY MM')
@@ -81,20 +81,13 @@ export default Vue.extend({
             const chronological_month_order = this.ordered_months.reverse()
             const transactions = this.monthly_subscription_transactions
             const summeries    = []
-            const rates = this.selected_subscription.service_data.rates
             const added = this.selected_subscription.service_data.monthly_balance
-
-            const transaction_cost = t => {
-                const rate          = rates[t.rate]
-                const minutes_spent = t.duration / 60
-                return (rate && minutes_spent) ? rate * minutes_spent : 0
-            }
 
             for (const month of chronological_month_order) {
                 const period   = moment(month, "YYYY MM", true)
                 const previous = summeries.slice(-1)[0]
                 const start    = (previous) ? previous.balance : 0
-                const costs    = transactions[month].map(transaction_cost)
+                const costs    = transactions[month].map(t => t.amount)
                 const spent    = costs.reduce((a, b) => a + b, 0)
                 const balance  = start + added - spent
 
