@@ -18,7 +18,7 @@ export default Vue.extend({
     data: () => ({
         group_warning: '',
         creating_sub: false,
-        finished: true,
+        finished: false,
         subscription: {
             group_id: null,
             from_date: null,
