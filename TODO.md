@@ -10,3 +10,4 @@
  - [ ] merge in rates into contract
  - [ ] Request timesheet for month line item
  - [ ] Last updated timestamp on dashboard
+ - [ ] Upload Delton data
