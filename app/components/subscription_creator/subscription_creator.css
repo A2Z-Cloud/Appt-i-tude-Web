@@ -14,10 +14,14 @@
 
 .SubscriptionCreator
 .content-panel {
-    display: block;
     margin: auto;
-
     padding: 32px 0;
+}
+
+.SubscriptionCreator
+.column-content {
+    display: block;
+    width: 100%;
 }
 
 .SubscriptionCreator
@@ -91,7 +95,7 @@
 .SubscriptionCreator
 .form-buttons {
     margin: auto;
-    padding-bottom: 32px;
+    padding-top: 15px;
     box-sizing: border-box;
     text-align: right;
 }
@@ -138,18 +142,35 @@
     background-color: #D2D2D2;
 }
 
+.SubscriptionCreator
+.done-container {
+    margin: auto;
+    text-align: center;
+    color: #BBB;
+
+    -webkit-animation: done 1s ease-in-out forwards; /* Chrome, Safari, Opera */
+            animation: done 1s ease-in-out forwards;
+}
+
+.SubscriptionCreator
+.done-container
+.lnr-checkmark-circle {
+    font-size: 10em;
+}
+
+.SubscriptionCreator
+.done-title {
+    margin-top: 10px;
+    font-size: 1.8em;
+}
+
 
 /* ---- Media Queries ---- */
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-    .SubscriptionCreator .content-panel,
-    .SubscriptionCreator .form-buttons { width: 100%;}
-
-    .SubscriptionCreator .content-panel { display: block; }
-
-    .SubscriptionCreator .left-form,
-    .SubscriptionCreator .right-form { width: 100%; }
+    .SubscriptionCreator .content-panel  { width: 100%; }
+    .SubscriptionCreator .column-content { display: block; }
 }
 
 /* Larger than desktop */
@@ -160,17 +181,19 @@
         margin-bottom: 64px;
     }
 
-    .SubscriptionCreator .content-panel,
-    .SubscriptionCreator .form-buttons { width: 80%; }
-
-    .SubscriptionCreator .content-panel { display: flex; }
-
-    .SubscriptionCreator .left-form,
-    .SubscriptionCreator .right-form { width: 50%; }
+    .SubscriptionCreator .content-panel  { width: 80%; }
+    .SubscriptionCreator .column-content { display: flex; }
 }
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
-    .SubscriptionCreator .content-panel,
-    .SubscriptionCreator .form-buttons { width: 60%; }
+    .SubscriptionCreator .content-panel { width: 60%; }
+}
+
+
+/* ---- Animations ---- */
+
+@keyframes done {
+    from { color: #BBB;    }
+    to   { color: #8BC34A; }
 }
