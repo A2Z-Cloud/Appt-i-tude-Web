@@ -17,6 +17,8 @@ export default Vue.extend({
     template,
     data: () => ({
         group_warning: '',
+        creating_sub: false,
+        finished: true,
         subscription: {
             group_id: null,
             from_date: null,
@@ -84,6 +86,8 @@ export default Vue.extend({
         }
     },
     ready() {
+        window.panel = this
+
         const today     = new Date()
         const next_year = new Date().setYear(today.getFullYear() + 1)
         this.subscription.from_date = today / 1000
@@ -96,20 +100,15 @@ export default Vue.extend({
                 "A2Z Users and have their CRM id set." : ''
         },
         send() {
+            this.creating_sub = true;
             this.insert_subscription(this.payload)
                 .then(() => {
-                    this.subscription = {
-                        group_id: null,
-                        from_date: null,
-                        to_date: null,
-                        a2z_signee_email: null,
-                        group_signee_name: null,
-                        group_signee_email: null,
-                        monthly_cost: 99,
-                        discount_id: null,
-                    }
+                    this.finished = true
                 })
-                .catch(console.log)
+                .catch((error) => {
+                    this.creating_sub = false
+                    console.log(error)
+                })
         },
     },
 })
