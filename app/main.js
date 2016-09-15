@@ -4,7 +4,6 @@ import './main.css!'
 
 // JS Imports
 // –– Vue
-import Vue from 'vue'
 import router from './router'
 import store from 'app/vuex/store'
 
@@ -18,9 +17,6 @@ import {control_url} from './consts'
 
 // -- Panels
 import NavPanel from 'app/components/navigation/nav'
-
-// Vue global settings
-Vue.config.debug = true
 
 
 // Init App
