@@ -1,3 +1,15 @@
+
+.fade-transition {
+  transition: all .1s ease;
+  opacity: 1;
+}
+/* .fade-enter defines the starting state for entering */
+/* .fade-leave defines the ending state for leaving */
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+
+
 .DashboardPanel {
     position: absolute;
     top:  0; bottom: 0;

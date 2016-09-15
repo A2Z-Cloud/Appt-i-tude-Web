@@ -6,6 +6,8 @@ import template from './subscriptions.html!text'
 // –– Vue
 import Vue from 'vue'
 
+import _ from 'lodash'
+
 import { filter_groups,
          filter_subscriptions,
          focus_subscription } from 'app/vuex/actions'
@@ -26,6 +28,11 @@ export default Vue.extend({
     },
     data: () => ({}),
     computed: {
+        group_subscriptions() {
+            return _.each(this.groups, g => {
+                g.subscriptions = this.subscriptions.filter(s => s.group_id === g.id)
+            })
+        },
     },
     ready() {
     },

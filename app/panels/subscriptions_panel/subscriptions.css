@@ -1,0 +1,10 @@
+.expand-transition {
+  transition: all .1s ease;
+  background-color: #eee;
+  overflow: hidden;
+  height: 100%;
+}
+
+.expand-enter, .expand-leave {
+  height: 0;
+}

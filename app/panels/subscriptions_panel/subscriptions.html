@@ -1,3 +1,8 @@
-<div v-for="subscription in subscriptions">
-    <div>{{subscription.id}}</div>
+<div class="SubscriptionsPanel" transition="expand">
+    <div v-for="group in group_subscriptions">
+        {{group.name}}
+        <div v-for="subscription in group.subscriptions">
+            <div>{{subscription.id}}</div>
+        </div>
+    </div>
 </div>
