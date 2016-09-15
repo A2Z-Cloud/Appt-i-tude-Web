@@ -19,12 +19,16 @@ System.config({
     "clean-css": "npm:clean-css@3.4.17",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
+    "lodash": "npm:lodash@4.15.0",
+    "moment": "npm:moment@2.14.1",
     "normalize.css": "npm:normalize.css@4.0.0",
     "superagent": "npm:superagent@1.8.3",
     "text": "github:systemjs/plugin-text@0.0.7",
     "vue": "npm:vue@1.0.20",
+    "vue-date-picker": "npm:vue-date-picker@1.0.2",
     "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.13",
+    "vuex": "npm:vuex@0.6.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

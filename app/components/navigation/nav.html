@@ -1,0 +1,55 @@
+<div class="NavPanel">
+    <!-- Nav Title: Subscription -->
+    <div v-if="selected_subscription && !$route.title" class="title-content">
+        <div class="sub-dates">
+            <div v-if="selected_subscription" class="date-group">
+                <div class="label">Start Date</div>
+                <div class="value">{{selected_subscription.from_date.format("Do MMM YYYY")}}</div>
+            </div>
+            <div v-if="selected_subscription" class="date-group">
+                <div class="label">End Date</div>
+                <div class="value">{{selected_subscription.to_date.format("Do MMM YYYY")}}</div>
+            </div>
+        </div>
+        <div
+            v-if="selected_subscription"
+            @click="dropped_down = !dropped_down"
+            class="subscription"
+            :class="{'dropdown': subscriptions.length > 0}">  <!-- TODO: change to 1 -->
+
+                <div class="selection noselect">
+                    <span class="sub-title"><span class="company">{{selected_group.name}}</span>'s Subscription</span>
+                    <span class="dropdown-handle"> <!-- TODO: v-if='subscriptions.length > 1' -->
+                        <i
+                        class="fa fa-caret-left"
+                        :class="[dropped_down ? 'fa-caret-down' : 'fa-caret-left']"
+                        aria-hidden="true"></i>
+                    </span>
+                </div>
+        </div>
+    </div>
+
+    <!-- Nav Title: No Subscription -->
+    <div v-if="selected_subscription == null && !$route.title" class="title-content">
+        <div class="subscription">
+            <div class="selection">
+                <span class="sub-title">Appt-i-tude</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav Title: Component Title -->
+    <div v-if="$route.title" class="title-content">
+        <div class="subscription">
+            <div class="selection">
+                <span class="sub-title">{{$route.title}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- User -->
+    <div v-if="user" class="user">
+        <div class="name">{{user.first_name + ' ' + user.last_name}}</div>
+        <a class="sign-out" :href="sign_out_url">Sign Out</a>
+    </div>
+</div>

@@ -11,20 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
 
     <!-- Normalize -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css"></link>
 
     <!-- Font Imports -->
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i'>
 
     <!-- Icons -->
     <link rel="stylesheet" type="text/css" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 
     <!-- Loader -->
-    <link rel='stylesheet' type='text/css' href="loader.css" />
+    <link rel='stylesheet' type='text/css' href="/loader.css" />
 </head>
 
 <body>
@@ -36,20 +36,23 @@
 
         <!-- Main Content -->
         <div id="Main" v-cloak>
-            <div class="content">
-                <div class="content-nav">
-                    <nav-panel></nav-panel>
-                </div>
-                <div class="content-body">
-                    <router-view></router-view>
-                </div>
+            <img class="watermark" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/a2z-appt-i-tude/logo_square.png"/>
+            <div class="content-nav">
+                <nav-panel></nav-panel>
             </div>
+            <div class="content-body">
+                <router-view></router-view>
+            </div>
+            <a class="logo-link" href="http://www.a2zcloud.com/">
+                Powered by
+                <img class="link-icon" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/logo/a2zcloud75x50.png"/>
+            </a>
         </div>
     </div>
 
     <!-- System Libs -->
-    <script type="text/javascript" src="jspm_packages/system.js"></script>
-    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="/jspm_packages/system.js"></script>
+    <script type="text/javascript" src="/config.js"></script>
 
     <!-- Begin -->
     <script type="text/javascript">

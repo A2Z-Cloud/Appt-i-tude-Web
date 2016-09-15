@@ -1,0 +1,81 @@
+<div class="SubscriptionCreator">
+    <div class="content-panel" v-if="!finished">
+        <div class="column-content">
+            <div class="left-form">
+                <div class="form-title">Customer Details</div>
+                <div class="form-group">
+                    <div class="label">Group</div>
+                    <select class="value selector" v-model="subscription.group_id">
+                        <option v-for="g in groups" :value='g.id'>
+                            {{ g.name }}
+                        </option>
+                    </select>
+                    <div class="warning" v-if="group_warning">{{group_warning}}</div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label">A2Z Cloud's Signee</div>
+                    <input class="value" v-model="subscription.a2z_signee_email" type='email' :value="user.email" placeholder="Email"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="label"><span v-if="selected_group">{{ selected_group.name }}</span><span v-else>Customer</span>'s Signee</div>
+                    <input class="value" v-model="subscription.group_signee_name" type='text' :value="$route.query['group-signee-name']" placeholder="Full Name"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="label"><span v-if="selected_group">{{ selected_group.name }}</span><span v-else>Customer</span>'s Signee</div>
+                    <input class="value" v-model="subscription.group_signee_email" type='email' :value="$route.query['group-signee-email']" placeholder="Email"/>
+                </div>
+            </div>
+
+            <div class="right-form">
+                <div class="form-title">Contract Details</div>
+                <div class="form-group columns">
+                    <div class="left-col">
+                        <div class="label">From Date</div>
+                        <input class="value" v-model="subscription.from_date | date-unix" type='date'/>
+                    </div>
+                    <div class="right-col">
+                        <div class="label">To Date</div>
+                        <input class="value" v-model="subscription.to_date | date-unix" type='date'/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label">Base Monthly Cost</div>
+                    <input class="value" v-model="subscription.monthly_cost | currency" number>
+                </div>
+
+                <div class="form-group">
+                    <div class="label">Base Anual Cost</div>
+                    <input class="value" v-model="subscription.monthly_cost | multiply 12 | currency" number>
+                </div>
+
+                <div class="form-group">
+                    <div class="label">Rate</div>
+                    <select class="value selector" v-model="subscription.discount_id | nullify ''">
+                        <option value="" selected>
+                            Standard
+                        </option>
+                        <option v-for="rc in ratecards" :value='rc.id'>
+                            {{ rc.name }} [{{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%]
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <a class="form-button cancel" v-link="{ path: '/admin' }">Cancel</a>
+            <button class="form-button submit" @click='send' :disabled="!form_filled || creating_sub">
+                {{ creating_sub ? 'Sending' : 'Send Contract' }}
+            </button>
+        </div>
+    </div>
+    <div class="content-panel" v-else>
+        <div class="done-container">
+            <span class="lnr lnr-checkmark-circle"></span>
+            <h3 class="done-title">Contract Sent</h3>
+        </div>
+    </div>
+</div>

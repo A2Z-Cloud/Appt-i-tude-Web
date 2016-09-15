@@ -10,10 +10,14 @@
   "jspm": {
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.20",
+      "lodash": "npm:lodash@^4.15.0",
+      "moment": "npm:moment@^2.14.1",
       "superagent": "npm:superagent@^1.8.3",
       "text": "github:systemjs/plugin-text@^0.0.7",
       "vue": "npm:vue@^1.0.20",
-      "vue-router": "npm:vue-router@^0.7.13"
+      "vue-date-picker": "npm:vue-date-picker@^1.0.2",
+      "vue-router": "npm:vue-router@^0.7.13",
+      "vuex": "npm:vuex@^0.6.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

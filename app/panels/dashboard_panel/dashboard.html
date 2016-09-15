@@ -1,0 +1,78 @@
+<div class="DashboardPanel">
+
+    <div v-if="selected_subscription">
+        <div class="summary">
+            <div class="dashboard-card">
+                <div class="card-title">Period</div>
+                <div class="card-content">
+                    <div class="date-value">
+                        <div class="month">{{current_month_summary.period.format("MMMM")}}</div>
+                        <div class="year">{{current_month_summary.period.year()}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">At Start</div>
+                <div class="card-content">
+                    <!-- class binding for +/- value -->
+                    <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                        {{current_month_summary.start | currency}}
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">Added</div>
+                <div class="card-content">
+                    <div class="value positive">{{current_month_summary.added | currency}}</div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">Spent</div>
+                <div class="card-content">
+                    <div class="value negative">{{current_month_summary.spent | currency}}</div>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <div class="card-title">Balance</div>
+                <div class="card-content">
+                    <!-- class binding for +/- value -->
+                    <div class="value" :class="[current_month_summary.start < 0 ? 'negative' : '']">
+                        {{current_month_summary.balance | currency}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="previous">
+            <div class="previous-content">
+                <table class="summary-table">
+                    <tbody>
+                        <tr v-for="summary in historic_month_summaries">
+                            <td>{{summary.period.format("MMMM YYYY")}}</td>
+                            <td>{{summary.start | currency}}</td>
+                            <td>{{summary.added | currency}}</td>
+                            <td>{{summary.spent | currency}}</td>
+                            <td>{{summary.balance | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="footer">
+                    <div class="footer-label">Subscription Start</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="NoSubs" v-else>
+        <div class="content-panel">
+            <h3 class="title">Oh, Hello...</h3>
+            <div class="notice">
+                Looks like you don't have a subscription yet.<br>
+                If you are interested in this service, please get in touch and we can set things up for you.
+            </div>
+        </div>
+        <div class="form-buttons">
+            <a class="form-button submit" href="http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/">Contact Us</a>
+        </div>
+    </div>
+
+</div>

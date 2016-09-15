@@ -1,0 +1,129 @@
+.NavPanel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #E29A3A;
+    box-sizing: border-box;
+    padding: 0 10px;
+
+    color: #FFF;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+
+/* Title section. */
+
+.NavPanel
+.title-content {
+    width: 80%;
+}
+
+.NavPanel
+.sub-dates {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.NavPanel
+.sub-dates
+.date-group {
+    padding-right: 30px;
+}
+
+.NavPanel
+.sub-dates .date-group
+.label {
+    font-size: 0.8em;
+}
+
+.NavPanel
+.sub-dates .date-group
+.value {
+    color: rgba(255,255,255,0.7);
+}
+
+.NavPanel
+.subscription.dropdown {
+    cursor: pointer;
+}
+
+.NavPanel
+.subscription.dropdown:hover {
+    color: #9A5b06;
+}
+
+.NavPanel
+.subscription
+.sub-title {
+    font-size: 1.8em;
+}
+
+.NavPanel
+.subscription
+.dropdown-handle {
+    margin-left: 8px;
+    font-size: 26px;
+}
+
+
+/* Username and Sign Out section. */
+
+.NavPanel
+.user {
+    width: 20%;
+    text-align: right;
+}
+
+.NavPanel
+.user .sign-out {
+    text-decoration: none;
+    color: inherit;
+}
+
+.NavPanel
+.user .sign-out:hover {
+    color: #9A5b06;
+}
+
+.NavPanel
+.user .name {
+    color: rgba(255,255,255,0.7);
+}
+
+
+/* ---- Media Queries ---- */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    .NavPanel {
+        padding: 0 64px;
+        font-size: 16px;
+    }
+
+    .NavPanel
+    .title-content {
+        width: 90%;
+    }
+
+    .NavPanel
+    .user {
+        width: 10%;
+    }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
