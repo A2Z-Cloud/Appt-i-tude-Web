@@ -28,15 +28,23 @@ export default Vue.extend({
     },
     data: () => ({}),
     computed: {
-        group_subscriptions() {
-            return _.each(this.groups, g => {
-                g.subscriptions = this.subscriptions.filter(s => s.group_id === g.id)
-            })
+        groups_with_subscriptions() {
+            const group_ids_with_subs = _(this.subscriptions)
+                                         .map('group_id')
+                                         .uniq()
+                                         .value()
+            return _(this.groups)
+                    .keyBy('id')
+                    .at(group_ids_with_subs)
+                    .value()
         },
     },
     ready() {
     },
     methods: {
+        group_subscriptions(group_id) {
+            return this.subscriptions.filter(s => s.group_id === group_id)
+        },
     },
     vuex: {
         getters: {
