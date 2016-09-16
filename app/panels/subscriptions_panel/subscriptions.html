@@ -1,7 +1,12 @@
 <div class="SubscriptionsPanel" transition="expand">
-    <template v-for="group in groups_with_subscriptions">
-        <div v-for="subscription in group_subscriptions(group.id)">
-            <a @click='select_subscription(subscription)'>{{group.name}} - {{subscription.from_date.format('MMMM YYYY')}} through {{subscription.to_date.format('MMMM YYYY')}}</a>
-        </div>
+    <div v-if="$loadingRouteData">
+        loading...
+    </div>
+    <template v-else>
+        <template v-for="group in groups_with_subscriptions">
+            <div v-for="subscription in group_subscriptions(group.id)">
+                <a @click='select_subscription(subscription)'>{{group.name}} - {{subscription.from_date.format('MMMM YYYY')}} through {{subscription.to_date.format('MMMM YYYY')}}</a>
+            </div>
+        </template>
     </template>
 </div>
