@@ -1,8 +1,7 @@
 <div class="SubscriptionsPanel" transition="expand">
-    <div v-for="group in groups_with_subscriptions">
-        {{group.name}}
+    <template v-for="group in groups_with_subscriptions">
         <div v-for="subscription in group_subscriptions(group.id)">
-            <div>{{subscription.id}}</div>
+            <a @click='select_subscription(subscription)'>{{group.name}} - {{subscription.from_date.format('MMMM YYYY')}} through {{subscription.to_date.format('MMMM YYYY')}}</a>
         </div>
-    </div>
+    </template>
 </div>

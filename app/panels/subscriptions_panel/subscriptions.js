@@ -29,6 +29,8 @@ export default Vue.extend({
     data: () => ({}),
     computed: {
         groups_with_subscriptions() {
+            // get each uniq group id that shows up in subscriptions
+            // then filter groups by those with subs and sort
             const group_ids_with_subs = _(this.subscriptions)
                                          .map('group_id')
                                          .uniq()
@@ -36,6 +38,7 @@ export default Vue.extend({
             return _(this.groups)
                     .keyBy('id')
                     .at(group_ids_with_subs)
+                    .sortBy(['name'])
                     .value()
         },
     },
@@ -44,6 +47,10 @@ export default Vue.extend({
     methods: {
         group_subscriptions(group_id) {
             return this.subscriptions.filter(s => s.group_id === group_id)
+        },
+        select_subscription(subscription) {
+            this.focus_subscription(subscription.id)
+            this.$router.go({name: 'dashboard'})
         },
     },
     vuex: {
