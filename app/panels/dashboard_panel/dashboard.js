@@ -27,7 +27,9 @@ export default Vue.extend({
             ]).catch(() => false)
         },
     },
-    data: () => ({}),
+    data: () => ({
+        show_topup_view: false,
+    }),
     computed: {
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
