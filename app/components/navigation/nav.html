@@ -13,7 +13,7 @@
         </div>
         <div
             v-if="selected_subscription"
-            @click="toggle_dropdown"
+            @click="subscriptions.length > 1 ? toggle_dropdown : null"
             class="subscription"
             :class="{'dropdown': subscriptions.length > 1}">
 
