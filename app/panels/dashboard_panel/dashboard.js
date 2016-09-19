@@ -5,8 +5,12 @@ import template from './dashboard.html!text'
 // JS Imports
 // –– Vue
 import Vue from 'vue'
+import TopUpPanel from 'app/components/top_up/top_up'
+
 import moment from 'moment'
 import _ from 'lodash'
+
+
 
 import { filter_groups,
          filter_subscriptions,
@@ -16,6 +20,9 @@ import { filter_groups,
 
 export default Vue.extend({
     template,
+    components: {
+        'top-up': TopUpPanel,
+    },
     route: {
         waitForData: true,
         data() {

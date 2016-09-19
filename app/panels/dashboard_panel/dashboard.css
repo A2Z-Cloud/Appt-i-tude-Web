@@ -144,12 +144,27 @@
 }
 
 .DashboardPanel
+.floating-plus {
+    margin-top: 250px;
+    position: absolute;
+    z-index: 1;
+}
+
+.DashboardPanel
 .fa-rotate-45 {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.DashboardPanel
+.TopUp {
+    margin-top: 250px;
+    margin-left: 250px;
+    position: absolute;
+    z-index: 1;
 }
 
 

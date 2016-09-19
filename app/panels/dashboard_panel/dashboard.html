@@ -68,6 +68,10 @@
             @click="show_topup_view = !show_topup_view">
                 <i class="fa fa-plus" :class="{'fa-rotate-45': show_topup_view}" aria-hidden="true"></i>
         </button>
+
+        <template v-if='show_topup_view'>
+            <top-up></top-up>
+        </template>
     </div>
     <div id="NoSubs" v-else>
         <div class="content-panel">
