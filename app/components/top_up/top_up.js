@@ -47,7 +47,7 @@ export default Vue.extend({
         clicked_add() {
             this.insert_transaction(this.transaction)
                 .then(this.close)
-                .catch(e => (this.error = e))
+                .catch(e => (this.error = e.message))
         },
     },
 })
