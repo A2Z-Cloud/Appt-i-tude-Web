@@ -66,7 +66,8 @@
 .NavPanel
 .subscription
 .dropdown-handle {
-    margin-right: 8px;
+    display: inline-block;
+    width: 20px;
     font-size: 26px;
 }
 

@@ -1,12 +1,19 @@
 <div class="SubscriptionsPanel" transition="expand">
-    <div v-if="$loadingRouteData">
-        loading...
+    <div class="panel-loader" v-if="$loadingRouteData">
+        <div class="load-notice">loading...</div>
     </div>
-    <template v-else>
-        <template v-for="group in groups_with_subscriptions">
-            <div v-for="subscription in group_subscriptions(group.id)">
-                <a @click='select_subscription(subscription)'>{{group.name}} - {{subscription.from_date.format('MMMM YYYY')}} through {{subscription.to_date.format('MMMM YYYY')}}</a>
-            </div>
-        </template>
-    </template>
+    <div class="subscriptions" v-else>
+        <div class="search-box">
+            <input class="input" type="text" name="search" placeholder="Search Subscriptions" v-el:search-bar/>
+            <span class="lnr lnr-magnifier" @click="$els.searchBar.focus()"></span>
+        </div>
+        <div class="groups">
+            <template v-for="group in groups_with_subscriptions">
+                <div class="sub" v-for="subscription in group_subscriptions(group.id)" @click='select_subscription(subscription)'>
+                    <span class="group-name">{{group.name}}</span>
+                    <span class="dates">{{subscription.from_date.format('MMMM YYYY')}} - {{subscription.to_date.format('MMMM YYYY')}}</span>
+                </div>
+            </template>
+        </div>
+    </div>
 </div>
