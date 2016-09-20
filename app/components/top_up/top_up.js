@@ -17,9 +17,6 @@ export default Vue.extend({
         amount: 0,
         error: null,
     }),
-    route: {
-
-    },
     vuex: {
         actions: {
             insert_transaction,
