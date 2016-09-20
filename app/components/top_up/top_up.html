@@ -1,7 +1,12 @@
 <div class='TopUp'>
-    <span>When:</span>
-    <input type='date' />
-    <span>Amount:</span>
-    <input type='number' max=9999 step=1/>
-    <button>Add</button>
+    <div class='error' v-if='error'>{{ error }}</div>
+    <span>When</span>
+    <input class="value" v-model="executed | date-unix" type='date'/>
+    <span>Amount</span>
+    <input class="value" v-model="amount | currency">
+    <button
+        @click='clicked_add'
+        :disabled='!valid_transaction'>
+        Add
+    </button>
 </div>
