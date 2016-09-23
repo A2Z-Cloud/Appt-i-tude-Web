@@ -209,6 +209,18 @@
             box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
 
+/* always present */
+.action-transition {
+    transition: all 0.2s ease-in-out;
+    margin: 0;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.action-enter, .action-leave {
+    opacity: 0;
+    margin-right: -10px;
+}
+
 
 /* –––––––––––––––––––––– NO SUBS –––––––––––––––––––––––––– */
 

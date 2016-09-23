@@ -73,7 +73,7 @@
         </div>
 
         <!-- Top Up View -->
-        <div class="actions" v-if='show_topup_view'>
+        <div class="actions" v-if='show_topup_view' transition="action">
             <top-up
                 :subscription_id='focused_subscription_id'
                 :close='() => (show_topup_view = false)'>
