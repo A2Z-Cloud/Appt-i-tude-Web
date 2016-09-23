@@ -129,3 +129,22 @@ export const filter_transactions = function(store, subscription_id=null) {
              .catch(handle_error)
     })
 }
+
+export const insert_transaction = function(store, {subscription_id, amount, executed}) {
+    return new Promise((resolve, reject) => {
+        const handle_success = transaction_id => {
+            resolve(transaction_id)}
+
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)}
+
+        store.control
+             .insert_transaction(
+                 subscription_id,
+                 amount,
+                 executed)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
