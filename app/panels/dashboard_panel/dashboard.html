@@ -66,24 +66,19 @@
         </div>
 
         <!-- Action Buttons -->
-        <button
-            v-if="current_user.type === 'admin'"
-            class="floating-plus"
-            @click="show_topup_view = !show_topup_view">
-                <i
-                    class="fa fa-plus"
-                    :class="{'fa-rotate-45': show_topup_view}"
-                    aria-hidden="true">
-                </i>
-        </button>
+        <div v-if="current_user.type === 'admin'"
+             class="floating-plus"
+             @click="show_topup_view = !show_topup_view">
+                <span class="lnr lnr-cross" :class="{'rotate-45': show_topup_view}"></span>
+        </div>
 
         <!-- Top Up View -->
-        <template v-if='show_topup_view'>
+        <div class="actions" v-if='show_topup_view'>
             <top-up
                 :subscription_id='focused_subscription_id'
                 :close='() => (show_topup_view = false)'>
             </top-up>
-        </template>
+        </div>
     </div>
 
     <!-- No Subscription View -->
