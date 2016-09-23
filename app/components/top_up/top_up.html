@@ -1,0 +1,15 @@
+<div class='TopUp'>
+    <h3 class="title">Credit This Subscription</h3>
+    <div class="form">
+        <div class="line">
+            <input class="value" v-model="executed | date-unix" type='date'/>
+        </div>
+        <div class="line">
+            <input class="value" v-model="amount | currency">
+        </div>
+        <div class="line">
+            <div class='error'>{{ error }}</div>
+            <button class="submit" @click='clicked_add' :disabled='!valid_transaction'>Add</button>
+        </div>
+    </div>
+</div>

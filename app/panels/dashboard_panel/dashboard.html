@@ -1,6 +1,8 @@
 <div class="DashboardPanel" transition="fade">
 
     <div v-if="selected_subscription">
+
+        <!-- Current Month Summary -->
         <div class="summary">
             <div class="dashboard-card">
                 <div class="card-title">Period</div>
@@ -43,6 +45,7 @@
             </div>
         </div>
 
+        <!-- Subscription History -->
         <div class="previous">
             <div class="previous-content">
                 <table class="summary-table">
@@ -61,7 +64,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Action Buttons -->
+        <div v-if="current_user.type === 'admin'"
+             class="floating-plus"
+             @click="show_topup_view = !show_topup_view">
+                <span class="lnr lnr-cross" :class="{'rotate-45': show_topup_view}"></span>
+        </div>
+
+        <!-- Top Up View -->
+        <div class="actions" v-if='show_topup_view' transition="action">
+            <top-up
+                :subscription_id='focused_subscription_id'
+                :close='() => (show_topup_view = false)'>
+            </top-up>
+        </div>
     </div>
+
+    <!-- No Subscription View -->
     <div id="NoSubs" v-else>
         <div class="content-panel">
             <h3 class="title">Oh, Hello...</h3>

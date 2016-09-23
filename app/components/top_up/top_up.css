@@ -1,0 +1,75 @@
+.TopUp {
+    position: relative;
+}
+
+.TopUp
+.title {
+    margin-bottom: 10px;
+}
+
+.TopUp
+.form {
+    width: 100%;
+}
+
+.TopUp
+.form .line {
+    display: flex;
+    margin: 10px 0px;
+}
+
+.TopUp
+.form .line:last-child {
+    margin-bottom: 0px;
+}
+
+.TopUp
+.form .line
+.value {
+    width: 100%;
+    height: 35px;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #979797;
+}
+
+.TopUp
+.form .line
+.submit {
+    max-height: 35px;
+    padding: 7px 20px;
+
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    background: #E29A3A;
+    color: #FFF;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.TopUp
+.form .line
+.submit:hover {
+    background-color: #C47914;
+    color: #FFF;
+}
+
+.TopUp
+.form .line
+.submit:disabled {
+    background-color: #D2D2D2;
+}
+
+.TopUp
+.form .line
+.error {
+    width: 100%;
+    padding-top: 7px;
+    padding-right: 20px;
+    color: #F95858;
+}

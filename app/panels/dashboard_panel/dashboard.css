@@ -144,6 +144,84 @@
 }
 
 
+/* –––––––––––––––––––––– ACTIONS –––––––––––––––––––––––––– */
+
+.DashboardPanel
+.floating-plus {
+    position: absolute;
+    bottom: 40px; right: 50px;
+    z-index: 1;
+
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 1.5em;
+    background: #F95858;
+    color: #FFF;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.DashboardPanel
+.floating-plus
+.lnr {
+    display: block;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+.DashboardPanel
+.floating-plus
+.lnr.rotate-45 {
+    -webkit-transform: rotate(0);
+       -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+         -o-transform: rotate(0);
+            transform: rotate(0);
+}
+
+.DashboardPanel
+.actions {
+    position: absolute;
+    bottom: 40px; right: 110px;
+    z-index: 1;
+
+    width: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid #EEE;
+
+    background: #FFF;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* always present */
+.action-transition {
+    transition: all 0.2s ease-in-out;
+    margin: 0;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.action-enter, .action-leave {
+    opacity: 0;
+    margin-right: -10px;
+}
+
+
 /* –––––––––––––––––––––– NO SUBS –––––––––––––––––––––––––– */
 
 #NoSubs {

@@ -65,6 +65,11 @@ const mutations = {
         if (index !== -1) subscriptions.$set(index, new_sub)
         else subscriptions.push(new_sub)
     },
+    TRANSACTION_INSERT({transactions}, transaction) {
+        transaction.executed = moment.unix(transaction.executed)
+        transaction.updated = moment.unix(transaction.updated)
+        transactions.push(transaction)
+    },
     TRANSACTION_UPDATE({transactions}, transaction) {
         const index    = transactions.findIndex(t => t.id === transaction.id)
         const new_tran = merge(transactions[index], transaction)
