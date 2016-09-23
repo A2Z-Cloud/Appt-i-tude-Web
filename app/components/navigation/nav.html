@@ -13,18 +13,18 @@
         </div>
         <div
             v-if="selected_subscription"
-            @click="dropped_down = !dropped_down"
+            @click="subscriptions.length > 1 ? toggle_dropdown() : null"
             class="subscription"
-            :class="{'dropdown': subscriptions.length > 1}">  <!-- TODO: change to 1 -->
+            :class="{'dropdown': subscriptions.length > 1}">
 
                 <div class="selection noselect">
-                    <span class="sub-title"><span class="company">{{selected_group.name}}</span>'s Subscription</span>
-                    <span class="dropdown-handle" v-if='subscriptions.length > 1'> <!-- TODO: v-if='subscriptions.length > 1' -->
+                    <span class="dropdown-handle" v-if='subscriptions.length > 1'>
                         <i
-                        class="fa fa-caret-left"
-                        :class="[dropped_down ? 'fa-caret-down' : 'fa-caret-left']"
+                        class="fa fa-caret-right"
+                        :class="[dropped_down ? 'fa-caret-down' : 'fa-caret-right']"
                         aria-hidden="true"></i>
                     </span>
+                    <span class="sub-title"><span class="company">{{selected_group.name}}</span>'s Subscription</span>
                 </div>
         </div>
     </div>
