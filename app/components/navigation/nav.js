@@ -10,7 +10,6 @@ import Vue from 'vue'
 export default Vue.extend({
     template,
     data: () => ({
-        dropped_down: false,
     }),
     computed: {
         sign_out_url() {
@@ -36,6 +35,9 @@ export default Vue.extend({
             const index    = this.groups.findIndex(selected)
             return (index !== -1) ? this.groups[index] : null
         },
+        dropped_down() {
+            return this.$route.name === 'subscriptions'
+        },
     },
     vuex: {
         getters:  {
@@ -50,8 +52,11 @@ export default Vue.extend({
     },
     methods: {
         toggle_dropdown() {
-            // TODO: on select switch out nav panel for sub selector
-            // on retoggle window.history.back();
+            if (this.dropped_down) {
+                this.$router.go({name: 'dashboard'})
+            } else {
+                this.$router.go({name: 'subscriptions'})
+            }
         },
     },
 })

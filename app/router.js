@@ -9,6 +9,7 @@ import {debug, hash_routing} from './consts'
 
 // -- Route Panels
 import DashboardPanel from "./panels/dashboard_panel/dashboard"
+import SubscriptionsPanel from "./panels/subscriptions_panel/subscriptions"
 import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
@@ -26,6 +27,11 @@ router.map({
     '/': {
         name: 'dashboard',
         component: DashboardPanel,
+        authenticated: true,
+    },
+    '/subscriptions': {
+        name: 'subscriptions',
+        component: SubscriptionsPanel,
         authenticated: true,
     },
     '/subscriptions/new': {
