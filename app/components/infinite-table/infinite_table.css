@@ -1,0 +1,76 @@
+/* Scrolling body tables */
+.InfiniteTable
+table {
+    width: 100%;
+}
+
+.InfiniteTable
+.search-bar .lnr-magnifier {
+    position: absolute;
+    top: 7px; right: 10px;
+    width: 24px;
+    line-height: 17px;
+    cursor: pointer;
+}
+
+.InfiniteTable
+input:focus + .lnr-magnifier {
+    color: #33C3F0;
+}
+
+.InfiniteTable
+table tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    /*height: 150px; Height applied dynamically in js*/
+}
+
+.InfiniteTable
+table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.InfiniteTable
+table tr td {
+    overflow: auto;
+}
+
+.InfiniteTable
+table tr td::-webkit-scrollbar {
+    display: none;
+}
+
+.InfiniteTable
+table
+tr.clickable:hover {
+    background-color: #FBFBFB;
+}
+
+.InfiniteTable
+td
+span.empty {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.InfiniteTable
+.lnr {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.InfiniteTable
+span.lnr.lnr-checkmark-circle {
+    color: #1EAEDB;
+}
+
+.InfiniteTable
+span.lnr.lnr-cross-circle {
+    color: #A0A0A0;
+}

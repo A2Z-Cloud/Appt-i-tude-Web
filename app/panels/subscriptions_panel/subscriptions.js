@@ -12,6 +12,8 @@ import { filter_groups,
          filter_subscriptions,
          focus_subscription } from 'app/vuex/actions'
 
+import infinite_table from 'app/components/infinite-table/infinite_table'
+
 
 export default Vue.extend({
     template,
@@ -26,27 +28,36 @@ export default Vue.extend({
             ]).catch(() => false)
         },
     },
+    components: {
+        'infinite-table': infinite_table,
+    },
     data: () => ({}),
     computed: {
-        groups_with_subscriptions() {
+        display_subs() {
             // get each uniq group id that shows up in subscriptions
             // then filter groups by those with subs and sort
-            const group_ids_with_subs = _(this.subscriptions)
-                                         .map('group_id')
-                                         .uniq()
-                                         .value()
+            const sub_group_ids = _(this.subscriptions)
+                                   .map('group_id')
+                                   .uniq()
+                                   .value()
+
             return _(this.groups)
                     .keyBy('id')
-                    .at(group_ids_with_subs)
+                    .at(sub_group_ids)
                     .sortBy(['name'])
+                    .map( group => {
+                        let sub = this.subscriptions.filter(s => s.group_id === group.id)
+                        sub["date"] = sub.from_date + " - " + sub.to_date
+                        return sub
+                    })
                     .value()
         },
     },
     ready() {
     },
     methods: {
-        group_subscriptions(group_id) {
-            return this.subscriptions.filter(s => s.group_id === group_id)
+        fetch_next() {
+            return new Promise( (resolve, reject) => {reject()} )
         },
         select_subscription(subscription) {
             this.focus_subscription(subscription.id)
