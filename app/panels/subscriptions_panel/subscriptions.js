@@ -18,7 +18,6 @@ import infinite_table from 'app/components/infinite-table/infinite_table'
 export default Vue.extend({
     template,
     route: {
-        waitForData: true,
         data() {
             const all_users  = (this.current_user.type === 'admin')
             const all_groups = (this.current_user.type === 'admin')
@@ -36,6 +35,7 @@ export default Vue.extend({
         display_subs() {
             // get each uniq group id that shows up in subscriptions
             // then filter groups by those with subs and sort
+            if (this.groups.length === 0 || this.subscriptions.length === 0) return []
             const sub_group_ids = _(this.subscriptions)
                                    .map('group_id')
                                    .uniq()
@@ -46,8 +46,8 @@ export default Vue.extend({
                     .at(sub_group_ids)
                     .sortBy(['name'])
                     .map( group => {
-                        let sub = this.subscriptions.filter(s => s.group_id === group.id)
-                        sub["date"] = sub.from_date + " - " + sub.to_date
+                        const sub = this.subscriptions.filter(s => s.group_id === group.id)
+                        sub.date  = sub.from_date + " - " + sub.to_date
                         return sub
                     })
                     .value()
@@ -56,12 +56,18 @@ export default Vue.extend({
     ready() {
     },
     methods: {
-        fetch_next() {
-            return new Promise( (resolve, reject) => {reject()} )
+        fetch_next(offset=0) {
+            return new Promise((resolve, reject) => {reject('all present')})
         },
-        select_subscription(subscription) {
+        fetch_next_search(term, offset=0) {
+            return new Promise((resolve, reject) => {reject('all present')})
+        },
+        item_clicked(subscription) {
             this.focus_subscription(subscription.id)
             this.$router.go({name: 'dashboard'})
+        },
+        close_create_component() {
+            this.show_create_component = false
         },
     },
     vuex: {

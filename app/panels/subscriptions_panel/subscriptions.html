@@ -1,15 +1,12 @@
 <div class="SubscriptionsPanel" transition="expand">
-    <div class="panel-loader" v-if="$loadingRouteData">
-        <div class="load-notice">loading...</div>
-    </div>
-    <div class="subscriptions" v-else>
+    <div class="subscriptions">
         <infinite-table
             :columns="['name', 'date']"
             :items="display_subs"
             :fetch_next="fetch_next"
-            :fetch_next_search="fetch_next"
-            :item_clicked="select_subscription">
-                <span class="right-header" slot="date_header">date</span>
+            :fetch_next_search="fetch_next_search"
+            :item_clicked="item_clicked">
+                <!-- <span class="right-header" slot="date_header">date</span> -->
         </infinite-table>
 
         <!-- <div class="search-box">

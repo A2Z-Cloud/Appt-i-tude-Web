@@ -45,7 +45,8 @@ export default Vue.extend({
         },
     },
     ready() {
-        this.table_body_distance_from_top = this.$els.tableBody.getBoundingClientRect().top
+        this.table_body_distance_from_top = 0
+        // this.table_body_distance_from_top = this.$els.tableBody.getBoundingClientRect().top
     },
     vuex: {
         getters: {
