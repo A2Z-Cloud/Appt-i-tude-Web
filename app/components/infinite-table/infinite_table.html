@@ -1,0 +1,54 @@
+<div class="InfiniteTable">
+    <div class="search-box">
+        <input
+            class="input"
+            type="text"
+            v-model="search_term"
+            :placeholder="title ? title : 'Search...'"
+            v-on:keyup="search | debounce 100" v-el:table-search>
+        <span class="search-icon lnr lnr-magnifier" @click="$els.tableSearch.focus()"></span>
+    </div>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th v-for="column in columns">
+                    <slot :name="column + '_header'">
+                        <span>{{column | strip_underscores}}</span>
+                    </slot>
+                </th>
+            </tr>
+        </thead>
+        <tbody
+            v-else
+            v-el:table-body
+            :style="{maxHeight: table_height}"
+            v-infinite-scroll="nearing_bottom()"
+            infinite-scroll-disabled="disabled"
+            infinite-scroll-distance="10">
+
+                <tr v-for='item in display_items'
+                    track-by='$index'
+                    class="item"
+                    :class="{'clickable': this.item_clicked}"
+                    :style="row_style"
+                    @click="_item_clicked(item)">
+                        <td v-for="column in columns">
+                            <template v-if="display_table_cell_type && display_table_cell_type(item, {column: column}) == 'component'">
+                                <component :is="display_item(item, {column: column})" :item="item"></component>
+                            </template>
+                            <template v-if="display_table_cell_type && display_table_cell_type(item, {column: column}) == 'html'">
+                                {{{ display_item(item, {column: column}) }}}
+                            </template>
+                            <template v-if="!display_table_cell_type || (display_table_cell_type && display_table_cell_type(item, {column: column})) == 'raw'">
+                                <span v-if="display_item(item, {column: column})">
+                                    {{ display_item(item, {column: column}) }}
+                                </span>
+                                <span v-else class="empty">
+                                    -
+                                </span>
+                            </template>
+                        </td>
+                </tr>
+        </tbody>
+    </table>
+</div>

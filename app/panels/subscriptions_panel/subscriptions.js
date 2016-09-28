@@ -12,11 +12,12 @@ import { filter_groups,
          filter_subscriptions,
          focus_subscription } from 'app/vuex/actions'
 
+import infinite_table from 'app/components/infinite-table/infinite_table'
+
 
 export default Vue.extend({
     template,
     route: {
-        waitForData: true,
         data() {
             const all_users  = (this.current_user.type === 'admin')
             const all_groups = (this.current_user.type === 'admin')
@@ -26,31 +27,38 @@ export default Vue.extend({
             ]).catch(() => false)
         },
     },
+    components: {
+        'infinite-table': infinite_table,
+    },
     data: () => ({}),
     computed: {
-        groups_with_subscriptions() {
-            // get each uniq group id that shows up in subscriptions
-            // then filter groups by those with subs and sort
-            const group_ids_with_subs = _(this.subscriptions)
-                                         .map('group_id')
-                                         .uniq()
-                                         .value()
-            return _(this.groups)
-                    .keyBy('id')
-                    .at(group_ids_with_subs)
-                    .sortBy(['name'])
-                    .value()
+        display_subs() {
+            return this.$loadingRouteData ? [] : this.subscriptions
         },
     },
     ready() {
     },
     methods: {
-        group_subscriptions(group_id) {
-            return this.subscriptions.filter(s => s.group_id === group_id)
+        fetch_next(offset=0) {
+            return new Promise((resolve, reject) => {reject('all present')})
         },
-        select_subscription(subscription) {
+        fetch_next_search(term, offset=0) {
+            return new Promise((resolve, reject) => {reject('all present')})
+        },
+        display_table_cell(subscription, {column}) {
+            if (column === 'group_id')
+                return this.groups.filter(g => g.id === subscription[column] )[0].name
+            if (column === 'from_date')
+                return subscription['from_date'].format('MMMM YYYY') + ' - ' + subscription['to_date'].format('MMMM YYYY')
+
+            return subscription[column]
+        },
+        item_clicked(subscription) {
             this.focus_subscription(subscription.id)
             this.$router.go({name: 'dashboard'})
+        },
+        close_create_component() {
+            this.show_create_component = false
         },
     },
     vuex: {
