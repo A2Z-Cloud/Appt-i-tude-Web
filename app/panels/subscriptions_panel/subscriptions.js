@@ -35,7 +35,7 @@ export default Vue.extend({
         display_subs() {
             // get each uniq group id that shows up in subscriptions
             // then filter groups by those with subs and sort
-            if (this.groups.length === 0 || this.subscriptions.length === 0) return []
+            if (this.$loadingRouteData) return []
             const sub_group_ids = _(this.subscriptions)
                                    .map('group_id')
                                    .uniq()

@@ -1,4 +1,4 @@
-/*.SubscriptionsPanel {
+.SubscriptionsPanel {
     position: relative;
     width: 100%;
     height: 100%;
@@ -11,7 +11,7 @@
     padding: 32px 64px;
     padding-bottom: 0;
     box-sizing: border-box;
-}*/
+}
 
 
 /* ––– Items ––– */
