@@ -6,6 +6,7 @@ import Vue from 'vue'
 export default Vue.extend({
     template: tmpl,
     props: [
+        'title',
         'columns',
         'items',
         'fetch_next',
@@ -21,7 +22,6 @@ export default Vue.extend({
         search_items: [],
         items_exhausted: false,
         search_exhausted: false,
-        table_body_distance_from_top: 0,
     }),
     computed: {
         searching() {
@@ -32,7 +32,13 @@ export default Vue.extend({
             return this.items
         },
         table_height() {
-            return (this.window_height - this.table_body_distance_from_top - 32) + 'px'
+            var window_height = this.window_height,
+                client_height = document.getElementById('Content').clientHeight,
+                header_height = 75,
+                padding_diff  = 64,
+                tables_height = client_height - header_height - padding_diff
+
+            return (tables_height < window_height ? tables_height : window_height) + 'px'
         },
         disabled() {
             return (!this.searching && this.items_exhausted)
@@ -45,8 +51,6 @@ export default Vue.extend({
         },
     },
     ready() {
-        this.table_body_distance_from_top = 0
-        // this.table_body_distance_from_top = this.$els.tableBody.getBoundingClientRect().top
     },
     vuex: {
         getters: {

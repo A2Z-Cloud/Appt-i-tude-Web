@@ -21,6 +21,7 @@ import {control_url} from './consts'
 import NavPanel from 'app/components/navigation/nav'
 
 // -- Add-ons
+import ResizeMixin from 'vue-resize-mixin'
 import infinateScroll from 'vue-infinite-scroll'
 
 
@@ -30,6 +31,7 @@ System.import(control_url).then(({Control}) => {  // eslint-disable-line no-unde
 
     router.start({
         store,
+        mixins: [ResizeMixin],
         components: {
             'nav-panel': NavPanel,
         },
@@ -48,6 +50,13 @@ System.import(control_url).then(({Control}) => {  // eslint-disable-line no-unde
                 ws_ready: state => state.auth_client_url && state.ws_status === 'open',
                 auth_client_url: state => state.auth_client_url,
             },
+        },
+        events: {
+            resize: size => store.dispatch({
+                type: 'WINDOWS_SIZE_SET',
+                silent: false,
+                payload: size,
+            }),
         },
     }, '#App')
 })

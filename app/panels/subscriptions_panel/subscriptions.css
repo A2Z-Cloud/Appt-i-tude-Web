@@ -1,4 +1,4 @@
-/*.SubscriptionsPanel {
+.SubscriptionsPanel {
     position: relative;
     width: 100%;
     height: 100%;
@@ -6,112 +6,26 @@
 
 .SubscriptionsPanel
 .subscriptions {
+    position: relative;
     width: 100%;
-    margin-bottom: 64px;
+    height: 100%;
     padding: 32px 64px;
-    padding-bottom: 0;
     box-sizing: border-box;
-}*/
-
-
-/* ––– Items ––– */
-
-.SubscriptionsPanel
-.groups {
-    width: 100%;
-    background-color: #FFF;
-    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
 
 .SubscriptionsPanel
-.groups .sub {
-    width: 100%;
-    padding: 16px 32px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #DBDBDB;
-    cursor: pointer;
+.subscriptions thead {
+    display: none;
 }
 
 .SubscriptionsPanel
-.groups .sub:last-child {
-    border: none;
+.subscriptions td:first-child {
+    text-align: left;
 }
 
 .SubscriptionsPanel
-.groups .sub:hover {
-    background-color: #F9F9F9;
-}
-
-.SubscriptionsPanel
-.groups .sub .dates,
-.SubscriptionsPanel
-.groups .sub .group-name {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.SubscriptionsPanel
-.groups .sub .dates {
-    float: right;
-}
-
-
-/* ––– Search Bar ––– */
-
-.SubscriptionsPanel
-.search-box {
-    display: flex;
-    width: 100%;
-    margin-bottom: 32px;
-    padding: 8px 32px;
-    box-sizing: border-box;
-    background-color: #FFF;
-    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-.SubscriptionsPanel
-.search-box .input {
-    width: 100%;
-    border: none;
-    background: none;
-    font-size: 32px;
-    font-family: inherit;
-    border-bottom: 1px solid #CCC;
-}
-.search-box .input::-webkit-input-placeholder { color: #CCC; }
-.search-box .input::-moz-placeholder          { color: #CCC; }
-.search-box .input:-moz-placeholder           { color: #CCC; }
-.search-box .input:-ms-input-placeholder      { color: #CCC; }
-
-.SubscriptionsPanel
-.search-box .input:focus {
-    outline: none;
-    border-bottom: 1px solid #E29A3A;
-}
-.search-box .input:focus::-webkit-input-placeholder { color: #FFF; }
-.search-box .input:focus::-moz-placeholder          { color: #FFF; }
-.search-box .input:focus:-moz-placeholder           { color: #FFF; }
-.search-box .input:focus:-ms-input-placeholder      { color: #FFF; }
-
-.SubscriptionsPanel
-.search-box span.lnr {
-    font-size: 32px;
-    color: #CCC;
-    cursor: pointer;
-}
-
-.SubscriptionsPanel
-.search-box span.lnr::before {
-    vertical-align: middle;
-}
-
-.SubscriptionsPanel
-.search-box .input:focus + span.lnr {
-    color: #E29A3A;
+.subscriptions td:last-child {
+    text-align: right;
 }
 
 

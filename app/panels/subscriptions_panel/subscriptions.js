@@ -33,24 +33,7 @@ export default Vue.extend({
     data: () => ({}),
     computed: {
         display_subs() {
-            // get each uniq group id that shows up in subscriptions
-            // then filter groups by those with subs and sort
-            if (this.groups.length === 0 || this.subscriptions.length === 0) return []
-            const sub_group_ids = _(this.subscriptions)
-                                   .map('group_id')
-                                   .uniq()
-                                   .value()
-
-            return _(this.groups)
-                    .keyBy('id')
-                    .at(sub_group_ids)
-                    .sortBy(['name'])
-                    .map( group => {
-                        const sub = this.subscriptions.filter(s => s.group_id === group.id)
-                        sub.date  = sub.from_date + " - " + sub.to_date
-                        return sub
-                    })
-                    .value()
+            return this.$loadingRouteData ? [] : this.subscriptions
         },
     },
     ready() {
@@ -61,6 +44,14 @@ export default Vue.extend({
         },
         fetch_next_search(term, offset=0) {
             return new Promise((resolve, reject) => {reject('all present')})
+        },
+        display_table_cell(subscription, {column}) {
+            if (column === 'group_id')
+                return this.groups.filter(g => g.id === subscription[column] )[0].name
+            if (column === 'from_date')
+                return subscription['from_date'].format('MMMM YYYY') + ' - ' + subscription['to_date'].format('MMMM YYYY')
+
+            return subscription[column]
         },
         item_clicked(subscription) {
             this.focus_subscription(subscription.id)

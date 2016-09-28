@@ -1,12 +1,13 @@
 <div class="SubscriptionsPanel" transition="expand">
     <div class="subscriptions">
         <infinite-table
-            :columns="['name', 'date']"
+            title="Search Subscriptions"
+            :columns="['group_id', 'from_date']"
             :items="display_subs"
             :fetch_next="fetch_next"
             :fetch_next_search="fetch_next_search"
+            :display_table_cell="display_table_cell"
             :item_clicked="item_clicked">
-                <!-- <span class="right-header" slot="date_header">date</span> -->
         </infinite-table>
 
         <!-- <div class="search-box">
