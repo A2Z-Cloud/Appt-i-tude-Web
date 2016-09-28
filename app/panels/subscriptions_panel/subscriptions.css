@@ -14,6 +14,11 @@
 }
 
 .SubscriptionsPanel
+.subscriptions .search-box {
+    display: none;
+}
+
+.SubscriptionsPanel
 .subscriptions thead {
     display: none;
 }
