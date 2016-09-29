@@ -9,18 +9,5 @@
             :display_table_cell="display_table_cell"
             :item_clicked="item_clicked">
         </infinite-table>
-
-        <!-- <div class="search-box">
-            <input class="input" type="text" name="search" placeholder="Search Subscriptions" v-el:search-bar/>
-            <span class="lnr lnr-magnifier" @click="$els.searchBar.focus()"></span>
-        </div>
-        <div class="groups">
-            <template v-for="group in groups_with_subscriptions">
-                <div class="sub" v-for="subscription in group_subscriptions(group.id)" @click='select_subscription(subscription)'>
-                    <span class="group-name">{{group.name}}</span>
-                    <span class="dates">{{subscription.from_date.format('MMMM YYYY')}} - {{subscription.to_date.format('MMMM YYYY')}}</span>
-                </div>
-            </template>
-        </div> -->
     </div>
 </div>
