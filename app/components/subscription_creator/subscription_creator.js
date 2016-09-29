@@ -76,14 +76,14 @@ export default Vue.extend({
                 opportunity_id: this.$route.query['oppertunity-zcrm-id']})
         },
         form_filled() {
-            return ((this.subscription.group_id != null           && this.subscription.group_id != "") &&
-                    (this.subscription.from_date != null          && this.subscription.from_date != "") &&
-                    (this.subscription.to_date != null            && this.subscription.to_date != "") &&
-                    (this.subscription.a2z_signee_email != null   && this.subscription.a2z_signee_email != "") &&
-                    (this.subscription.group_signee_name != null  && this.subscription.group_signee_name != "") &&
-                    (this.subscription.group_signee_email != null && this.subscription.group_signee_email != "") &&
-                    (this.subscription.monthly_cost != null       && this.subscription.monthly_cost != ""))
-        }
+            return ((this.subscription.group_id != null           && this.subscription.group_id !== "") &&
+                    (this.subscription.from_date != null          && this.subscription.from_date !== "") &&
+                    (this.subscription.to_date != null            && this.subscription.to_date !== "") &&
+                    (this.subscription.a2z_signee_email != null   && this.subscription.a2z_signee_email !== "") &&
+                    (this.subscription.group_signee_name != null  && this.subscription.group_signee_name !== "") &&
+                    (this.subscription.group_signee_email != null && this.subscription.group_signee_email !== "") &&
+                    (this.subscription.monthly_cost != null       && this.subscription.monthly_cost !== ""))
+        },
     },
     ready() {
         window.panel = this
@@ -100,7 +100,7 @@ export default Vue.extend({
                 "A2Z Users and have their CRM id set." : ''
         },
         send() {
-            this.creating_sub = true;
+            this.creating_sub = true
             this.insert_subscription(this.payload)
                 .then(() => {
                     this.finished = true
