@@ -90,7 +90,7 @@ export default Vue.extend({
             // Also apply discount rate
             return Object.assign({}, this.subscription, {
                 group_name: this.selected_group.name,
-                opportunity_id: this.$route.query['opportunity-zcrm-id']})
+                opportunity_id: this.selected_opportunity.id})
         },
         form_filled() {
             return ((this.subscription.group_id != null           && this.subscription.group_id !== "") &&
