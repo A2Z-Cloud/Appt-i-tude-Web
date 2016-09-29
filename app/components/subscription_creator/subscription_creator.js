@@ -27,6 +27,7 @@ export default Vue.extend({
             group_signee_name: null,
             group_signee_email: null,
             monthly_cost: 99,
+            bonus_annual_months: 2,
             discount_id: null,
         },
     }),

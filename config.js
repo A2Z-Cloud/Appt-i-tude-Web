@@ -24,8 +24,9 @@ System.config({
     "normalize.css": "npm:normalize.css@4.0.0",
     "superagent": "npm:superagent@1.8.3",
     "text": "github:systemjs/plugin-text@0.0.7",
-    "vue": "npm:vue@1.0.27",
+    "vue": "npm:vue@1.0.28",
     "vue-date-picker": "npm:vue-date-picker@1.0.2",
+    "vue-dependon": "npm:vue-dependon@1.0.0",
     "vue-infinite-scroll": "npm:vue-infinite-scroll@0.2.3",
     "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.13",
@@ -239,7 +240,7 @@ System.config({
       "events": "github:jspm/nodelibs-events@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "glob": "npm:glob@5.0.15",
-      "graceful-fs": "npm:graceful-fs@4.1.8",
+      "graceful-fs": "npm:graceful-fs@4.1.9",
       "iconv-lite": "npm:iconv-lite@0.4.13",
       "mkdirp": "npm:mkdirp@0.5.1",
       "path": "github:jspm/nodelibs-path@0.1.0",
@@ -386,7 +387,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:graceful-fs@4.1.8": {
+    "npm:graceful-fs@4.1.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "constants": "github:jspm/nodelibs-constants@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -625,13 +626,16 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     },
+    "npm:vue-dependon@1.0.0": {
+      "vue": "npm:vue@1.0.28"
+    },
     "npm:vue-infinite-scroll@0.2.3": {
-      "vue": "npm:vue@1.0.27"
+      "vue": "npm:vue@1.0.28"
     },
     "npm:vue-resize-mixin@1.0.1": {
       "windowsill": "npm:windowsill@1.0.7"
     },
-    "npm:vue@1.0.27": {
+    "npm:vue@1.0.28": {
       "envify": "npm:envify@3.4.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },

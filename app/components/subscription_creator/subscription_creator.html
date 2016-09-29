@@ -47,9 +47,15 @@
                     <input class="value" v-model="subscription.monthly_cost | currency" number>
                 </div>
 
-                <div class="form-group">
-                    <div class="label">Base Annual Cost</div>
-                    <input class="value" v-model="subscription.monthly_cost | multiply 12 | currency" number>
+                <div class="form-group columns">
+                    <div class="left-col">
+                        <div class="label">Base Annual Cost</div>
+                        <input class="value" v-model="subscription.monthly_cost | multiply (12 - subscription.bonus_annual_months) | currency" number>
+                    </div>
+                    <div class="right-col">
+                        <div class="label">Bonus Months</div>
+                        <input class="value" v-model="subscription.bonus_annual_months" number>
+                    </div>
                 </div>
 
                 <div class="form-group">
