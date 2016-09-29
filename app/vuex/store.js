@@ -18,6 +18,7 @@ const state = {
     auth_client_url: null,
     user: null,
     groups: [],
+    opportunities: [],
     ratecards: [],
     subscriptions: [],
     transactions: [],
@@ -52,6 +53,14 @@ const mutations = {
         const new_group = merge(groups[index], group)
         if (index !== -1) groups.$set(index, new_group)
         else groups.push(new_group)
+    },
+    OPPORTUNITY_UPDATE({opportunities}, opportunity) {
+        const index = opportunities.findIndex(o => o.id === opportunity.id)
+        const new_opportunity = merge(opportunities[index], opportunity)
+        new_opportunity.apptitude_from_date = new_opportunity.apptitude_from_date ? moment.unix(new_opportunity.apptitude_from_date) : null
+        new_opportunity.apptitude_to_date   = new_opportunity.apptitude_to_date ? moment.unix(new_opportunity.apptitude_to_date) : null
+        if (index !== -1) opportunities.$set(index, new_opportunity)
+        else opportunities.push(new_opportunity)
     },
     SUBSCRIPTION_FOCUS(state, id) {
         state.focused_subscription_id = id
