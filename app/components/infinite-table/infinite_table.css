@@ -37,7 +37,7 @@
 .InfiniteTable
 .search-box .input:focus {
     outline: none;
-    border-bottom: 1px solid #E29A3A;
+    border-bottom: 1px solid #A9CA5D;
 }
 .search-box .input:focus::-webkit-input-placeholder { color: #FFF; }
 .search-box .input:focus::-moz-placeholder          { color: #FFF; }
@@ -58,7 +58,7 @@
 
 .InfiniteTable
 .search-box .input:focus + .search-icon {
-    color: #E29A3A;
+    color: #A9CA5D;
 }
 
 
