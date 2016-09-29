@@ -107,8 +107,8 @@ export default Vue.extend({
 
         const today     = new Date()
         const next_year = new Date().setYear(today.getFullYear() + 1)
-        this.subscription.from_date = this.selected_opportunity.apptitude_from_date ? this.selected_opportunity.apptitude_from_date : today / 1000
-        this.subscription.to_date   = this.selected_opportunity.apptitude_to_date ? this.selected_opportunity.apptitude_to_date : next_year / 1000
+        this.subscription.from_date = this.selected_opportunity.apptitude_from_date ? this.selected_opportunity.apptitude_from_date : today
+        this.subscription.to_date   = this.selected_opportunity.apptitude_to_date ? this.selected_opportunity.apptitude_to_date : next_year
         this.subscription.group_signee_name  = this.selected_opportunity.contact_name
         this.subscription.group_signee_email = this.selected_opportunity.contact_email
         this.subscription.monthly_cost       = this.selected_opportunity.apptitude_monthly_cost
