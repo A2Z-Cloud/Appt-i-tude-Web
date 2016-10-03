@@ -103,27 +103,29 @@ export default Vue.extend({
         },
     },
     ready() {
-        window.panel = this
-
-        const today     = new Date()
-        const next_year = new Date().setYear(today.getFullYear() + 1)
-        this.subscription.from_date = this.selected_opportunity.apptitude_from_date ? this.selected_opportunity.apptitude_from_date : today
-        this.subscription.to_date   = this.selected_opportunity.apptitude_to_date ? this.selected_opportunity.apptitude_to_date : next_year
-        this.subscription.group_signee_name  = this.selected_opportunity.contact_name
-        this.subscription.group_signee_email = this.selected_opportunity.contact_email
-        this.subscription.monthly_cost       = this.selected_opportunity.apptitude_monthly_cost
+        // this.subscription.from_date = new Date()
+        // this.subscription.to_date   = new Date().setYear(new Date().getFullYear() + 1)
     },
     methods: {
         send() {
             this.creating_sub = true
             this.insert_subscription(this.payload)
-                .then(() => {
-                    this.finished = true
-                })
+                .then(() => (this.finished = true))
                 .catch((error) => {
                     this.creating_sub = false
                     console.log(error)
                 })
+        },
+    },
+    watch: {
+        selected_opportunity(opp) {
+            if (opp) {
+                this.subscription.from_date = opp.apptitude_from_date ? opp.apptitude_from_date : this.subscription.from_date
+                this.subscription.to_date   = opp.apptitude_to_date ? opp.apptitude_to_date : this.subscription.to_date
+                this.subscription.group_signee_name  = opp.contact_name
+                this.subscription.group_signee_email = opp.contact_email
+                this.subscription.monthly_cost       = opp.apptitude_monthly_cost ? opp.apptitude_monthly_cost : this.subscription.monthly_cost
+            }
         },
     },
 })
