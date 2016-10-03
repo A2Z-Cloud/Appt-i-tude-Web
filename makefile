@@ -13,9 +13,11 @@ build:
 	./node_modules/.bin/jspm unbundle
 	mv app/consts.js app/consts_dist.js && mv app/consts_debug.js app/consts.js
 
+
 S3_NAME_DEV = com-a2zcloud-apptitude-dev
-S3_NAME_LIVE = com-a2zcloud-apptitude
 CF_DIST_DEV = E2HDDXXSRUZM7W
+
+S3_NAME_LIVE = com-a2zcloud-apptitude
 CF_DIST_LIVE = E3F4M5LFOJTS3H
 deploy:
 	# e.g. make deploy t=LIVE
