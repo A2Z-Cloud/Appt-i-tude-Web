@@ -100,8 +100,8 @@ export const insert_subscription = function(store, {group_id, opportunity_zcrm_i
              .insert_subscription(
                  group_id,
                  opportunity_zcrm_id,
-                 from_date,
-                 to_date,
+                 from_date.unix(),
+                 to_date.unix(),
                  a2z_signee_email,
                  group_signee_name,
                  group_signee_email,
