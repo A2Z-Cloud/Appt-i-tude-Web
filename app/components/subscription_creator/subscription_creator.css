@@ -74,7 +74,7 @@
 .SubscriptionCreator
 .value:focus {
     outline: none;
-    border-bottom: 1px solid #E29A3A;
+    border-bottom: 1px solid #A9CA5D
 }
 
 .SubscriptionCreator
@@ -113,7 +113,7 @@
 .SubscriptionCreator
 .form-button.cancel {
     background: #FFF;
-    color: #E29A3A;
+    color: #A9CA5D;
 }
 
 .SubscriptionCreator
@@ -123,7 +123,7 @@
 
 .SubscriptionCreator
 .form-button.submit {
-    background: #E29A3A;
+    background: #A9CA5D;
     color: #FFF;
 
     -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
@@ -133,7 +133,7 @@
 
 .SubscriptionCreator
 .form-button.submit:hover {
-    background-color: #C47914;
+    background-color: #5F8454;
     color: #FFF;
 }
 
