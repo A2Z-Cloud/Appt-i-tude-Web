@@ -15,8 +15,8 @@
 
                 <div class="form-group">
                     <div class="label">CRM Opportunity</div>
-                    <select class="value selector" v-model="subscription.opportunity_id" disabled>
-                        <option v-for="o in opportunities" :value='o.id'>
+                    <select class="value selector" v-model="subscription.opportunity_zcrm_id" disabled>
+                        <option v-for="o in opportunities" :value='o.zcrm_id'>
                             {{ o.name }}
                         </option>
                     </select>

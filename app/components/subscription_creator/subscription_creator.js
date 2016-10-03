@@ -23,7 +23,7 @@ export default Vue.extend({
         finished: false,
         subscription: {
             group_id: null,
-            opportunity_id: null,
+            opportunity_zcrm_id: null,
             from_date: null,
             to_date: null,
             a2z_signee_email: null,
@@ -50,8 +50,8 @@ export default Vue.extend({
                           .then(([groups, query_group, query_opportunity]) => {
                               const group_id = (query_group) ? query_group.id : null
                               this.subscription.group_id = group_id
-                              const opportunity_id = (query_opportunity) ? query_opportunity.id : null
-                              this.subscription.opportunity_id = opportunity_id})
+                              const opportunity_zcrm_id = (query_opportunity) ? query_opportunity.zcrm_id : null
+                              this.subscription.opportunity_zcrm_id = opportunity_zcrm_id})
         },
     },
     vuex: {
@@ -76,8 +76,8 @@ export default Vue.extend({
             return (index !== -1) ? this.groups[index] : null
         },
         selected_opportunity() {
-            const opportunity_id = this.subscription.opportunity_id
-            const index          = this.opportunities.findIndex(o => o.id === opportunity_id)
+            const id    = this.subscription.opportunity_zcrm_id
+            const index = this.opportunities.findIndex(o => o.zcrm_id === id)
             return index !== -1 ? this.opportunities[index] : null
         },
         selected_dicount() {
@@ -90,7 +90,7 @@ export default Vue.extend({
             // Also apply discount rate
             return Object.assign({}, this.subscription, {
                 group_name: this.selected_group.name,
-                opportunity_id: this.selected_opportunity.id})
+                opportunity_zcrm_id: this.selected_opportunity.zcrm_id})
         },
         form_filled() {
             return ((this.subscription.group_id != null           && this.subscription.group_id !== "") &&
