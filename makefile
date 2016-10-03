@@ -20,6 +20,6 @@ CF_DIST_DEV = E2HDDXXSRUZM7W
 S3_NAME_LIVE = com-a2zcloud-apptitude
 CF_DIST_LIVE = E3F4M5LFOJTS3H
 deploy:
-	# e.g. make deploy t=LIVE
+	# e.g. make deploy t=live
 	aws s3 sync --profile a2zcloud dist/ s3://S3_NAME_$(shell X="${t}"; echo "$t" | tr '[:lower:]' '[:upper:]')
 	aws cloudfront create-invalidation --profile a2zcloud --distribution-id CF_DIST_$(shell X="${t}"; echo "$t" | tr '[:lower:]' '[:upper:]') --invalidation-batch "{\"Paths\": {\"Quantity\": 1,\"Items\": [\"/*\"]},\"CallerReference\": \"make deploy "`date +%Y-%m-%d:%H:%M:%S`"\"}"
