@@ -124,7 +124,8 @@ export default Vue.extend({
                 this.subscription.to_date   = opp.apptitude_to_date ? opp.apptitude_to_date : this.subscription.to_date
                 this.subscription.group_signee_name  = opp.contact_name
                 this.subscription.group_signee_email = opp.contact_email
-                this.subscription.monthly_cost       = opp.apptitude_monthly_cost ? opp.apptitude_monthly_cost : this.subscription.monthly_cost
+                this.subscription.monthly_cost = opp.apptitude_monthly_cost ? opp.apptitude_monthly_cost : this.subscription.monthly_cost
+                this.subscription.bonus_annual_months = opp.apptitude_bonus_annual_months ? opp.apptitude_bonus_annual_months : this.subscription.bonus_annual_months
             }
         },
     },
