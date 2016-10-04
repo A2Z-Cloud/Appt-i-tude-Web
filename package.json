@@ -4,7 +4,12 @@
   "description": "A2Z Apptitude Portal",
   "main": "app/main.js",
   "author": "A2Z Cloud",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/A2Z-Cloud/Appt-i-tude-Web.git"
+  },
   "devDependencies": {
+    "html-dist": "^0.2.0",
     "jspm": "^0.16.36"
   },
   "jspm": {
@@ -28,5 +33,10 @@
       "clean-css": "npm:clean-css@^3.4.17",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "dependencies": {
+    "html-dist": "^0.2.0",
+    "jspm": "^0.16.13",
+    "uglifyjs": "^2.4.10"
   }
 }
