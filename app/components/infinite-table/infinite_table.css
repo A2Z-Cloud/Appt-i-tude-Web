@@ -27,7 +27,7 @@
     background: none;
     font-size: 32px;
     font-family: inherit;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #E3E3E3;
 }
 .search-box .input::-webkit-input-placeholder { color: #CCC; }
 .search-box .input::-moz-placeholder          { color: #CCC; }
@@ -37,7 +37,7 @@
 .InfiniteTable
 .search-box .input:focus {
     outline: none;
-    border-bottom: 1px solid #E29A3A;
+    border-bottom: 1px solid #A9CA5D;
 }
 .search-box .input:focus::-webkit-input-placeholder { color: #FFF; }
 .search-box .input:focus::-moz-placeholder          { color: #FFF; }
@@ -47,7 +47,7 @@
 .InfiniteTable
 .search-box .search-icon {
     font-size: 32px;
-    color: #CCC;
+    color: #E3E3E3;
     cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
 
 .InfiniteTable
 .search-box .input:focus + .search-icon {
-    color: #E29A3A;
+    color: #A9CA5D;
 }
 
 

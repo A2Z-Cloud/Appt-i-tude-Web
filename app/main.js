@@ -23,11 +23,13 @@ import NavPanel from 'app/components/navigation/nav'
 // -- Add-ons
 import ResizeMixin from 'vue-resize-mixin'
 import infinateScroll from 'vue-infinite-scroll'
+import VueDependOn from 'vue-dependon'
 
 
 // Init App
 System.import(control_url).then(({Control}) => {  // eslint-disable-line no-undef
     Vue.use(infinateScroll)
+    Vue.use(VueDependOn)
 
     router.start({
         store,

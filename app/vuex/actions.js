@@ -70,7 +70,24 @@ export const filter_groups = function(store, {all_groups=false}={}) {
     })
 }
 
-export const insert_subscription = function(store, {group_id, group_name, from_date, to_date, a2z_signee_email, group_signee_name, group_signee_email, monthly_cost, opportunity_id, discount_id=null}) {
+export const get_opportunity = function(store, {zcrm_id}) {
+    return new Promise((resolve, reject) => {
+        const handle_success = opportunity => {
+            store.dispatch('OPPORTUNITY_UPDATE', opportunity)
+            resolve(opportunity)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .get_opportunity(zcrm_id)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
+
+export const insert_subscription = function(store, {group_id, opportunity_zcrm_id, from_date, to_date, a2z_signee_email, group_signee_name, group_signee_email, monthly_cost, bonus_annual_months, discount_id=null}) {
     return new Promise((resolve, reject) => {
         const handle_success = subscription_id => {
             resolve(subscription_id)
@@ -82,14 +99,14 @@ export const insert_subscription = function(store, {group_id, group_name, from_d
         store.control
              .insert_subscription(
                  group_id,
-                 group_name,
-                 from_date,
-                 to_date,
+                 opportunity_zcrm_id,
+                 from_date.unix(),
+                 to_date.unix(),
                  a2z_signee_email,
                  group_signee_name,
                  group_signee_email,
                  monthly_cost,
-                 opportunity_id,
+                 bonus_annual_months,
                  discount_id)
              .then(handle_success)
              .catch(handle_error)

@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 Vue.filter('date-unix', {
     read(value) {
-        const date = new Date(value*1000)
+        const date = new Date(value)
         let year   = '0000' + date.getFullYear()
         year       = year.substring(year.length - 4)
         let month  = '00' + (date.getMonth() + 1)
@@ -13,6 +13,6 @@ Vue.filter('date-unix', {
         return year + '-' + month + '-' + day
     },
     write(value) {
-        return Date.parse(value)/1000
+        return Date.parse(value)
     },
 })
