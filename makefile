@@ -1,7 +1,7 @@
 build:
-	mv app/consts.js app/consts_debug.js && mv app/consts_dist.js app/consts.js
 	- rm -rf dist
 	mkdir dist
+	mv app/consts.js app/consts_debug.js && mv app/consts_dist.js app/consts.js
 	./node_modules/.bin/jspm bundle app/main dist/app.js
 	./node_modules/.bin/uglifyjs dist/app.js -o dist/app.min.js
 	./node_modules/.bin/html-dist --config html-dist.config.js --input index.html
