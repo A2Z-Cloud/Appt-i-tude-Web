@@ -4,23 +4,33 @@
             <div class="left-form">
                 <div class="form-title">Customer Details</div>
                 <div class="form-group">
-                    <div class="label">Group</div>
+                    <div class="label" :class="{warning: group_warning}">
+                        <span class="label-text">Group</span>
+                        <span class="warning-content" v-if="group_warning">
+                            <span class="lnr lnr-warning"></span>
+                            <div class="warning-text">{{group_warning}}</div>
+                        </span>
+                    </div>
                     <select class="value selector" v-model="subscription.group_id" disabled>
                         <option v-for="g in groups" :value='g.id'>
                             {{ g.name }}
                         </option>
                     </select>
-                    <div class="warning" v-if="group_warning">{{group_warning}}</div>
                 </div>
 
                 <div class="form-group">
-                    <div class="label">CRM Opportunity</div>
+                    <div class="label" :class="{warning: opportunity_warning}">
+                        <span class="label-text">CRM Opportunity</span>
+                        <span class="warning-content" v-if="opportunity_warning">
+                            <span class="lnr lnr-warning"></span>
+                            <div class="warning-text">{{opportunity_warning}}</div>
+                        </span>
+                    </div>
                     <select class="value selector" v-model="subscription.opportunity_zcrm_id" disabled>
                         <option v-for="o in opportunities" :value='o.zcrm_id'>
                             {{ o.name }}
                         </option>
                     </select>
-                    <div class="warning" v-if="opportunity_warning">{{opportunity_warning}}</div>
                 </div>
 
                 <div class="form-group">
@@ -52,32 +62,35 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="label">Base Monthly Cost</div>
-                    <input class="value" v-model="subscription.monthly_cost | currency" number>
+                <div class="form-group columns">
+                    <div class="left-col">
+                        <div class="label">Base Monthly Cost</div>
+                        <input class="value" v-model="subscription.monthly_cost | currency" number>
+                    </div>
+                    <div class="right-col">
+                        <div class="label">Rate</div>
+                        <select class="value selector" v-model="subscription.discount_id | nullify ''">
+                            <option value="" selected>
+                                Standard
+                            </option>
+                            <option v-for="rc in ratecards" :value='rc.id'>
+                                {{ rc.name }} [{{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%]
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group columns">
                     <div class="left-col">
-                        <div class="label">Base Annual Cost</div>
+                        <div class="label">
+                            Base Annual Cost <span class="label-note" v-if="subscription.bonus_annual_months > 0">(Discounted)</span>
+                        </div>
                         <input class="value" v-model="subscription.monthly_cost | multiply (12 - subscription.bonus_annual_months) | currency" number>
                     </div>
                     <div class="right-col">
                         <div class="label">Bonus Months</div>
                         <input class="value" v-model="subscription.bonus_annual_months" number>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="label">Rate</div>
-                    <select class="value selector" v-model="subscription.discount_id | nullify ''">
-                        <option value="" selected>
-                            Standard
-                        </option>
-                        <option v-for="rc in ratecards" :value='rc.id'>
-                            {{ rc.name }} [{{ rc.is_increase ? '+' : '-' }}{{ rc.percentage }}%]
-                        </option>
-                    </select>
                 </div>
             </div>
         </div>
