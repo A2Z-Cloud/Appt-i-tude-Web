@@ -160,7 +160,7 @@ export const insert_transaction = function(store, {subscription_id, amount, exec
              .insert_transaction(
                  subscription_id,
                  amount,
-                 executed)
+                 executed.unix())
              .then(handle_success)
              .catch(handle_error)
     })

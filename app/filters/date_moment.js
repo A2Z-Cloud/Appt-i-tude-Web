@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import moment from 'moment'
 
 
-Vue.filter('date-unix', {
+Vue.filter('date-moment', {
     read(value) {
-        const date = new Date(value)
+        if (value === null) return null
+        const date = value.toDate()
         let year   = '0000' + date.getFullYear()
         year       = year.substring(year.length - 4)
         let month  = '00' + (date.getMonth() + 1)
@@ -13,6 +15,6 @@ Vue.filter('date-unix', {
         return year + '-' + month + '-' + day
     },
     write(value) {
-        return Date.parse(value)
+        return moment(value)
     },
 })

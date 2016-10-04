@@ -2,11 +2,13 @@
 import './top_up.css!'
 import template from './top_up.html!text'
 
-import { insert_transaction } from 'app/vuex/actions'
+import moment from 'moment'
 
 // JS Imports
 // –– Vue
 import Vue from 'vue'
+
+import { insert_transaction } from 'app/vuex/actions'
 
 
 export default Vue.extend({
@@ -37,8 +39,7 @@ export default Vue.extend({
         },
     },
     ready() {
-        const today   = new Date()
-        this.executed = today / 1000
+        this.executed = moment()
     },
     methods: {
         clicked_add() {
