@@ -44,11 +44,11 @@
                 <div class="form-group columns">
                     <div class="left-col">
                         <div class="label">From Date</div>
-                        <input class="value" v-model="subscription.from_date | date-unix" type='date'/>
+                        <input class="value" v-model="subscription.from_date | date-moment" type='date'/>
                     </div>
                     <div class="right-col">
                         <div class="label">To Date</div>
-                        <input class="value" v-model="subscription.to_date | date-unix" type='date'/>
+                        <input class="value" v-model="subscription.to_date | date-moment" type='date'/>
                     </div>
                 </div>
 

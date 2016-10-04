@@ -11,6 +11,7 @@ import store from 'app/vuex/store'
 import 'app/filters/multiply'
 import 'app/filters/currency'
 import 'app/filters/date_unix'
+import 'app/filters/date_moment'
 import 'app/filters/nullify'
 import 'app/filters/strip_underscores'
 
