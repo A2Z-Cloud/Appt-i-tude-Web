@@ -3,6 +3,7 @@
     top: 0;
     left: 0; right: 0;
 
+    z-index: 1;
     margin-bottom: 0;
     overflow: auto;
 
@@ -11,6 +12,9 @@
        -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
             box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
+
+
+/* –––– Form Layout –––– */
 
 .SubscriptionCreator
 .content-panel {
@@ -24,11 +28,6 @@
     width: 100%;
 }
 
-.SubscriptionCreator
-.warning {
-    color: #E42727;
-}
-
 .SubscriptionCreator .left-form,
 .SubscriptionCreator .right-form {
     display: inline-block;
@@ -36,6 +35,15 @@
     box-sizing: border-box;
     padding: 5px;
 }
+
+.SubscriptionCreator .left-col,
+.SubscriptionCreator .right-col {
+    display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
+}
+.SubscriptionCreator .left-col  { padding-right: 5px; }
+.SubscriptionCreator .right-col { padding-left:  5px; }
 
 .SubscriptionCreator
 .form-title {
@@ -57,8 +65,82 @@
     display: flex;
 }
 
+
+/* –––– Labels –––– */
+
 .SubscriptionCreator
-.label {}
+.label {
+    height: 20px;
+}
+
+.SubscriptionCreator
+.warning {
+    color: #E42727;
+}
+
+.SubscriptionCreator
+.label.warning {
+    position: relative;
+}
+
+.SubscriptionCreator
+.label.warning
+.label-text {
+    display: inline-block;
+    width: 100%;
+}
+
+.SubscriptionCreator
+.label.warning
+.warning-content {
+    position: absolute;
+    top: 0; right: 0;
+
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    text-align: right;
+}
+
+.SubscriptionCreator
+.label.warning .warning-content
+.warning-text {
+    visibility: hidden;
+
+    position: absolute;
+    top: 20px; right: 0;
+    z-index: 2;
+
+    display: block;
+    width: 100%;
+    min-height: 20px;
+
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border: 1px solid #E42727;
+    text-align: left;
+
+    background: #FFF;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.SubscriptionCreator
+.label.warning .warning-content:hover
+.warning-text {
+    visibility: visible;
+}
+
+.SubscriptionCreator
+.label
+.label-note {
+    color: #E42727;
+    font-size: 0.8em;
+}
+
+
+/* –––– Values –––– */
 
 .SubscriptionCreator
 .value {
@@ -83,14 +165,8 @@
     border: 1px solid #979797;
 }
 
-.SubscriptionCreator .left-col,
-.SubscriptionCreator .right-col {
-    display: inline-block;
-    width: 50%;
-    box-sizing: border-box;
-}
-.SubscriptionCreator .left-col  { padding-right: 5px; }
-.SubscriptionCreator .right-col { padding-left:  5px; }
+
+/* –––– Buttons –––– */
 
 .SubscriptionCreator
 .form-buttons {
@@ -141,6 +217,9 @@
 .form-button.submit:disabled {
     background-color: #D2D2D2;
 }
+
+
+/* –––– Done State –––– */
 
 .SubscriptionCreator
 .done-container {

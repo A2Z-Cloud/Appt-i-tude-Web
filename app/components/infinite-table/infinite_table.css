@@ -27,7 +27,7 @@
     background: none;
     font-size: 32px;
     font-family: inherit;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #E3E3E3;
 }
 .search-box .input::-webkit-input-placeholder { color: #CCC; }
 .search-box .input::-moz-placeholder          { color: #CCC; }
@@ -47,7 +47,7 @@
 .InfiniteTable
 .search-box .search-icon {
     font-size: 32px;
-    color: #CCC;
+    color: #E3E3E3;
     cursor: pointer;
 }
 
