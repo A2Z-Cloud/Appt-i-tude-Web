@@ -45,6 +45,7 @@ router.map({
         name: 'preview-dashboard',
         title: 'Preview Subscription',
         component: PreviewDashboard,
+        authenticated: false,
     },
 })
 
