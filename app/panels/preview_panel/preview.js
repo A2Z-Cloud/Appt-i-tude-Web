@@ -9,10 +9,10 @@ import Vue from 'vue'
 import moment from 'moment'
 import _ from 'lodash'
 
-import current_user from './resources/current_user!json'
-import groups from './resources/groups!json'
-import subscriptions from './resources/subscriptions!json'
-import transactions from './resources/transactions!json'
+import current_user from './resources/current_user.json!json'
+import groups from './resources/groups.json!json'
+import subscriptions from './resources/subscriptions.json!json'
+import transactions from './resources/transactions.json!json'
 
 
 export default Vue.extend({
