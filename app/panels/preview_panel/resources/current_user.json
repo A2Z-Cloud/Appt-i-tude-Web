@@ -1,0 +1,12 @@
+{
+    "email_confirmed": true,
+    "birthday": null,
+    "first_name": "Jill",
+    "id": 1,
+    "last_name": "Jillson",
+    "type": "user",
+    "email": "jill.jillson@a2zcloud.com",
+    "phone": null,
+    "invitation_token": null,
+    "zcrm_id": null
+}

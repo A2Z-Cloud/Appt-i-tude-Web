@@ -19,6 +19,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.17",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
+    "json": "github:systemjs/plugin-json@0.2.0",
     "lodash": "npm:lodash@4.15.0",
     "moment": "npm:moment@2.14.1",
     "normalize.css": "npm:normalize.css@4.0.0",
