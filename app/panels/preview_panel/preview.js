@@ -15,13 +15,6 @@ import subscriptions from './resources/subscriptions!json'
 import transactions from './resources/transactions!json'
 
 
-
-import { filter_groups,
-         filter_subscriptions,
-         filter_transactions,
-         focus_subscription } from 'app/vuex/actions'
-
-
 export default Vue.extend({
     template,
     data: () => ({
