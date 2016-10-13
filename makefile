@@ -1,19 +1,20 @@
 THIS_FILE := $(lastword $(MAKEFILE_LIST))
 
+S3_NAME_DEV = com-a2zcloud-apptitude-dev
+CF_DIST_DEV = E2HDDXXSRUZM7W
+S3_NAME_LIVE = com-a2zcloud-apptitude
+CF_DIST_LIVE = E3F4M5LFOJTS3H
+
 build:
 	# e.g. make build t=live
 	$(eval lower_target := $(shell X="${t}"; echo "$t" | tr '[:upper:]' '[:lower:]'))
-
 	# Destory and create targets subfolder in dist
 	- rm -rf dist/$(lower_target)
 	mkdir -p dist/$(lower_target)
-
 	# Switch out the correct const ready for build (if not already correct)
 	@if [ $(lower_target) != "local" ]; then\
         mv app/consts/local.js app/consts/temp.js && mv app/consts/$(lower_target).js app/consts/local.js;\
     fi
-
-
 	# Build
 	./node_modules/.bin/jspm bundle app/main dist/$(lower_target)/app.js
 	./node_modules/.bin/uglifyjs dist/$(lower_target)/app.js -o dist/$(lower_target)/app.min.js
@@ -24,18 +25,10 @@ build:
 	cp config.js dist/$(lower_target)/
 	cat dist/$(lower_target)/config.js dist/$(lower_target)/app.min.js > dist/$(lower_target)/core.min.js
 	./node_modules/.bin/jspm unbundle
-
 	# Switch back consts
 	@if [ $(lower_target) != "local" ]; then\
         mv app/consts/local.js app/consts/$(lower_target).js && mv app/consts/temp.js app/consts/local.js;\
     fi
-
-
-S3_NAME_DEV = com-a2zcloud-apptitude-dev
-CF_DIST_DEV = E2HDDXXSRUZM7W
-
-S3_NAME_LIVE = com-a2zcloud-apptitude
-CF_DIST_LIVE = E3F4M5LFOJTS3H
 deploy:
 	# e.g. make deploy t=live
 	$(eval lower_target := $(shell X="${t}"; echo "$t" | tr '[:upper:]' '[:lower:]'))
