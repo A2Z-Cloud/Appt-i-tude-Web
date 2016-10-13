@@ -40,7 +40,9 @@ deploy:
 	# e.g. make deploy t=live
 	$(eval lower_target := $(shell X="${t}"; echo "$t" | tr '[:upper:]' '[:lower:]'))
 	$(eval upper_target := $(shell X="${t}"; echo "$t" | tr '[:lower:]' '[:upper:]'))
+	# Call build with target
 	@$(MAKE) -f $(THIS_FILE) build t=$(upper_target)
+	# Updload to s3 and invalidate cloudfront cache if not local
 	@if [ $(lower_target) != "local" ]; then\
         aws s3 sync --profile a2zcloud dist/$(lower_target)/ s3://${S3_NAME_$(upper_target)};\
 		aws cloudfront create-invalidation --profile a2zcloud --distribution-id ${CF_DIST_$(upper_target)} --invalidation-batch "{\"Paths\": {\"Quantity\": 1,\"Items\": [\"/*\"]},\"CallerReference\": \"make deploy "`date +%Y-%m-%d:%H:%M:%S`"\"}";\
