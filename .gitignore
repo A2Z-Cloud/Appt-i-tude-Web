@@ -9,3 +9,5 @@ dist
 .htaccess
 
 .DS_Store
+
+app/consts/local.js

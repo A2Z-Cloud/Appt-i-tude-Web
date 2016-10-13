@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import store from 'app/vuex/store'
 
 // –– Constants
-import {debug, hash_routing} from './consts'
+import {debug, hash_routing} from './consts/local'
 
 // -- Route Panels
 import DashboardPanel from "./panels/dashboard_panel/dashboard"
