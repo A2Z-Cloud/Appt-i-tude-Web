@@ -43,6 +43,9 @@ export default Vue.extend({
             const index    = this.subscriptions.findIndex(selected)
             return (index !== -1) ? this.subscriptions[index] : null
         },
+        subscription_started() {
+            return this.selected_subscription.from_date < moment()
+        },
         selected_group() {
             if (this.selected_subscription === null) return null
             const selected = g => g.id === this.selected_subscription.group_id
