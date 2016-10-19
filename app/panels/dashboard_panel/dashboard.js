@@ -31,6 +31,7 @@ export default Vue.extend({
             return Promise.all([
                 this.filter_subscriptions({all_users}),
                 this.filter_groups({all_groups}),
+                this.filter_transactions(this.focused_subscription_id),
             ]).catch(() => false)
         },
     },
