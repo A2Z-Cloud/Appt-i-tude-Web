@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import moment from 'moment'
 
 import { merge } from 'app/utils/merge'
-import { debug } from 'app/consts'
+import { debug } from 'app/consts/local'
 
 Vue.use(Vuex)
 

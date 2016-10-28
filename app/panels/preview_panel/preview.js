@@ -1,51 +1,47 @@
 // Panel Imports
-import './dashboard.css!'
-import template from './dashboard.html!text'
+import './../dashboard_panel/dashboard.css!'
+import template from './../dashboard_panel/dashboard.html!text'
 
 // JS Imports
 // –– Vue
 import Vue from 'vue'
-import TopUpPanel from 'app/components/top_up/top_up'
 
 import moment from 'moment'
 import _ from 'lodash'
 
-
-
-import { filter_groups,
-         filter_subscriptions,
-         filter_transactions,
-         focus_subscription } from 'app/vuex/actions'
+import current_user from './resources/current_user.json!json'
+import groups from './resources/groups.json!json'
+import subscriptions from './resources/subscriptions.json!json'
+import transactions from './resources/transactions.json!json'
 
 
 export default Vue.extend({
     template,
-    components: {
-        'top-up': TopUpPanel,
-    },
-    route: {
-        waitForData: true,
-        data() {
-            const all_users  = (this.current_user.type === 'admin')
-            const all_groups = (this.current_user.type === 'admin')
-            return Promise.all([
-                this.filter_subscriptions({all_users}),
-                this.filter_groups({all_groups}),
-                this.filter_transactions(this.focused_subscription_id),
-            ]).catch(() => false)
-        },
-    },
     data: () => ({
-        show_topup_view: false,
+        current_user,
+        groups,
+        focused_subscription_id: 1,
     }),
     computed: {
+        subscriptions() {
+            const json_subs = subscriptions
+            for (const sub of json_subs) {
+                sub.from_date = moment(sub.from_date)
+                sub.to_date   = moment(sub.to_date)}
+            return json_subs
+        },
+        transactions() {
+            const json_trans = transactions
+            for (const tran of json_trans) {
+                tran.executed = moment(tran.executed)
+                tran.updated  = moment(tran.updated)
+            }
+            return json_trans
+        },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
             const index    = this.subscriptions.findIndex(selected)
             return (index !== -1) ? this.subscriptions[index] : null
-        },
-        subscription_started() {
-            return this.selected_subscription.from_date < moment()
         },
         selected_group() {
             if (this.selected_subscription === null) return null
@@ -115,36 +111,6 @@ export default Vue.extend({
         },
         historic_month_summaries() {
             return this.month_summaries.slice(1)
-        },
-    },
-    ready() {
-        if(!this.focused_subscription_id) {
-            const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
-            this.focus_subscription(id)
-        }
-    },
-    methods: {
-
-    },
-    vuex: {
-        getters: {
-            current_user: state => state.user,
-            groups: state => state.groups,
-            subscriptions: state => state.subscriptions,
-            transactions: state => state.transactions,
-            focused_subscription_id: state => state.focused_subscription_id,
-        },
-        actions: {
-            filter_groups,
-            filter_subscriptions,
-            filter_transactions,
-            focus_subscription,
-        },
-    },
-    watch: {
-        focused_subscription_id(id) {
-            if (!id) return
-            this.filter_transactions(id)
         },
     },
 })

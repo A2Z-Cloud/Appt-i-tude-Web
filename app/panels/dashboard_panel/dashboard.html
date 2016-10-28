@@ -1,6 +1,7 @@
 <div class="DashboardPanel" transition="fade">
 
-    <div v-if="selected_subscription">
+    <!-- Subscription Dashboard -->
+    <div class="dashboard" v-if="selected_subscription && subscription_started">
 
         <!-- Current Month Summary -->
         <div class="summary">
@@ -60,7 +61,7 @@
                     </tbody>
                 </table>
                 <div class="footer">
-                    <div class="footer-label">Subscription Start</div>
+                    <div class="footer-label">- Subscription Start -</div>
                 </div>
             </div>
         </div>
@@ -81,17 +82,29 @@
         </div>
     </div>
 
+    <!-- Subscription Not Started -->
+    <div class="sub-overlay sub-pending" v-if="selected_subscription && !subscription_started">
+        <div class="content-panel">
+            <h3 class="title">Hold your horses...</h3>
+            <div class="notice">
+                Looks like your subscription hasn't begun yet.<br><br>
+                If you check back in here on {{ this.selected_subscription.from_date.format('MMMM Do YYYY') }},
+                you will be able to see your subscription summary.
+            </div>
+        </div>
+    </div>
+
     <!-- No Subscription View -->
-    <div id="NoSubs" v-else>
+    <div class="sub-overlay no-subs" v-if="!selected_subscription">
         <div class="content-panel">
             <h3 class="title">Oh, Hello...</h3>
             <div class="notice">
-                Looks like you don't have a subscription yet.<br>
+                Looks like you don't have a subscription yet.<br><br>
                 If you are interested in this service, please get in touch and we can set things up for you.
             </div>
         </div>
         <div class="form-buttons">
-            <a class="form-button submit" href="http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/">Contact Us</a>
+            <a class="button submit" href="http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/">Contact Us</a>
         </div>
     </div>
 

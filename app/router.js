@@ -5,11 +5,12 @@ import VueRouter from 'vue-router'
 import store from 'app/vuex/store'
 
 // –– Constants
-import {debug, hash_routing} from './consts'
+import {debug, hash_routing} from './consts/local'
 
 // -- Route Panels
 import DashboardPanel from "./panels/dashboard_panel/dashboard"
 import SubscriptionsPanel from "./panels/subscriptions_panel/subscriptions"
+import PreviewDashboard from './panels/preview_panel/preview'
 import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
@@ -39,6 +40,12 @@ router.map({
         title: 'Create New Subscription',
         component: SubscriptionCreator,
         authenticated: true,
+    },
+    '/preview': {
+        name: 'preview-dashboard',
+        title: 'Preview Subscription',
+        component: PreviewDashboard,
+        authenticated: false,
     },
 })
 

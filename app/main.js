@@ -15,7 +15,7 @@ import 'app/filters/nullify'
 import 'app/filters/strip_underscores'
 
 // –– Constants
-import {control_url} from './consts'
+import {control_url} from './consts/local'
 
 // -- Panels
 import NavPanel from 'app/components/navigation/nav'

@@ -1,0 +1,22 @@
+[{
+    "group_id": 1,
+    "to_date": "2017-01-31T00:00:00.000Z",
+    "user_id": null,
+    "id": 1,
+    "from_date": "2016-02-01T00:00:00.000Z",
+    "service_data": {
+        "contract_state": "active",
+        "monthly_balance": 99,
+        "rates": {
+            "A2Z Executive Consultant Hourly Rate (Appt-i-tude)": 128,
+            "A2Z Senior Developer Hourly Rate (Appt-i-tude)": 80,
+            "A2Z Developer Hourly Rate (Appt-i-tude)": 70,
+            "A2Z Support Hourly Rate (Appt-i-tude)": 65
+        },
+        "zbooks_pricebook_id": null,
+        "zcrm_opportunity_id": null,
+        "singable_envelop_fingerprint": null
+    },
+    "service_id": 33,
+    "payment_id": null
+}]
