@@ -10,7 +10,7 @@
     </div>
     <table class="content-table">
         <thead>
-            <tr>
+            <tr class="header-row">
                 <th v-for="column in columns">
                     <slot :name="column + '_header'">
                         <span>{{column | strip_underscores}}</span>

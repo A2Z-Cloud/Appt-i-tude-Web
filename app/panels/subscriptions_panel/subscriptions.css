@@ -13,25 +13,29 @@
     box-sizing: border-box;
 }
 
-.SubscriptionsPanel
-.subscriptions .search-box {
-    display: none;
+.SubscriptionsPanel .subscriptions tr th,
+.SubscriptionsPanel .subscriptions tr td {
+    text-align: center;
 }
 
-.SubscriptionsPanel
-.subscriptions thead {
-    display: none;
-}
-
-.SubscriptionsPanel
-.subscriptions td:first-child {
+.SubscriptionsPanel .subscriptions tr th:first-child,
+.SubscriptionsPanel .subscriptions tr td:first-child {
     text-align: left;
 }
 
-.SubscriptionsPanel
-.subscriptions td:last-child {
+.SubscriptionsPanel .subscriptions tr th:last-child,
+.SubscriptionsPanel .subscriptions tr td:last-child {
     text-align: right;
 }
+
+/* Sub Balance */
+.SubscriptionsPanel .balance.positive { color: inherit; }
+.SubscriptionsPanel .balance.negative { color: #DC6F6F; }
+
+/* Sub Status */
+.SubscriptionsPanel .status.pending   { color: #FFC107; }
+.SubscriptionsPanel .status.suspended { color: #DC6F6F; }
+.SubscriptionsPanel .status.active    { color: #94C120; }
 
 
 /* ––– Loader ––– */

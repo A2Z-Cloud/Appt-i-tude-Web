@@ -2,11 +2,12 @@
     <div class="subscriptions">
         <infinite-table
             title="Search Subscriptions"
-            :columns="['group_id', 'from_date']"
+            :columns="['name', 'term', 'balance', 'status']"
             :items="display_subs"
             :fetch_next="fetch_next"
             :fetch_next_search="fetch_next_search"
             :display_table_cell="display_table_cell"
+            :display_table_cell_type="display_table_cell_type"
             :item_clicked="item_clicked">
         </infinite-table>
     </div>
