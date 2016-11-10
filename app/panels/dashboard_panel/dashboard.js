@@ -26,11 +26,9 @@ export default Vue.extend({
     route: {
         waitForData: true,
         data() {
-            const all_users  = (this.current_user.type === 'admin')
-            const all_groups = (this.current_user.type === 'admin')
             return Promise.all([
-                this.filter_subscriptions({all_users}),
-                this.filter_groups({all_groups}),
+                this.filter_subscriptions({all_users:this.is_admin}),
+                this.filter_groups({all_groups:this.is_admin}),
                 this.filter_transactions(this.focused_subscription_id),
             ]).catch(() => false)
         },
@@ -39,6 +37,9 @@ export default Vue.extend({
         show_topup_view: false,
     }),
     computed: {
+        is_admin() {
+            return this.current_user.type === 'admin'
+        },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
             const index    = this.subscriptions.findIndex(selected)

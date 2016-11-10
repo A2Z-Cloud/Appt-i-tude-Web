@@ -20,72 +20,49 @@ export default Vue.extend({
     template,
     route: {
         data() {
-            const all_users  = (this.current_user.type === 'admin')
-            const all_groups = (this.current_user.type === 'admin')
-            return Promise.all([
-                this.filter_subscriptions({all_users}),
-                this.filter_groups({all_groups}),
-            ]).catch(() => false)
+            // fetch groups for subscription names
+            return this.filter_groups({all_groups:this.is_admin})
         },
     },
     components: {
         'infinite-table': infinite_table,
     },
-    data: () => ({
-
-    }),
+    data: () => ({}),
     computed: {
-        display_subs() {
-            if(this.$loadingRouteData) return []
-
-            this.subscriptions.map(item => {
-                // Set Balance
-                let balance = Math.round( Math.random()*1000 )
-                    balance = balance > 500 ? balance*-1 : balance
-                item['balance'] = balance
-
-                // Set Status
-                let status  = balance < 0 ? 'Suspended' : 'Active'
-                item['status'] = item['from_date'] > moment() ? 'Pending' : status
-
-                // zero pending subscriptions
-                if(item['status'] == 'Pending') item['balance'] = 0
-
-                return item
-            })
-
-            return this.subscriptions
+        is_admin() {
+            return this.current_user.type === 'admin'
         },
     },
     ready() {
     },
     methods: {
-        fetch_next(offset=0) {
-            return Promise.all([
-                this.filter_subscriptions({'all_users':this.is_admin, offset}),
-                this.filter_groups({'all_groups':this.is_admin})
-            ])
-        },
-        fetch_next_search(term, offset=0) {
-            return Promise.all([
-                this.filter_subscriptions({'all_users':this.all_users, term, offset}),
-                this.filter_groups({'all_groups':this.is_admin})
-            ])
+        fetch(term=null, offset=0) {
+            // fetch action will return ids for the subscriptions
+            // this means they need to be pulled from store and resorted for the table to display them
+            return this.filter_subscriptions({'all_users':this.is_admin, term, offset})
+                       .then(items => this.subscriptions.filter(s => items.includes(s.id))
+                                                        .sort((a,b) => items.indexOf(a.id) > items.indexOf(b.id)))
         },
         display_table_cell(subscription, {column}) {
+            // default
             let value = subscription[column]
 
-            // get name and format dates into term
+            // get name of group for subscription
             if (column === 'name')
                 return this.groups.filter(g => g.id === subscription['group_id'] )[0].name
+
+            // format dates into term
             if (column === 'term')
                 return subscription['from_date'].format('MMMM YYYY') + ' - ' + subscription['to_date'].format('MMMM YYYY')
 
-            // create container for balance and status
+            // fetch balance from server
             if (column === 'balance') {
-                let balance_class = value >= 0 ? 'positive' : 'negative'
-                return "<span class='balance "+balance_class+"'>£"+value+"</span>"}
-            if (column === 'status') {
+                value = value == null || value == undefined ? 0 : value
+                let balance_class = value > 0 ? 'positive' : 'negative'
+                return "<span class='balance "+balance_class+"'>&#163;"+value+"</span>"}
+
+            // appl css to colour status
+            if (column === 'status' && value) {
                 let status_class = value.toLowerCase()
                 return "<span class='status "+status_class+"'>"+value+"</span>"}
 
