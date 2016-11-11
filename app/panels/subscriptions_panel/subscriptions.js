@@ -62,9 +62,9 @@ export default Vue.extend({
                 return "<span class='balance "+balance_class+"'>&#163;"+value+"</span>"}
 
             // appl css to colour status
-            if (column === 'status' && value) {
-                let status_class = value.toLowerCase()
-                return "<span class='status "+status_class+"'>"+value+"</span>"}
+            if (column === 'status') {
+                value = subscription.service_data.contract_state
+                return "<span class='status "+value+"'>"+value+"</span>"}
 
             return value
         },

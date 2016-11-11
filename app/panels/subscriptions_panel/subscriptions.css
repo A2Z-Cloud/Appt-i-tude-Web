@@ -33,6 +33,7 @@
 .SubscriptionsPanel .balance.negative { color: #DC6F6F; }
 
 /* Sub Status */
+.SubscriptionsPanel .status { text-transform: capitalize; }
 .SubscriptionsPanel .status.pending   { color: #FFC107; }
 .SubscriptionsPanel .status.suspended { color: #DC6F6F; }
 .SubscriptionsPanel .status.active    { color: #94C120; }

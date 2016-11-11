@@ -48,6 +48,9 @@ export default Vue.extend({
         subscription_started() {
             return this.selected_subscription.from_date < moment()
         },
+        month_start() {
+            return this.selected_subscription.from_date.format('DD');
+        },
         selected_group() {
             if (this.selected_subscription === null) return null
             const selected = g => g.id === this.selected_subscription.group_id
@@ -83,23 +86,23 @@ export default Vue.extend({
             return periods
         },
         ordered_months() {
-            // Takes the transactions keyed by month and returned those keys ordered
-            // Dont allow any future months just incase they've been logged prematurly
+            // Takes the transactions keyed by month and returns those keys in order
+            // Dont allow any future months just incase they've been logged prematurely
             const today         = moment()
             const all_dates     = _.keys(this.monthly_subscription_transactions)
-            const past_dates    = all_dates.filter(d => !(moment(d, "YYYY MM", true).year() > today.year() || moment(d, "YYYY MM", true).year() === today.year() && moment(d, "YYYY MM", true).month() > today.month()))
+            const past_dates    = all_dates.filter(d => moment(d+" "+this.month_start, "YYYY MM DD", true).isBefore(today))
             const ordered_dates = past_dates.sort((a, b) => moment(a, "YYYY MM", true).isBefore(moment(b, "YYYY MM", true)))
             return ordered_dates
         },
         month_summaries() {
             const chronological_month_order = this.ordered_months.reverse()
             const transactions  = this.monthly_subscription_transactions
-            const summeries     = []
+            const summaries     = []
             const monthly_topup = this.selected_subscription.service_data.monthly_balance
 
             for (const month of chronological_month_order) {
-                const period   = moment(month, "YYYY MM", true)
-                const previous = summeries.slice(-1)[0]
+                const period   = moment(month+" "+this.month_start, "YYYY MM DD", true)
+                const previous = summaries.slice(-1)[0]
                 const start    = (previous) ? previous.balance : 0
                 const amounts  = transactions[month].map(t => t.amount)
                 const spent    = amounts.filter(t => t < 0).reduce((a, b) => a + b, 0)
@@ -107,15 +110,25 @@ export default Vue.extend({
                 const added    = monthly_topup + credit
                 const balance  = start + added + spent
 
-                summeries.push({period, start, spent, added, balance})
+                summaries.push({period, start, spent, added, balance})
             }
-            return summeries.reverse()
+            return summaries.reverse()
         },
         current_month_summary() {
             return this.month_summaries.reverse().slice(-1)[0]
         },
         historic_month_summaries() {
             return this.month_summaries.slice(1)
+        },
+        current_visible_month() {
+            let visible_date = this.ordered_months.slice(-1)[0]+" "+this.month_start
+            return moment(visible_date, "YYYY MM DD", true)
+        },
+        showing_current_month() {
+            return this.current_visible_month.isSame(moment(),'month')
+        },
+        upcoming_month() {
+            return moment(this.current_visible_month).add(1,'Month')
         },
     },
     ready() {
