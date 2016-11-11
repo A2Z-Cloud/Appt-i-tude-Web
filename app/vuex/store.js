@@ -68,7 +68,6 @@ const mutations = {
     SUBSCRIPTION_UPDATE({subscriptions}, subscription) {
         const index   = subscriptions.findIndex(s => s.id === subscription.id)
         const new_sub = merge(subscriptions[index], subscription)
-        new_sub.service_data = JSON.parse(new_sub.service_data)
         new_sub.from_date = moment.unix(new_sub.from_date)
         new_sub.to_date = moment.unix(new_sub.to_date)
         if (index !== -1) subscriptions.$set(index, new_sub)
