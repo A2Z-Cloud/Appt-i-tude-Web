@@ -29,20 +29,13 @@
         </div>
     </div>
 
-    <!-- Nav Title: No Subscription -->
-    <div v-if="selected_subscription == null && !$route.title" class="title-content">
-        <div class="subscription">
-            <div class="selection">
-                <span class="sub-title">Appt-i-tude</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Nav Title: Component Title -->
-    <div v-if="$route.title" class="title-content">
+    <div v-if="$route.title || selected_subscription == null" class="title-content">
         <div class="subscription">
             <div class="selection">
-                <span class="sub-title">{{$route.title}}</span>
+                <img class="nav-logo" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/logo/a2zcloud.svg"/>
+                <span class="sub-title" v-if="$route.title">{{$route.title}}</span>
+                <span class="sub-title" v-else>Appt-i-tude</span>
             </div>
         </div>
     </div>

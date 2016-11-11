@@ -38,20 +38,18 @@ export default Vue.extend({
         waitForData: true,
         data() {
             const promises = [
-                this.filter_groups(),
                 this.get_group({zcrm_id: this.$route.query['group-zcrm-id']}).catch(() => {
                     this.group_warning = "Couldn't find group. Make sure they are a group in A2Z Users and have their CRM id set."
                     return null}),
                 this.get_opportunity({zcrm_id: this.$route.query['opportunity-zcrm-id']}).catch(() => {
                     this.opportunity_warning = "Couldn't find opportunity."
                     return null}),
+                this.filter_groups(),
                 this.filter_ratecards()]
             return Promise.all(promises)
-                          .then(([groups, query_group, query_opportunity]) => {
-                              const group_id = (query_group) ? query_group.id : null
-                              this.subscription.group_id = group_id
-                              const opportunity_zcrm_id = (query_opportunity) ? query_opportunity.zcrm_id : null
-                              this.subscription.opportunity_zcrm_id = opportunity_zcrm_id})
+                          .then(([query_group_id, query_opportunity_zcrm_id]) => {
+                              this.subscription.group_id = query_group_id
+                              this.subscription.opportunity_zcrm_id = query_opportunity_zcrm_id})
         },
     },
     vuex: {

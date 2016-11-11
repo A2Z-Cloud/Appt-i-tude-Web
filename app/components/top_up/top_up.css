@@ -39,6 +39,7 @@
 .submit {
     max-height: 35px;
     padding: 7px 20px;
+    overflow: visible;
 
     border: none;
     text-decoration: none;

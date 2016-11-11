@@ -4,13 +4,20 @@
     <div class="dashboard" v-if="selected_subscription && subscription_started">
 
         <!-- Current Month Summary -->
-        <div class="summary">
+        <div class="summary" v-if="current_month_summary">
             <div class="dashboard-card">
                 <div class="card-title">Period</div>
                 <div class="card-content">
                     <div class="date-value">
                         <div class="month">{{current_month_summary.period.format("MMMM")}}</div>
                         <div class="year">{{current_month_summary.period.year()}}</div>
+                    </div>
+                </div>
+                <div class="month-warning" v-if="!showing_current_month">
+                    <div class="notice">Where is {{upcoming_month.format("MMMM")}}?</div>
+                    <div class="explanation">
+                        <div>This subscripiton started on {{selected_subscription.from_date.format("MMMM Do")}}.
+                        This means next month will commence on {{upcoming_month.format("MMMM Do")}}.</div>
                     </div>
                 </div>
             </div>
