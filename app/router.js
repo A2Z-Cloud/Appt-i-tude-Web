@@ -11,7 +11,7 @@ import {debug, hash_routing} from './consts/local'
 import DashboardPanel from "./panels/dashboard_panel/dashboard"
 import SubscriptionsPanel from "./panels/subscriptions_panel/subscriptions"
 import PreviewDashboard from './panels/preview_panel/preview'
-import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
+import SubscriptionCreator from "./panels/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
 

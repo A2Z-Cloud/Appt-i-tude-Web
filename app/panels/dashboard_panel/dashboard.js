@@ -5,7 +5,7 @@ import template from './dashboard.html!text'
 // JS Imports
 // –– Vue
 import Vue from 'vue'
-import TopUpPanel from 'app/components/top_up/top_up'
+import TopUpPanel from 'app/components/top-up/top_up'
 
 import moment from 'moment'
 import _ from 'lodash'
