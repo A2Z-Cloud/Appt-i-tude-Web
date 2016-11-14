@@ -250,10 +250,59 @@
 }
 
 .DashboardPanel
-.actions {
+.actions-list {
+    position: absolute;
+    bottom: 110px; right: 40px;
+    z-index: 2;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.DashboardPanel
+.action-option {
+    margin-top: 15px;
+
+    padding: 10px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: #FFF;
+    background-color: #A9CA5D;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* transition animation */
+.action-list-transition {
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+}
+.action-list-enter, .action-list-leave {
+    opacity: 0;
+}
+
+.DashboardPanel
+.action-list-transition .action-option {
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 0;
+}
+.DashboardPanel .action-list-enter .action-option,
+.DashboardPanel .action-list-leave .action-option {
+    margin-bottom: -20px;
+}
+
+
+.DashboardPanel
+.action {
     position: absolute;
     bottom: 40px; right: 110px;
-    z-index: 2;
+    z-index: 3;
 
     width: 300px;
     padding: 20px;
@@ -266,61 +315,15 @@
             box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
 }
 
-/* always present */
+/* transition animation */
 .action-transition {
     transition: all 0.2s ease-in-out;
+    opacity: 1;
     margin: 0;
 }
-/* .expand-enter defines the starting state for entering */
-/* .expand-leave defines the ending state for leaving */
 .action-enter, .action-leave {
     opacity: 0;
     margin-right: -10px;
-}
-
-
-/* –––––––––––––––––– SUB NOT STARTED / NO SUBS –––––––––––––––––––––– */
-
-.sub-overlay {
-    position: absolute;
-    top: 0;
-    left: 0; right: 0;
-
-    margin-bottom: 0;
-    overflow: auto;
-
-    background-color: #FFF;
-    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-.sub-overlay
-.content-panel {
-    display: block;
-    margin: auto;
-
-    padding: 32px;
-    box-sizing: border-box;
-}
-
-.sub-overlay
-.title {
-    font-size: 2em;
-}
-
-.sub-overlay
-.notice {
-    font-size: 1.2em;
-    margin-top: 32px;
-}
-
-.sub-overlay
-.form-buttons {
-    margin: auto;
-    padding: 32px;
-    padding-top: 0;
-    box-sizing: border-box;
 }
 
 
@@ -338,31 +341,4 @@
 
 .fade-leave {
     transition-delay: .4s;
-}
-
-
-/* ––– Media Queries ––– */
-
-/* Larger than tablet */
-@media (min-width: 750px) {
-    .sub-overlay .content-panel,
-    .sub-overlay .form-buttons { width: 100%; }
-}
-
-/* Larger than desktop */
-@media (min-width: 1000px) {
-    .sub-overlay {
-        top: 32px;
-        left: 64px; right: 64px;
-        margin-bottom: 64px;
-    }
-
-    .sub-overlay .content-panel,
-    .sub-overlay .form-buttons { width: 80%; }
-}
-
-/* Larger than Desktop HD */
-@media (min-width: 1200px) {
-    .sub-overlay .content-panel,
-    .sub-overlay .form-buttons { width: 60%; }
 }

@@ -130,6 +130,23 @@ export const filter_subscriptions = function(store, {all_users=false, term=null,
     })
 }
 
+export const update_subscription = function(store, subscription_id, state) {
+    return new Promise((resolve, reject) => {
+        const handle_success = subscription => {
+            store.dispatch('SUBSCRIPTION_UPDATE', subscription)
+            resolve(subscription.id)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .update_subscription(subscription_id, state)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
+
 export const filter_transactions = function(store, subscription_id=null) {
     return new Promise((resolve, reject) => {
         const handle_success = transactions => {

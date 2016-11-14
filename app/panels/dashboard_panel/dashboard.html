@@ -1,8 +1,6 @@
 <div class="DashboardPanel" transition="fade">
-
     <!-- Subscription Dashboard -->
-    <div class="dashboard" v-if="selected_subscription && subscription_started">
-
+    <div class="dashboard" v-if="showing_dashboard">
         <!-- Current Month Summary -->
         <div class="summary" v-if="current_month_summary">
             <div class="dashboard-card">
@@ -76,43 +74,72 @@
         <!-- Action Buttons -->
         <div v-if="current_user.type === 'admin'"
              class="floating-plus"
-             @click="show_topup_view = !show_topup_view">
-                <span class="lnr lnr-cross" :class="{'rotate-45': show_topup_view}"></span>
+             @click="toggle_actions">
+                <span class="lnr lnr-cross" :class="{'rotate-45': is_showing_actions || current_action}"></span>
         </div>
 
-        <!-- Top Up View -->
-        <div class="actions" v-if='show_topup_view' transition="action">
-            <top-up
-                :subscription_id='focused_subscription_id'
-                :close='() => (show_topup_view = false)'>
-            </top-up>
+        <!-- Actions List -->
+        <ul class="actions-list" v-if="is_showing_actions" transition="action-list">
+            <li class="action-option" @click="set_action('state')">Set {{toggled_state}}.</li>
+            <li class="action-option" @click="set_action('credit')">Credit subscription.</li>
+        </ul>
+
+        <!-- Action Components -->
+        <div class="action" v-if='current_action' transition="action">
+            <template v-if="current_action == 'state'">
+                <update-state
+                    :subscription_id='focused_subscription_id'
+                    :close='close_action'>
+                </update-state>
+            </template>
+            <template v-if="current_action == 'credit'">
+                <top-up
+                    :subscription_id='focused_subscription_id'
+                    :close='close_action'>
+                </top-up>
+            </template>
         </div>
     </div>
 
-    <!-- Subscription Not Started -->
-    <div class="sub-overlay sub-pending" v-if="selected_subscription && !subscription_started">
-        <div class="content-panel">
-            <h3 class="title">Hold your horses...</h3>
-            <div class="notice">
-                Looks like your subscription hasn't begun yet.<br><br>
-                If you check back in here on {{ this.selected_subscription.from_date.format('MMMM Do YYYY') }},
-                you will be able to see your subscription summary.
-            </div>
-        </div>
-    </div>
-
-    <!-- No Subscription View -->
-    <div class="sub-overlay no-subs" v-if="!selected_subscription">
-        <div class="content-panel">
-            <h3 class="title">Oh, Hello...</h3>
-            <div class="notice">
-                Looks like you don't have a subscription yet.<br><br>
-                If you are interested in this service, please get in touch and we can set things up for you.
-            </div>
-        </div>
-        <div class="form-buttons">
-            <a class="button submit" href="http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/">Contact Us</a>
-        </div>
-    </div>
-
+    <!-- Has No Subscription -->
+    <template v-if="!selected_subscription">
+        <notice
+            title="Oh, hello..."
+            text="Looks like you don't have a subscription yet.<br><br>
+            If you are interested in this service, please get in touch and we can set things up for you.">
+            <a slot="foot" class='button submit' href='http://www.a2zcloud.com/what-we-do/appt-i-tudebusiness-support/'>Contact Us</a>
+        </notice>
+    </template>
+    <template v-else>
+        <!-- Subscription Is Suspended -->
+        <template v-if="!override_notice && subscription_suspended">
+            <notice
+                title="Stop right there..."
+                text="For one reason or another, your subscription has been suspended.<br><br>
+                This may be because you have overspent this month or there is a dispute with your subscription.
+                If you want to discuss this or dispute it please send us a message.">
+                <a slot="foot" class='button submit' href='mailto:support@a2zcloud.com'>Contact Us</a>
+            </notice>
+        </template>
+        <!-- Subscription Has Ended -->
+        <template v-if="!override_notice && subscription_ended">
+            <notice
+                title="End of the line..."
+                text="Your subscription has ended.<br><br>
+                You can get in touch with us if you want to renew or review your subscription.<br>
+                Alternatively, if you want to see the subscription summary anyway, you can click below.">
+                <a slot="foot" class="button submit" @click="override_notice=true">View Summary</a>
+            </notice>
+        </template>
+        <!-- Subscription Has Not Started -->
+        <template v-if="!override_notice && !subscription_started">
+            <notice
+                title="Hold your horses..."
+                :text="'Looks like your subscription is yet to begin.<br><br>
+                If you check back in here on <strong>'+selected_subscription.from_date.format('MMMM Do YYYY')+',
+                </strong>you will be able to see your subscription summary.'">
+                <a slot="foot" class='button submit' href='mailto:support@a2zcloud.com'>Contact Us</a>
+            </notice>
+        </template>
+    </template>
 </div>

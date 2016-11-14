@@ -2,14 +2,17 @@
 import './dashboard.css!'
 import template from './dashboard.html!text'
 
+// Components
+import TopUp from 'app/components/top-up/top_up'
+import UpdateState from 'app/components/update-state/update_state'
+import Notice from 'app/components/notice/notice'
+
 // JS Imports
 // –– Vue
 import Vue from 'vue'
-import TopUpPanel from 'app/components/top-up/top_up'
 
 import moment from 'moment'
 import _ from 'lodash'
-
 
 
 import { filter_groups,
@@ -21,7 +24,9 @@ import { filter_groups,
 export default Vue.extend({
     template,
     components: {
-        'top-up': TopUpPanel,
+        'top-up': TopUp,
+        'update-state': UpdateState,
+        'notice': Notice,
     },
     route: {
         waitForData: true,
@@ -34,11 +39,16 @@ export default Vue.extend({
         },
     },
     data: () => ({
-        show_topup_view: false,
+        is_showing_actions: false,
+        current_action: null,
+        override_notice: false,
     }),
     computed: {
         is_admin() {
-            return this.current_user.type === 'admin'
+            const admin = this.current_user.type === 'admin'
+            // re-evaluate the override, admins should always see the summary
+            // this.override_notice = admin ? true : false
+            return admin
         },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
@@ -46,7 +56,23 @@ export default Vue.extend({
             return (index !== -1) ? this.subscriptions[index] : null
         },
         subscription_started() {
-            return this.selected_subscription.from_date < moment()
+            return this.selected_subscription &&
+                   this.selected_subscription.from_date < moment()
+        },
+        subscription_ended() {
+            return this.selected_subscription &&
+                   this.selected_subscription.to_date < moment()
+        },
+        subscription_suspended() {
+            return this.selected_subscription &&
+                   this.selected_subscription.service_data.contract_state == 'suspended'
+        },
+        showing_dashboard() {
+            const hide_notice = this.subscription_started  &&
+                                !this.subscription_ended   &&
+                                !this.subscription_suspended
+            // cannot show dashboard if no subscription is selected
+            return this.selected_subscription && (this.override_notice || hide_notice)
         },
         month_start() {
             return this.selected_subscription.from_date.format('DD');
@@ -125,10 +151,13 @@ export default Vue.extend({
             return moment(visible_date, "YYYY MM DD", true)
         },
         showing_current_month() {
-            return this.current_visible_month.isSame(moment(),'month')
+            return !this.subscription_ended && this.current_visible_month.isSame(moment(),'month')
         },
         upcoming_month() {
             return moment(this.current_visible_month).add(1,'Month')
+        },
+        toggled_state() {
+            return this.selected_subscription.service_data.contract_state != 'active' ? 'active' : 'suspended'
         },
     },
     ready() {
@@ -138,7 +167,19 @@ export default Vue.extend({
         }
     },
     methods: {
-
+        toggle_actions() {
+            if(this.is_showing_actions || this.current_action)
+                this.set_action(null)
+            else
+                this.is_showing_actions = true
+        },
+        set_action(action) {
+            this.is_showing_actions = false
+            this.current_action = action
+        },
+        close_action() {
+            this.set_action(null)
+        },
     },
     vuex: {
         getters: {
