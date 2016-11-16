@@ -71,6 +71,14 @@
     font-size: 26px;
 }
 
+.NavPanel
+.nav-logo {
+    display: inline-block;;
+    max-width: 65px;
+    margin-right: 5px;
+    vertical-align: bottom;
+}
+
 
 /* Username and Sign Out section. */
 

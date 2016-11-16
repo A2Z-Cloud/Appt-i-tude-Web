@@ -75,6 +75,63 @@
 .DashboardPanel .month { font-size: 36px; }
 
 
+.DashboardPanel
+.month-warning {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.DashboardPanel
+.month-warning
+.notice {
+    width: 100%;
+    padding: 3px 10px;
+    box-sizing: border-box;
+
+    text-align: left;
+    color: #CCC;
+    font-size: small;
+}
+
+.DashboardPanel .month-warning .notice:hover {
+    color: inherit;
+}
+
+.DashboardPanel
+.month-warning
+.explanation {
+    visibility: hidden;
+
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    max-height: 0px;
+    overflow: hidden;
+
+    border: 1px solid #CCC;
+    background: #FFF;
+
+    font-size: small;
+    vertical-align: bottom;
+
+    transition: all 0.5s;
+}
+
+.DashboardPanel .month-warning .notice:hover + .explanation,
+.DashboardPanel .month-warning .explanation:hover {
+    visibility: visible;
+    max-height: 1000%;
+}
+
+.DashboardPanel
+.month-warning
+.explanation div {
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+
 /* ––– Historical Info ––– */
 
 .DashboardPanel

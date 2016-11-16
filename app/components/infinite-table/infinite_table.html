@@ -5,12 +5,12 @@
             type="text"
             v-model="search_term"
             :placeholder="title ? title : 'Search...'"
-            v-on:keyup="search | debounce 100" v-el:table-search>
+            v-on:keyup="fetch_items() | debounce 500" v-el:table-search>
         <span class="search-icon lnr lnr-magnifier" @click="$els.tableSearch.focus()"></span>
     </div>
     <table class="content-table">
         <thead>
-            <tr>
+            <tr class="header-row noselect">
                 <th v-for="column in columns">
                     <slot :name="column + '_header'">
                         <span>{{column | strip_underscores}}</span>
@@ -23,14 +23,14 @@
             v-el:table-body
             :style="{maxHeight: table_height}"
             v-infinite-scroll="nearing_bottom()"
-            infinite-scroll-disabled="disabled"
+            infinite-scroll-disabled="exhausted"
             infinite-scroll-distance="10">
 
-                <tr v-for='item in display_items'
+                <tr v-for='item in items'
                     track-by='$index'
                     class="item"
                     :class="{'clickable': this.item_clicked}"
-                    :style="row_style"
+                    :style="{cursor: item_clicked ? 'pointer' : 'auto'}"
                     @click="_item_clicked(item)">
                         <td v-for="column in columns">
                             <template v-if="display_table_cell_type && display_table_cell_type(item, {column: column}) == 'component'">
