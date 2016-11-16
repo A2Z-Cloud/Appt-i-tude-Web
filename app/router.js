@@ -14,6 +14,7 @@ import PreviewDashboard from './panels/preview_panel/preview'
 import SubscriptionCreator from "./components/subscription_creator/subscription_creator"
 
 import { authenticate } from 'app/vuex/actions'
+import { create_sign_out_url } from 'app/utils/url_helpers'
 
 
 Vue.use(VueRouter)
@@ -51,7 +52,11 @@ router.map({
 
 router.beforeEach(function({to, next}) {
     if (to.authenticated && store.state.user === null) {
-        const go_auth = auth_url => (window.location = auth_url)
+        const go_auth = auth_client_url => {
+            const router_mode = to.router.mode
+            const redirect_path = to.path
+            const auth_url = create_sign_out_url({router_mode, auth_client_url, redirect_path})
+            window.location = auth_url}
         authenticate(store).then(next).catch(go_auth)
     } else {
         next()

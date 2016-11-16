@@ -6,6 +6,8 @@ import template from './nav.html!text'
 // –– Vue
 import Vue from 'vue'
 
+import { create_sign_out_url } from 'app/utils/url_helpers'
+
 
 export default Vue.extend({
     template,
@@ -13,16 +15,10 @@ export default Vue.extend({
     }),
     computed: {
         sign_out_url() {
-            // Take the user to the A2Z Auth with a redirect to the
-            // auth sign in page after they sign out.
-            // Additionally after they sign in again have the next
-            // parameter be set back to this url
-            const delimiter   = this.$router.mode === 'hash' ? '/#!' : ''
-            const current_url = window.location.protocol + '//' + window.location.host + delimiter + this.$route.path
-            const sign_in_url = this.auth_client_url
-            const sign_in_url_return = sign_in_url + '?next=' + encodeURIComponent(current_url)
-
-            return this.auth_client_url + '/sign-out?next=' + encodeURIComponent(sign_in_url_return)
+            const router_mode = this.$router.mode
+            const auth_client_url = this.auth_client_url
+            const redirect_path = this.$route.path
+            return create_sign_out_url({router_mode, auth_client_url, redirect_path})
         },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
