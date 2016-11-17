@@ -32,6 +32,11 @@
 }
 
 .DashboardPanel
+.summary-placeholder {
+    font-size: 1.6em;
+}
+
+.DashboardPanel
 .dashboard-card {
     position: relative;
     width: 20%;

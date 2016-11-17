@@ -55,8 +55,17 @@ export default Vue.extend({
         },
     },
     ready() {
+        // check if the state can be changed
+        this.validate_subscription()
     },
     methods: {
+        validate_subscription() {
+            const started = this.selected_subscription.from_date < moment()
+            const ended   = this.selected_subscription.to_date < moment()
+            const valid   = started && !ended
+            if(!valid)
+                this.error = "This subscription's state cannot be changed as it has " + (ended ? "ended." : "not started.")
+        },
         accept() {
             this.update_subscription(this.subscription_id, this.new_state)
                 .then(this.close)

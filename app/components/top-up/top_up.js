@@ -20,11 +20,25 @@ export default Vue.extend({
         error: null,
     }),
     vuex: {
+        getters: {
+            subscriptions: state => state.subscriptions,
+        },
         actions: {
             insert_transaction,
         },
     },
     computed: {
+        subscription() {
+            const selected = s => s.id === this.subscription_id
+            const index    = this.subscriptions.findIndex(selected)
+
+            if (index !== -1) {
+                return this.subscriptions[index]
+            }
+
+            this.error = "Failed to load the current subscription. Please try refreshing the page."
+            return null
+        },
         transaction() {
             return {
                 subscription_id: this.subscription_id,
@@ -33,9 +47,18 @@ export default Vue.extend({
             }
         },
         valid_transaction() {
+            if(!this.subscription) return false
+
+            // check transactionis within subscription dates
+            const constrained = this.executed > this.subscription.from_date
+                             && this.executed < this.subscription.to_date
+
+            // show error to user if date not constrained
+            this.error = !constrained ? "The transaction date must not be outside the subscription dates." : null
+
             return this.subscription_id
-                && this.executed
                 && this.amount
+                && constrained
         },
     },
     ready() {

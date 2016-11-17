@@ -50,9 +50,15 @@
                 </div>
             </div>
         </div>
+        <div class="summary" v-else>
+            <div class="summary-placeholder">
+                This subscription will start on
+                <strong>{{selected_subscription.from_date.format('MMMM Do YYYY')}}</strong>
+            </div>
+        </div>
 
         <!-- Subscription History -->
-        <div class="previous">
+        <div class="previous" v-if="historic_month_summaries.length > 0">
             <div class="previous-content">
                 <table class="summary-table">
                     <tbody>
@@ -135,7 +141,7 @@
         <template v-if="!override_notice && !subscription_started">
             <notice
                 title="Hold your horses..."
-                :text="'Looks like your subscription is yet to begin.<br><br>
+                :text="'Looks like your subscription has not begun.<br><br>
                 If you check back in here on <strong>'+selected_subscription.from_date.format('MMMM Do YYYY')+',
                 </strong>you will be able to see your subscription summary.'">
                 <a slot="foot" class='button submit' href='mailto:support@a2zcloud.com'>Contact Us</a>

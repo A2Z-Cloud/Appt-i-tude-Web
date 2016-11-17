@@ -24,15 +24,21 @@
 }
 
 .NavPanel
-.sub-dates {
+.sub-detail {
     display: flex;
     margin-bottom: 10px;
 }
 
 .NavPanel
+.sub-dates {
+    display: flex;
+    max-width: 260px;
+}
+
+.NavPanel
 .sub-dates
 .date-group {
-    padding-right: 30px;
+    padding-right: 20px;
 }
 
 .NavPanel
@@ -48,13 +54,35 @@
 }
 
 .NavPanel
-.subscription.dropdown {
-    cursor: pointer;
+.sub-state {
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 3px;
+    border: 4px solid #FFF;
+    border-radius: 5px;
+
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.NavPanel .sub-state.pending   { border-color: #F5DE99; color: #F5DE99; }
+.NavPanel .sub-state.suspended { border-color: #EC9292; color: #EC9292; }
+.NavPanel .sub-state.active    { border-color: #88AD28; color: #88AD28; }
+.NavPanel .sub-state.ended     { border-color: #8BA8D6; color: #8BA8D6; }
+
+.NavPanel
+.subscription
+.selection.dropdown {
+    display: inline-block;
 }
 
 .NavPanel
-.subscription.dropdown:hover {
+.subscription
+.selection.dropdown:hover {
     color: #5F8454;
+    cursor: pointer;
 }
 
 .NavPanel

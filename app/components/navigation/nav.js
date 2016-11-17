@@ -6,6 +6,8 @@ import template from './nav.html!text'
 // –– Vue
 import Vue from 'vue'
 
+import moment from 'moment'
+
 
 export default Vue.extend({
     template,
@@ -24,6 +26,9 @@ export default Vue.extend({
 
             return this.auth_client_url + '/sign-out?next=' + encodeURIComponent(sign_in_url_return)
         },
+        is_admin() {
+            return this.current_user.type === 'admin'
+        },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
             const index    = this.subscriptions.findIndex(selected)
@@ -38,10 +43,17 @@ export default Vue.extend({
         dropped_down() {
             return this.$route.name === 'subscriptions'
         },
+        subscription_state() {
+            if(!this.selected_subscription) return null
+            // check if sub ended
+            const ended = this.selected_subscription.to_date < moment()
+            return ended ? 'ended' : this.selected_subscription.service_data.contract_state
+        },
     },
     vuex: {
         getters:  {
             auth_client_url: state => state.auth_client_url,
+            current_user: state => state.user,
             focused_subscription_id: state => state.focused_subscription_id,
             subscriptions: state => state.subscriptions,
             groups: state => state.groups,

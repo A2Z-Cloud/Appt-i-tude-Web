@@ -1,28 +1,31 @@
 <div class="NavPanel">
     <!-- Nav Title: Subscription -->
-    <div v-if="selected_subscription && !$route.title" class="title-content">
-        <div class="sub-dates">
-            <div v-if="selected_subscription" class="date-group">
-                <div class="label">Start Date</div>
-                <div class="value">{{selected_subscription.from_date.format("Do MMM YYYY")}}</div>
-            </div>
-            <div v-if="selected_subscription" class="date-group">
-                <div class="label">End Date</div>
-                <div class="value">{{selected_subscription.to_date.format("Do MMM YYYY")}}</div>
-            </div>
+    <div v-if="!$route.title && selected_subscription" class="title-content">
+        <div class="sub-detail">
+            <span class="sub-dates">
+                <div class="date-group">
+                    <div class="label">Start Date</div>
+                    <div class="value">{{selected_subscription.from_date.format("Do MMM YYYY")}}</div>
+                </div>
+                <div class="date-group">
+                    <div class="label">End Date</div>
+                    <div class="value">{{selected_subscription.to_date.format("Do MMM YYYY")}}</div>
+                </div>
+            </span>
+            <span class="sub-state"
+                  :class="subscription_state"
+                  v-if="subscription_state && is_admin">
+                {{subscription_state}}
+            </span>
         </div>
-        <div
-            v-if="selected_subscription"
-            @click="subscriptions.length > 1 ? toggle_dropdown() : null"
-            class="subscription"
-            :class="{'dropdown': subscriptions.length > 1}">
-
-                <div class="selection noselect">
+        <div class="subscription">
+                <div class="selection noselect"
+                     :class="{'dropdown': subscriptions.length > 1}"
+                     @click="subscriptions.length > 1 ? toggle_dropdown() : null">
                     <span class="dropdown-handle" v-if='subscriptions.length > 1'>
-                        <i
-                        class="fa fa-caret-right"
-                        :class="[dropped_down ? 'fa-caret-down' : 'fa-caret-right']"
-                        aria-hidden="true"></i>
+                        <i class="fa fa-caret-right"
+                           :class="[dropped_down ? 'fa-caret-down' : 'fa-caret-right']"
+                           aria-hidden="true"></i>
                     </span>
                     <span class="sub-title"><span class="company">{{selected_group.name}}</span>'s Subscription</span>
                 </div>
@@ -30,18 +33,16 @@
     </div>
 
     <!-- Nav Title: Component Title -->
-    <div v-if="$route.title || selected_subscription == null" class="title-content">
+    <div class="title-content" v-if="$route.title || selected_subscription == null">
         <div class="subscription">
-            <div class="selection">
-                <img class="nav-logo" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/logo/a2zcloud.svg"/>
-                <span class="sub-title" v-if="$route.title">{{$route.title}}</span>
-                <span class="sub-title" v-else>Appt-i-tude</span>
-            </div>
+            <img class="nav-logo" src="https://s3-eu-west-1.amazonaws.com/com-a2zcloud-assets/images/logo/a2zcloud.svg"/>
+            <span class="sub-title" v-if="$route.title">{{$route.title}}</span>
+            <span class="sub-title" v-else>Appt-i-tude</span>
         </div>
     </div>
 
     <!-- User -->
-    <div v-if="user" class="user">
+    <div class="user" v-if="user">
         <div class="name">{{user.first_name + ' ' + user.last_name}}</div>
         <a class="sign-out" :href="sign_out_url">Sign Out</a>
     </div>
