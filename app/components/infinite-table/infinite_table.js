@@ -26,7 +26,7 @@ export default Vue.extend({
         table_height() {
             var window_height = this.window_height,
                 client_height = document.getElementById('Content').clientHeight,
-                header_height = 75,
+                header_height = 139,
                 padding_diff  = 64,
                 tables_height = client_height - header_height - padding_diff
 
