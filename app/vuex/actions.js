@@ -182,3 +182,20 @@ export const insert_transaction = function(store, {subscription_id, amount, exec
              .catch(handle_error)
     })
 }
+
+export const get_service = function(store, {id=null, name=null}) {
+    return new Promise((resolve, reject) => {
+        const handle_success = service => {
+            store.dispatch('SERVICE_UPDATE', service)
+            resolve(service.id)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .get_service(id, name)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}

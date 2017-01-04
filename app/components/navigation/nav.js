@@ -11,8 +11,7 @@ import moment from 'moment'
 
 export default Vue.extend({
     template,
-    data: () => ({
-    }),
+    data: () => ({}),
     computed: {
         sign_out_url() {
             // Take the user to the A2Z Auth with a redirect to the
@@ -25,6 +24,10 @@ export default Vue.extend({
             const sign_in_url_return = sign_in_url + '?next=' + encodeURIComponent(current_url)
 
             return this.auth_client_url + '/sign-out?next=' + encodeURIComponent(sign_in_url_return)
+        },
+        users_url() {
+            const index = this.services.findIndex(s => s.name === "A2Z Users")
+            return index !== -1 ? this.services[index].client_url : null
         },
         is_admin() {
             return this.current_user.type === 'admin'
@@ -58,6 +61,7 @@ export default Vue.extend({
             subscriptions: state => state.subscriptions,
             groups: state => state.groups,
             user: state => state.user,
+            services: state => state.services,
         },
     },
     ready() {

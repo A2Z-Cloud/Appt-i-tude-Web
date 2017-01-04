@@ -8,7 +8,7 @@
                     <div class="value">{{selected_subscription.from_date.format("Do MMM YYYY")}}</div>
                 </div>
                 <div class="date-group">
-                    <div class="label">End Date</div>
+                    <div class="label">Review Date</div>
                     <div class="value">{{selected_subscription.to_date.format("Do MMM YYYY")}}</div>
                 </div>
             </span>
@@ -43,7 +43,7 @@
 
     <!-- User -->
     <div class="user" v-if="user">
-        <div class="name">{{user.first_name + ' ' + user.last_name}}</div>
+        <a class="name" :href="users_url">{{user.first_name + ' ' + user.last_name}}</a>
         <a class="sign-out" :href="sign_out_url">Sign Out</a>
     </div>
 </div>

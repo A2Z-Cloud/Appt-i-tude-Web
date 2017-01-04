@@ -123,13 +123,16 @@
 }
 
 .NavPanel
-.user .sign-out:hover {
-    color: #5F8454;
+.user .name {
+    display: block;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
 }
 
-.NavPanel
-.user .name {
-    color: rgba(255,255,255,0.7);
+.NavPanel .user .sign-out:hover,
+.NavPanel .user .name:hover {
+    cursor: pointer;
+    color: #5F8454;
 }
 
 
