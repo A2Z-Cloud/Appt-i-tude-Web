@@ -133,8 +133,14 @@ export default Vue.extend({
     },
     ready() {
         if(!this.focused_subscription_id) {
-            const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
-            this.focus_subscription(id)
+            if(this.subscriptions.length > 1) {
+                // reroute to subscriptions if more than one
+                this.$router.go({name: 'subscriptions'})
+            }
+            else {
+                const id = (this.subscriptions.length) ? this.subscriptions[0].id : null
+                this.focus_subscription(id)
+            }
         }
     },
     methods: {
