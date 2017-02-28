@@ -86,6 +86,8 @@
 
         <!-- Actions List -->
         <ul class="actions-list" v-if="is_showing_actions" transition="action-list">
+            <li class="action-option"><a class="action-link" :href="zoho_reports_url">Show breakdown.</a></li>
+            <li class="action-option" @click="set_action('rates')">Show rates.</li>
             <li class="action-option" @click="set_action('state')">Set {{toggled_state}}.</li>
             <li class="action-option" @click="set_action('credit')">Credit subscription.</li>
         </ul>
@@ -103,6 +105,12 @@
                     :subscription_id='focused_subscription_id'
                     :close='close_action'>
                 </top-up>
+            </template>
+            <template v-if="current_action == 'rates'">
+                <rate-card
+                    :subscription_id='focused_subscription_id'
+                    :close='close_action'>
+                </rate-card>
             </template>
         </div>
     </div>

@@ -3,6 +3,7 @@ import './dashboard.css!'
 import template from './dashboard.html!text'
 
 // Components
+import RateCard from 'app/components/rate-card/rate_card'
 import TopUp from 'app/components/top-up/top_up'
 import UpdateState from 'app/components/update-state/update_state'
 import Notice from 'app/components/notice/notice'
@@ -28,6 +29,7 @@ import { filter_groups,
 export default Vue.extend({
     template,
     components: {
+        'rate-card': RateCard,
         'top-up': TopUp,
         'update-state': UpdateState,
         'notice': Notice,
@@ -46,6 +48,7 @@ export default Vue.extend({
         is_showing_actions: false,
         current_action: null,
         override_notice: false,
+        zoho_reports_url: "http://reports.zoho.eu/",
     }),
     computed: {
         is_admin() {
