@@ -1,0 +1,39 @@
+.UpdateState {
+    position: relative;
+}
+
+.UpdateState
+.title {
+    margin-bottom: 10px;
+}
+
+.UpdateState
+.message {
+    width: 100%;
+}
+
+.UpdateState
+.line {
+    display: flex;
+    margin: 10px 0px;
+}
+
+.UpdateState
+.line:last-child {
+    display: block;
+    margin-bottom: 0px;
+    text-align: right;
+}
+
+.UpdateState .submit {
+    display: inline-block;
+    min-width: 60px;
+    overflow: visible;
+    margin-left: 15px;
+}
+
+.UpdateState
+.error {
+    width: 100%;
+    color: #F95858;
+}

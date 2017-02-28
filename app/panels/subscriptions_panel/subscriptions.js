@@ -63,7 +63,8 @@ export default Vue.extend({
 
             // appl css to colour status
             if (column === 'status') {
-                value = subscription.service_data.contract_state
+                const ended = subscription['to_date'] < moment()
+                value = ended ? 'ended' : subscription.service_data.contract_state
                 return "<span class='status "+value+"'>"+value+"</span>"}
 
             return value

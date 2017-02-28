@@ -70,6 +70,11 @@ button:hover {
     background-color: #7EB36E;
 }
 
+.button:disabled,
+button:disabled {
+    background-color: #D2D2D2;
+}
+
 .noselect {
     -webkit-touch-callout: none;
       -webkit-user-select: none;

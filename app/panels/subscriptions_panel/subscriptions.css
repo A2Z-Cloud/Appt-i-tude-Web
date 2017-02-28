@@ -37,6 +37,7 @@
 .SubscriptionsPanel .status.pending   { color: #FFC107; }
 .SubscriptionsPanel .status.suspended { color: #DC6F6F; }
 .SubscriptionsPanel .status.active    { color: #94C120; }
+.SubscriptionsPanel .status.ended     { color: #8BA8D6; }
 
 
 /* ––– Loader ––– */

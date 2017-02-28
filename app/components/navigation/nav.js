@@ -6,11 +6,12 @@ import template from './nav.html!text'
 // –– Vue
 import Vue from 'vue'
 
+import moment from 'moment'
+
 
 export default Vue.extend({
     template,
-    data: () => ({
-    }),
+    data: () => ({}),
     computed: {
         sign_out_url() {
             // Take the user to the A2Z Auth with a redirect to the
@@ -23,6 +24,13 @@ export default Vue.extend({
             const sign_in_url_return = sign_in_url + '?next=' + encodeURIComponent(current_url)
 
             return this.auth_client_url + '/sign-out?next=' + encodeURIComponent(sign_in_url_return)
+        },
+        users_url() {
+            const index = this.services.findIndex(s => s.name === "A2Z Users")
+            return index !== -1 ? this.services[index].client_url : null
+        },
+        is_admin() {
+            return this.current_user.type === 'admin'
         },
         selected_subscription() {
             const selected = s => s.id === this.focused_subscription_id
@@ -38,14 +46,22 @@ export default Vue.extend({
         dropped_down() {
             return this.$route.name === 'subscriptions'
         },
+        subscription_state() {
+            if(!this.selected_subscription) return null
+            // check if sub ended
+            const ended = this.selected_subscription.to_date < moment()
+            return ended ? 'ended' : this.selected_subscription.service_data.contract_state
+        },
     },
     vuex: {
         getters:  {
             auth_client_url: state => state.auth_client_url,
+            current_user: state => state.user,
             focused_subscription_id: state => state.focused_subscription_id,
             subscriptions: state => state.subscriptions,
             groups: state => state.groups,
             user: state => state.user,
+            services: state => state.services,
         },
     },
     ready() {
