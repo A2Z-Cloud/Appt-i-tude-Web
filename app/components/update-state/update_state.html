@@ -1,0 +1,17 @@
+<div class='UpdateState'>
+    <h3 class="title">Subscription State</h3>
+    <div class="message" v-if="!error">
+        <div class="line" v-else>
+            <div class="warning">
+                Are you sure you want to update the status of this subscription to
+                <strong :style="{ color: state_colour }">{{new_state}}</strong>?
+            </div>
+        </div>
+        <div class="line">
+            <button class="submit" @click='accept'>Yes</button>
+        </div>
+    </div>
+    <div class="message" v-else>
+        <div class='error'>{{ error }}</div>
+    </div>
+</div>

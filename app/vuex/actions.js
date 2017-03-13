@@ -113,7 +113,7 @@ export const insert_subscription = function(store, {group_id, opportunity_zcrm_i
     })
 }
 
-export const filter_subscriptions = function(store, {all_users=false, term=null, offset=0, limit=10}={}) {
+export const filter_subscriptions = function(store, {all_users=false, term=null, offset=0, limit=20}={}) {
     return new Promise((resolve, reject) => {
         const handle_success = subscriptions => {
             subscriptions.forEach(s => store.dispatch('SUBSCRIPTION_UPDATE', s))
@@ -125,6 +125,23 @@ export const filter_subscriptions = function(store, {all_users=false, term=null,
         }
         store.control
              .filter_subscriptions(all_users, term, offset, limit)
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
+
+export const update_subscription = function(store, subscription_id, state) {
+    return new Promise((resolve, reject) => {
+        const handle_success = subscription => {
+            store.dispatch('SUBSCRIPTION_UPDATE', subscription)
+            resolve(subscription.id)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .update_subscription(subscription_id, state)
              .then(handle_success)
              .catch(handle_error)
     })
@@ -161,6 +178,23 @@ export const insert_transaction = function(store, {subscription_id, amount, exec
                  subscription_id,
                  amount,
                  executed.unix())
+             .then(handle_success)
+             .catch(handle_error)
+    })
+}
+
+export const get_service = function(store, {id=null, name=null}) {
+    return new Promise((resolve, reject) => {
+        const handle_success = service => {
+            store.dispatch('SERVICE_UPDATE', service)
+            resolve(service.id)
+        }
+        const handle_error = error => {
+            store.dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        store.control
+             .get_service(id, name)
              .then(handle_success)
              .catch(handle_error)
     })

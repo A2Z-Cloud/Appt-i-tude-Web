@@ -37,33 +37,8 @@
 .TopUp
 .form .line
 .submit {
-    max-height: 35px;
-    padding: 7px 20px;
     overflow: visible;
-
-    border: none;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    background: #E29A3A;
-    color: #FFF;
-
-    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-.TopUp
-.form .line
-.submit:hover {
-    background-color: #C47914;
-    color: #FFF;
-}
-
-.TopUp
-.form .line
-.submit:disabled {
-    background-color: #D2D2D2;
+    height: 38px;
 }
 
 .TopUp
@@ -73,4 +48,5 @@
     padding-top: 7px;
     padding-right: 20px;
     color: #F95858;
+    font-size: small;
 }

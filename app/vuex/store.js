@@ -22,6 +22,7 @@ const state = {
     ratecards: [],
     subscriptions: [],
     transactions: [],
+    services: [],
     focused_subscription_id: null,
 }
 
@@ -85,6 +86,12 @@ const mutations = {
         new_tran.updated = moment.unix(new_tran.updated)
         if (index !== -1) transactions.$set(index, new_tran)
         else transactions.push(new_tran)
+    },
+    SERVICE_UPDATE({services}, service) {
+        const index    = services.findIndex(s => s.id === service.id)
+        const new_serv = merge(services[index], service)
+        if (index !== -1) services.$set(index, new_serv)
+        else services.push(new_serv)
     },
 }
 
