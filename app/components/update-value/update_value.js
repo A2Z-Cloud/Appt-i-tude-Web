@@ -1,6 +1,6 @@
 // Panel Imports
-import './update_state.css!'
-import template from './update_state.html!text'
+import './update_value.css!'
+import template from './update_value.html!text'
 
 import moment from 'moment'
 
@@ -16,6 +16,7 @@ export default Vue.extend({
     props: ['subscription_id', 'close'],
     data: () => ({
         error: null,
+        value: 0,
     }),
     vuex: {
         getters: {
@@ -34,29 +35,18 @@ export default Vue.extend({
                 return this.subscriptions[index]
             }
 
-            this.error = "Failed to load the current subscription details. Please try refreshing the page."
+            this.error = "Failed to load the current subscription state. Please try refreshing the page."
             return null
-        },
-        new_state() {
-            if(this.selected_subscription)
-                return this.selected_subscription.service_data.contract_state != 'active' ? 'active' : 'suspended'
-            else
-                return null
-        },
-        state_colour() {
-            switch (this.new_state) {
-                case 'active':
-                    return '#2CB12C'
-                case 'suspended':
-                    return '#D83F60'
-                default:
-                    return null
-            }
         },
     },
     ready() {
         // check if the state can be changed
         this.validate_subscription()
+
+        // set current value
+        if(!this.error) {
+            this.value = parseFloat(this.selected_subscription.service_data.monthly_balance);
+        }
     },
     methods: {
         validate_subscription() {
@@ -64,12 +54,12 @@ export default Vue.extend({
             const ended   = this.selected_subscription.to_date < moment()
             const valid   = started && !ended
             if(!valid)
-                this.error = "This subscription's value cannot be changed as it has " + (ended ? "ended." : "not started.")
+                this.error = "This subscription's state cannot be changed as it has " + (ended ? "ended." : "not started.")
         },
         accept() {
             // create new subscription state
             var new_service_data = this.selected_subscription.service_data;
-            new_service_data.contract_state = this.new_state;
+            new_service_data.monthly_balance = this.value;
 
             // update on server
             this.update_subscription(this.subscription_id, new_service_data)

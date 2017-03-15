@@ -1,0 +1,21 @@
+<div class='UpdateValue'>
+    <h3 class="title">Subscription Value</h3>
+    <div class="message" v-if="!error">
+        <div class="line" v-else>
+            <div class="warning">
+                The value of the contract is the amount added each month.
+                <br><br>
+                <span class="danger">Any change to this value will be retroactive. This value should match the terms on the contract.</span>
+            </div>
+        </div>
+        <div class="line">
+            <input class="value" v-model="value | currency">
+        </div>
+        <div class="line">
+            <button class="submit" @click='accept'>Update</button>
+        </div>
+    </div>
+    <div class="message" v-else>
+        <div class='error'>{{ error }}</div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import template from './dashboard.html!text'
 
 // Components
 import TopUp from 'app/components/top-up/top_up'
+import UpdateValue from 'app/components/update-value/update_value'
 import UpdateState from 'app/components/update-state/update_state'
 import Notice from 'app/components/notice/notice'
 
@@ -29,6 +30,7 @@ export default Vue.extend({
     template,
     components: {
         'top-up': TopUp,
+        'update-value': UpdateValue,
         'update-state': UpdateState,
         'notice': Notice,
     },

@@ -1,0 +1,56 @@
+.UpdateValue {
+    position: relative;
+}
+
+.UpdateValue
+.title {
+    margin-bottom: 10px;
+}
+
+.UpdateValue
+.message {
+    width: 100%;
+}
+
+.UpdateValue
+.line {
+    display: flex;
+    margin: 10px 0px;
+}
+
+.UpdateValue
+.line:last-child {
+    display: block;
+    margin-bottom: 0px;
+    text-align: right;
+}
+
+.UpdateValue
+.value {
+    width: 100%;
+    height: 35px;
+    padding: 3px 5px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #979797;
+}
+
+.UpdateValue
+.submit {
+    display: inline-block;
+    min-width: 60px;
+    overflow: visible;
+    margin-left: 15px;
+}
+
+.UpdateValue
+.error {
+    width: 100%;
+    color: #F95858;
+}
+
+.UpdateValue
+.danger {
+    color: #F95858;
+    font-weight: bold;
+}
