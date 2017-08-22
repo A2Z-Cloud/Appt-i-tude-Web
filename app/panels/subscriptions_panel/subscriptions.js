@@ -40,8 +40,9 @@ export default Vue.extend({
             // fetch action will return ids for the subscriptions
             // this means they need to be pulled from store and resorted for the table to display them
             return this.filter_subscriptions({'all_users':this.is_admin, term, offset})
-                       .then(items => this.subscriptions.filter(s => items.includes(s.id))
-                                                        .sort((a,b) => items.indexOf(a.id) > items.indexOf(b.id)))
+                       .then(items => items.map(sub_id => {
+                           return this.subscriptions.filter(s => s.id == sub_id)[0]
+                       }))
         },
         display_table_cell(subscription, {column}) {
             // default
