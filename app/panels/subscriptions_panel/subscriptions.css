@@ -13,6 +13,125 @@
     box-sizing: border-box;
 }
 
+.SubscriptionsPanel
+.subscriptions
+.top {
+    display: flex;align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.SubscriptionsPanel
+.subscriptions
+.top .title {
+    font-size: 32px;
+    color: #9E9E9E;
+}
+
+.SubscriptionsPanel
+.subscriptions
+.filters {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.SubscriptionsPanel
+.subscriptions .filters
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 80px;
+    background: #FFF;
+    padding: 8px 32px;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.SubscriptionsPanel
+.subscriptions .filters .filter-state
+.message {
+    color: #CCC;
+    font-size: 14px;
+}
+
+.SubscriptionsPanel
+.subscriptions .filters .action
+.lnr {
+    color: #E3E3E3;
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+.SubscriptionsPanel
+.subscriptions .filters
+.filter-options {
+    position: absolute;
+    top: 100%; right: 0px;
+    background: #FFF;
+    z-index: 100;
+    visibility: hidden;
+    width: 144px;
+
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.SubscriptionsPanel .subscriptions .filters .action:hover + .filter-options,
+.SubscriptionsPanel .subscriptions .filters .filter-options:hover {
+    visibility: visible;
+}
+
+.SubscriptionsPanel
+.subscriptions .filters .filter-options
+.filter-item {
+    position: relative;
+    padding: 8px 32px;
+    border-top: 1px solid #E3E3E3;
+}
+
+.SubscriptionsPanel
+.subscriptions .filters .filter-options
+.filter-item:hover {
+    background: #F8FFE7;
+    cursor: pointer;
+}
+
+.SubscriptionsPanel .filter-item.pending .status   { color: #FFC107; }
+.SubscriptionsPanel .filter-item.suspended .status { color: #DC6F6F; }
+.SubscriptionsPanel .filter-item.active .status    { color: #94C120; }
+.SubscriptionsPanel .filter-item.ended .status     { color: #8BA8D6; }
+
+.SubscriptionsPanel
+.subscriptions .filters .filter-options .filter-item
+.lnr {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #E3E3E3;
+    padding: 0 5px;
+}
+
+.SubscriptionsPanel .filter-item
+.lnr.lnr-checkmark-circle { color: #94C120; }
+
+.SubscriptionsPanel .filter-item
+.lnr.lnr-cross-circle { color: #DC6F6F; }
+
+.SubscriptionsPanel
+.sub-list {
+    height: calc(100% - 82px);
+}
+
 .SubscriptionsPanel .subscriptions tr th,
 .SubscriptionsPanel .subscriptions tr td {
     text-align: center;

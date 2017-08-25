@@ -12,6 +12,7 @@ export default Vue.extend({
         'display_table_cell_type',
         'display_table_cell',
         'item_clicked',
+        'height_reduction'
     ],
     data: () => ({
         items: [],
@@ -28,12 +29,13 @@ export default Vue.extend({
                 client_height = document.getElementById('Content').clientHeight,
                 header_height = 139,
                 padding_diff  = 64,
-                tables_height = client_height - header_height - padding_diff
+                tables_height = client_height - header_height - padding_diff - this.height_reduction
 
             return (tables_height < window_height ? tables_height : window_height) + 'px'
         },
     },
     ready() {
+        this.$on('refresh', () => this.fetch_items())
     },
     vuex: {
         getters: {

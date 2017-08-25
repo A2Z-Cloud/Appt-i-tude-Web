@@ -1,12 +1,51 @@
 <div class="SubscriptionsPanel" transition="expand">
     <div class="subscriptions">
-        <infinite-table
-            title="Search Subscriptions"
-            :columns="['name', 'term', 'balance', 'status']"
-            :fetch="fetch"
-            :display_table_cell="display_table_cell"
-            :display_table_cell_type="display_table_cell_type"
-            :item_clicked="item_clicked">
-        </infinite-table>
+        <div class="top" v-if="is_admin">
+            <div class="title">Subscriptions</div>
+            <div class="filters">
+                <div class="action">
+                    <div class="filter-state">
+                        <span class="message" v-if="filters.length">
+                            Currently filtering all {{filters_message}} subscriptions.
+                        </span>
+                        <span class="message" v-else>Filter</span>
+                    </div>
+                    <div class="lnr lnr-funnel"></div>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-item active" @click="toggle_filter('active')">
+                        <span class="lnr lnr-cross-circle" v-if="filters.includes('active')"></span>
+                        <span class="lnr lnr-checkmark-circle" v-else></span>
+                        <span class="status">Active</span>
+                    </div>
+                    <div class="filter-item suspended" @click="toggle_filter('suspended')">
+                        <span class="lnr lnr-cross-circle" v-if="filters.includes('suspended')"></span>
+                        <span class="lnr lnr-checkmark-circle" v-else></span>
+                        <span class="status">Suspended</span>
+                    </div>
+                    <div class="filter-item pending" @click="toggle_filter('pending')">
+                        <span class="lnr lnr-cross-circle" v-if="filters.includes('pending')"></span>
+                        <span class="lnr lnr-checkmark-circle" v-else></span>
+                        <span class="status">Pending</span>
+                    </div>
+                    <div class="filter-item ended" @click="toggle_filter('ended')">
+                        <span class="lnr lnr-cross-circle" v-if="filters.includes('ended')"></span>
+                        <span class="lnr lnr-checkmark-circle" v-else></span>
+                        <span class="status">Ended</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-list">
+            <infinite-table
+                :title="is_admin ? 'Search' : 'Search Subscriptions'"
+                :columns="['name', 'term', 'balance', 'status']"
+                :fetch="fetch"
+                :display_table_cell="display_table_cell"
+                :display_table_cell_type="display_table_cell_type"
+                :item_clicked="item_clicked"
+                :height_reduction="is_admin ? 82 : 0">
+            </infinite-table>
+        </div>
     </div>
 </div>

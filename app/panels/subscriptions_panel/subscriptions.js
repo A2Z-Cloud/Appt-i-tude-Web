@@ -27,19 +27,40 @@ export default Vue.extend({
     components: {
         'infinite-table': infinite_table,
     },
-    data: () => ({}),
+    data: () => ({
+        filters: ["ended", "pending"]
+    }),
     computed: {
         is_admin() {
             return this.current_user.type === 'admin'
         },
+        filters_message() {
+            if(this.filters.length > 1) {
+                let curr_filters = this.filters.slice(0)
+                const last = curr_filters.pop()
+                return curr_filters.join(", ") + " and " + last
+            }
+            else return this.filters.join(", ")
+        }
     },
     ready() {
     },
     methods: {
+        toggle_filter(option) {
+            if(this.filters.includes(option)) {
+                const index = this.filters.indexOf(option)
+                this.filters.splice(index,1)
+            }
+            else if(this.filters.length < 3) {
+                // dont allow all items to be filtered
+                this.filters.push(option)
+            }
+            this.$broadcast('refresh')
+        },
         fetch(term=null, offset=0) {
             // fetch action will return ids for the subscriptions
             // this means they need to be pulled from store and resorted for the table to display them
-            return this.filter_subscriptions({'all_users':this.is_admin, term, offset})
+            return this.filter_subscriptions({'all_users':this.is_admin, term, 'exclude':this.filters.join(","), offset})
                        .then(items => items.map(sub_id => {
                            return this.subscriptions.filter(s => s.id == sub_id)[0]
                        }))

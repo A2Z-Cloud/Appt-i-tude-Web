@@ -113,7 +113,7 @@ export const insert_subscription = function(store, {group_id, opportunity_zcrm_i
     })
 }
 
-export const filter_subscriptions = function(store, {all_users=false, term=null, offset=0, limit=20}={}) {
+export const filter_subscriptions = function(store, {all_users=false, term=null, exclude=null, offset=0, limit=20}={}) {
     return new Promise((resolve, reject) => {
         const handle_success = subscriptions => {
             subscriptions.forEach(s => store.dispatch('SUBSCRIPTION_UPDATE', s))
@@ -124,7 +124,7 @@ export const filter_subscriptions = function(store, {all_users=false, term=null,
             reject(error)
         }
         store.control
-             .filter_subscriptions(all_users, term, offset, limit)
+             .filter_subscriptions(all_users, term, exclude, offset, limit)
              .then(handle_success)
              .catch(handle_error)
     })
